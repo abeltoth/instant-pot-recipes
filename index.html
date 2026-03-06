@@ -168,7 +168,7 @@ body {
 .day-chevron { font-size: 1.1rem; color: var(--text-light); transition: transform 0.3s; }
 .day-card.expanded .day-chevron { transform: rotate(180deg); }
 .day-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-.day-card.expanded .day-body { max-height: 3000px; }
+.day-card.expanded .day-body { max-height: 5000px; }
 .day-content { padding: 0 1.1rem 1.1rem; }
 
 /* Meal blocks */
@@ -580,6 +580,143 @@ body.dark .btn-heart.active { background: #3a2020; }
 /* Footer */
 .footer { text-align: center; padding: 2rem 1rem; font-size: 0.78rem; color: var(--text-light); }
 
+/* ===== Edit Mode ===== */
+.day-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edit-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  transition: all 0.15s;
+}
+.edit-btn:hover { border-color: var(--orange); color: var(--orange); }
+.edit-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+
+.meal-edit-slot {
+  margin-bottom: 0.75rem;
+  padding: 0.85rem;
+  background: var(--warm-white);
+  border-radius: 8px;
+  border-left: 4px solid var(--blue);
+}
+.meal-edit-slot:last-of-type { margin-bottom: 0.75rem; }
+
+.meal-edit-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meal-edit-row select {
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+.meal-edit-row select:focus { outline: none; border-color: var(--orange); }
+
+.meal-type-select { flex: 0 0 auto !important; width: 105px; }
+
+.remove-meal-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  line-height: 1;
+}
+.remove-meal-btn:hover { border-color: var(--red); color: var(--red); }
+
+.add-meal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  background: none;
+  color: var(--text-light);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-top: 0.25rem;
+}
+.add-meal-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+.skip-label {
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 0.85rem;
+  padding: 0.3rem 0;
+}
+
+.meal.skipped { border-left-color: var(--text-light); opacity: 0.7; }
+
+.reset-plan-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.9rem;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.reset-plan-btn:hover { border-color: var(--red); color: var(--red); }
+
+.grocery-summary {
+  background: var(--warm-white);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-align: center;
+  font-weight: 500;
+}
+
+.grocery-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
 /* Desktop */
 @media (min-width: 768px) {
   .header h1 { font-size: 1.7rem; }
@@ -590,6 +727,8 @@ body.dark .btn-heart.active { background: #3a2020; }
 
 @media (max-width: 380px) {
   .tab { font-size: 0.7rem; padding: 0.7rem 0.15rem; }
+  .meal-edit-row { gap: 0.35rem; }
+  .meal-type-select { width: 90px; }
 }
 </style>
 </head>
@@ -636,8 +775,8 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "water" },
-      { amount: 6, unit: "", item: "eggs" }
+      { amount: 1, unit: "cup", item: "water", cat: null },
+      { amount: 6, unit: "", item: "eggs", cat: "Proteins" }
     ],
     steps: [
       "Add 1 cup water and place eggs on trivet.",
@@ -653,10 +792,10 @@ const recipes = [
     mealType: "dinner",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "white rice" },
-      { amount: 1, unit: "cup", item: "water (for rice)" },
-      { amount: 4, unit: "", item: "chicken thighs" },
-      { amount: 0, unit: "", item: "salt, pepper, paprika, garlic powder" }
+      { amount: 1, unit: "cup", item: "white rice", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "water (for rice)", cat: null },
+      { amount: 4, unit: "", item: "chicken thighs", cat: "Proteins" },
+      { amount: 0, unit: "", item: "salt, pepper, paprika, garlic powder", cat: "Pantry" }
     ],
     steps: [
       "Rice: 1 cup rice + 1 cup water. Pressure Cook 4 min, Natural Release 10 min.",
@@ -672,7 +811,7 @@ const recipes = [
     mealType: "snack",
     servings: 2,
     ingredients: [
-      { amount: 0, unit: "", item: "frozen french fries (half bag)" }
+      { amount: 0, unit: "", item: "frozen french fries (half bag)", cat: "Frozen" }
     ],
     steps: [
       "Place frozen fries in air fryer basket.",
@@ -687,10 +826,10 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "steel cut oats" },
-      { amount: 3, unit: "cups", item: "water" },
-      { amount: 1, unit: "", item: "banana, sliced" },
-      { amount: 0, unit: "", item: "pinch salt, cinnamon" }
+      { amount: 1, unit: "cup", item: "steel cut oats", cat: "Grains & Pasta" },
+      { amount: 3, unit: "cups", item: "water", cat: null },
+      { amount: 1, unit: "", item: "banana, sliced", cat: "Produce" },
+      { amount: 0, unit: "", item: "pinch salt, cinnamon", cat: "Pantry" }
     ],
     steps: [
       "Add 1 cup oats + 3 cups water + pinch salt.",
@@ -706,10 +845,10 @@ const recipes = [
     mealType: "dinner",
     servings: 4,
     ingredients: [
-      { amount: 1, unit: "lb", item: "penne pasta" },
-      { amount: 1, unit: "jar", item: "marinara sauce (dairy-free)" },
-      { amount: 3, unit: "cups", item: "water" },
-      { amount: 0, unit: "", item: "salt" }
+      { amount: 1, unit: "lb", item: "penne pasta", cat: "Grains & Pasta" },
+      { amount: 1, unit: "jar", item: "marinara sauce (dairy-free)", cat: "Canned / Jarred" },
+      { amount: 3, unit: "cups", item: "water", cat: null },
+      { amount: 0, unit: "", item: "salt", cat: "Pantry" }
     ],
     steps: [
       "Add 1 lb penne + 1 jar marinara + 3 cups water + salt.",
@@ -725,9 +864,9 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 0, unit: "", item: "frozen hash browns" },
-      { amount: 2, unit: "", item: "eggs" },
-      { amount: 0, unit: "", item: "oil spray, salt" }
+      { amount: 0, unit: "", item: "frozen hash browns", cat: "Frozen" },
+      { amount: 2, unit: "", item: "eggs", cat: "Proteins" },
+      { amount: 0, unit: "", item: "oil spray, salt", cat: "Pantry" }
     ],
     steps: [
       "Place hash browns in basket with oil spray + salt.",
@@ -743,8 +882,8 @@ const recipes = [
     mealType: "dinner",
     servings: 2,
     ingredients: [
-      { amount: 4, unit: "", item: "chicken thighs, seasoned" },
-      { amount: 1, unit: "cup", item: "water" }
+      { amount: 4, unit: "", item: "chicken thighs, seasoned", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "water", cat: null }
     ],
     steps: [
       "Season chicken thighs.",
@@ -762,9 +901,9 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 6, unit: "", item: "eggs" },
-      { amount: 1, unit: "cup", item: "steel cut oats" },
-      { amount: 3, unit: "cups", item: "water" }
+      { amount: 6, unit: "", item: "eggs", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "steel cut oats", cat: "Grains & Pasta" },
+      { amount: 3, unit: "cups", item: "water", cat: null }
     ],
     steps: [
       "Use same method as Monday (eggs) and/or Tuesday (oatmeal).",
@@ -779,13 +918,13 @@ const recipes = [
     mealType: "dinner",
     servings: 4,
     ingredients: [
-      { amount: 1, unit: "", item: "onion, diced" },
-      { amount: 3, unit: "", item: "carrots, diced" },
-      { amount: 3, unit: "stalks", item: "celery, diced" },
-      { amount: 2, unit: "tbsp", item: "olive oil" },
-      { amount: 4, unit: "", item: "potatoes, diced" },
-      { amount: 4, unit: "cups", item: "chicken broth" },
-      { amount: 0, unit: "", item: "salt, pepper" }
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 3, unit: "", item: "carrots, diced", cat: "Produce" },
+      { amount: 3, unit: "stalks", item: "celery, diced", cat: "Produce" },
+      { amount: 2, unit: "tbsp", item: "olive oil", cat: "Pantry" },
+      { amount: 4, unit: "", item: "potatoes, diced", cat: "Produce" },
+      { amount: 4, unit: "cups", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
     ],
     steps: [
       "Saut\u00e9 diced onion, carrots, celery in olive oil (Saut\u00e9 mode, 4 min).",
@@ -802,10 +941,10 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "steel cut oats" },
-      { amount: 3, unit: "cups", item: "water" },
-      { amount: 0.5, unit: "cup", item: "blueberries" },
-      { amount: 0, unit: "", item: "pinch salt, brown sugar" }
+      { amount: 1, unit: "cup", item: "steel cut oats", cat: "Grains & Pasta" },
+      { amount: 3, unit: "cups", item: "water", cat: null },
+      { amount: 0.5, unit: "cup", item: "blueberries", cat: "Produce" },
+      { amount: 0, unit: "", item: "pinch salt, brown sugar", cat: "Pantry" }
     ],
     steps: [
       "Same as Tuesday: 1 cup oats + 3 cups water + pinch salt.",
@@ -821,12 +960,12 @@ const recipes = [
     mealType: "dinner",
     servings: 4,
     ingredients: [
-      { amount: 1, unit: "lb", item: "ground beef" },
-      { amount: 1, unit: "", item: "onion, diced" },
-      { amount: 2, unit: "cans", item: "diced tomatoes" },
-      { amount: 1, unit: "can", item: "kidney beans, drained" },
-      { amount: 1, unit: "small can", item: "tomato paste" },
-      { amount: 0, unit: "", item: "chili powder, cumin, garlic powder, salt" }
+      { amount: 1, unit: "lb", item: "ground beef", cat: "Proteins" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 2, unit: "cans", item: "diced tomatoes", cat: "Canned / Jarred" },
+      { amount: 1, unit: "can", item: "kidney beans, drained", cat: "Canned / Jarred" },
+      { amount: 1, unit: "small can", item: "tomato paste", cat: "Canned / Jarred" },
+      { amount: 0, unit: "", item: "chili powder, cumin, garlic powder, salt", cat: "Pantry" }
     ],
     steps: [
       "Saut\u00e9 1 lb ground beef + diced onion (Saut\u00e9 mode, 5 min, break up meat).",
@@ -843,9 +982,9 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 6, unit: "", item: "pork sausage links" },
-      { amount: 0, unit: "", item: "frozen hash browns" },
-      { amount: 0, unit: "", item: "oil spray, salt" }
+      { amount: 6, unit: "", item: "pork sausage links", cat: "Proteins" },
+      { amount: 0, unit: "", item: "frozen hash browns", cat: "Frozen" },
+      { amount: 0, unit: "", item: "oil spray, salt", cat: "Pantry" }
     ],
     steps: [
       "Place sausage in basket. Air Crisp 400\u00b0F, 10 min, turn halfway.",
@@ -860,9 +999,9 @@ const recipes = [
     mealType: "dinner",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "white rice" },
-      { amount: 1, unit: "cup", item: "water" },
-      { amount: 0, unit: "", item: "leftover beef chili" }
+      { amount: 1, unit: "cup", item: "white rice", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "water", cat: null },
+      { amount: 0, unit: "", item: "leftover beef chili", cat: null }
     ],
     steps: [
       "Make rice (same as Monday: 1 cup rice + 1 cup water, Pressure Cook 4 min, NR 10 min).",
@@ -877,10 +1016,10 @@ const recipes = [
     mealType: "dessert",
     servings: 3,
     ingredients: [
-      { amount: 3, unit: "", item: "apples, cored" },
-      { amount: 0.25, unit: "cup", item: "oats" },
-      { amount: 2, unit: "tbsp", item: "brown sugar" },
-      { amount: 0, unit: "", item: "cinnamon, coconut oil" }
+      { amount: 3, unit: "", item: "apples, cored", cat: "Produce" },
+      { amount: 0.25, unit: "cup", item: "oats", cat: "Grains & Pasta" },
+      { amount: 2, unit: "tbsp", item: "brown sugar", cat: "Pantry" },
+      { amount: 0, unit: "", item: "cinnamon, coconut oil", cat: "Pantry" }
     ],
     steps: [
       "Core 3 apples.",
@@ -896,11 +1035,11 @@ const recipes = [
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "steel cut oats" },
-      { amount: 3, unit: "cups", item: "water" },
-      { amount: 1, unit: "", item: "banana, sliced" },
-      { amount: 0.5, unit: "cup", item: "blueberries" },
-      { amount: 0, unit: "", item: "cinnamon, oat milk" }
+      { amount: 1, unit: "cup", item: "steel cut oats", cat: "Grains & Pasta" },
+      { amount: 3, unit: "cups", item: "water", cat: null },
+      { amount: 1, unit: "", item: "banana, sliced", cat: "Produce" },
+      { amount: 0.5, unit: "cup", item: "blueberries", cat: "Produce" },
+      { amount: 0, unit: "", item: "cinnamon, oat milk", cat: "Pantry" }
     ],
     steps: [
       "Steel cut oats (same method: 1 cup oats + 3 cups water, Pressure Cook 10 min, NR 10 min).",
@@ -915,9 +1054,9 @@ const recipes = [
     mealType: "dinner",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "white rice" },
-      { amount: 1, unit: "can", item: "coconut milk (full fat)" },
-      { amount: 0, unit: "", item: "water (to top off to 1.5 cups liquid)" }
+      { amount: 1, unit: "cup", item: "white rice", cat: "Grains & Pasta" },
+      { amount: 1, unit: "can", item: "coconut milk (full fat)", cat: "Canned / Jarred" },
+      { amount: 0, unit: "", item: "water (to top off to 1.5 cups liquid)", cat: null }
     ],
     steps: [
       "Add 1 cup rice + 1 can coconut milk (top off with water to 1.5 cups liquid total).",
@@ -933,9 +1072,9 @@ const recipes = [
     mealType: "dessert",
     servings: 2,
     ingredients: [
-      { amount: 2, unit: "", item: "apples, sliced" },
-      { amount: 1, unit: "tbsp", item: "brown sugar" },
-      { amount: 0, unit: "", item: "cinnamon, squeeze of lemon" }
+      { amount: 2, unit: "", item: "apples, sliced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "brown sugar", cat: "Pantry" },
+      { amount: 0, unit: "", item: "cinnamon, squeeze of lemon", cat: "Pantry" }
     ],
     steps: [
       "Slice apples, toss with cinnamon + brown sugar + squeeze of lemon.",
@@ -945,47 +1084,38 @@ const recipes = [
   }
 ];
 
-const weekPlan = [
+const defaultWeekPlan = [
   { day: "Monday", theme: "Learn the Basics", emoji: "\ud83d\udcd6", meals: [
-    { recipeId: "hard-boiled-eggs", type: "Breakfast" },
-    { recipeId: "rice-chicken", type: "Dinner" },
-    { recipeId: "air-fryer-fries", type: "Snack" }
+    { recipeId: "hard-boiled-eggs", type: "Breakfast", servings: 2 },
+    { recipeId: "rice-chicken", type: "Dinner", servings: 2 },
+    { recipeId: "air-fryer-fries", type: "Snack", servings: 2 }
   ]},
   { day: "Tuesday", theme: "One Pot Comfort", emoji: "\ud83c\udf72", meals: [
-    { recipeId: "oatmeal-banana", type: "Breakfast" },
-    { recipeId: "one-pot-pasta", type: "Dinner" }
+    { recipeId: "oatmeal-banana", type: "Breakfast", servings: 2 },
+    { recipeId: "one-pot-pasta", type: "Dinner", servings: 4 }
   ]},
   { day: "Wednesday", theme: "Air Fryer Day", emoji: "\ud83c\udf5f", meals: [
-    { recipeId: "hash-browns-eggs", type: "Breakfast" },
-    { recipeId: "crispy-chicken", type: "Dinner" }
+    { recipeId: "hash-browns-eggs", type: "Breakfast", servings: 2 },
+    { recipeId: "crispy-chicken", type: "Dinner", servings: 2 }
   ]},
   { day: "Thursday", theme: "Soup Day", emoji: "\ud83c\udf5c", meals: [
-    { recipeId: "eggs-oatmeal-leftover", type: "Breakfast" },
-    { recipeId: "veggie-potato-soup", type: "Dinner" }
+    { recipeId: "eggs-oatmeal-leftover", type: "Breakfast", servings: 2 },
+    { recipeId: "veggie-potato-soup", type: "Dinner", servings: 4 }
   ]},
   { day: "Friday", theme: "Chili Night", emoji: "\ud83c\udf36\ufe0f", meals: [
-    { recipeId: "oatmeal-blueberries", type: "Breakfast" },
-    { recipeId: "beef-chili", type: "Dinner" }
+    { recipeId: "oatmeal-blueberries", type: "Breakfast", servings: 2 },
+    { recipeId: "beef-chili", type: "Dinner", servings: 4 }
   ]},
   { day: "Saturday", theme: "Try Something New", emoji: "\ud83c\udf89", meals: [
-    { recipeId: "sausage-hash-browns", type: "Breakfast" },
-    { recipeId: "chili-over-rice", type: "Dinner" },
-    { recipeId: "baked-apples", type: "Dessert" }
+    { recipeId: "sausage-hash-browns", type: "Breakfast", servings: 2 },
+    { recipeId: "chili-over-rice", type: "Dinner", servings: 2 },
+    { recipeId: "baked-apples", type: "Dessert", servings: 3 }
   ]},
   { day: "Sunday", theme: "Rest & Reward", emoji: "\u2615", meals: [
-    { recipeId: "big-oatmeal-bowl", type: "Breakfast" },
-    { recipeId: "coconut-rice", type: "Dinner" },
-    { recipeId: "cinnamon-apples", type: "Dessert" }
+    { recipeId: "big-oatmeal-bowl", type: "Breakfast", servings: 2 },
+    { recipeId: "coconut-rice", type: "Dinner", servings: 2 },
+    { recipeId: "cinnamon-apples", type: "Dessert", servings: 2 }
   ]}
-];
-
-const groceryData = [
-  { category: "\ud83e\udd69 Proteins", items: ["Eggs (1 dozen)","Chicken thighs, bone-in skin-on (8 pcs)","Ground beef (1 lb)","Pork sausage links (6)"] },
-  { category: "\ud83c\udf5a Grains & Pasta", items: ["White rice (2 cups)","Steel cut oats (1 cup)","Penne pasta (1 lb)"] },
-  { category: "\ud83e\udd66 Produce", items: ["Bananas (4)","Blueberries (1 cup)","Frozen hash browns (1 bag)","Onion (2)","Garlic (1 head)","Bell pepper (2)","Potatoes (4 medium)","Carrots (3)","Celery (3 stalks)","Apples (3)","Lemon (1)"] },
-  { category: "\ud83e\udd6b Canned / Jarred", items: ["Canned diced tomatoes (2 cans)","Tomato paste (1 small can)","Marinara sauce (1 jar, dairy-free)","Chicken broth (4 cups)","Canned kidney beans (1 can)","Coconut milk, full fat (1 can)"] },
-  { category: "\ud83c\udfea Pantry", items: ["Olive oil","Salt & pepper","Paprika","Garlic powder","Onion powder","Chili powder","Cumin","Cinnamon","Brown sugar","Vanilla extract","Oat milk (1 carton)"] },
-  { category: "\u2744\ufe0f Frozen", items: ["Frozen french fries (1 bag)"] }
 ];
 
 // ============ STATE ============
@@ -993,8 +1123,37 @@ let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 let servingsState = JSON.parse(localStorage.getItem('servingsState') || '{}');
 let activeMethodFilter = 'all';
 let activeMealFilter = 'all';
-let cookState = { recipeId: null, step: 0, timerInterval: null, timerSeconds: 0, timerRunning: false };
+let cookState = { recipeId: null, step: 0, timerInterval: null, timerSeconds: 0, timerRunning: false, slotServings: null };
 let wakeLock = null;
+
+// Custom plan state
+let expandedDays = new Set([0]);
+let editingDays = new Set();
+
+function loadPlan() {
+  try {
+    const saved = localStorage.getItem('customPlan');
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+  return JSON.parse(JSON.stringify(defaultWeekPlan));
+}
+
+let customPlan = loadPlan();
+
+function savePlan() {
+  localStorage.setItem('customPlan', JSON.stringify(customPlan));
+  localStorage.removeItem('groceryChecks');
+}
+
+function resetPlan() {
+  if (!confirm('Reset meal plan to default? Your customizations will be lost.')) return;
+  customPlan = JSON.parse(JSON.stringify(defaultWeekPlan));
+  localStorage.removeItem('customPlan');
+  localStorage.removeItem('groceryChecks');
+  editingDays.clear();
+  renderWeekPlan();
+  renderGrocery();
+}
 
 // ============ HELPERS ============
 function getRecipe(id) { return recipes.find(r => r.id === id); }
@@ -1013,7 +1172,7 @@ function setServings(id, val) {
   val = Math.max(1, Math.min(20, val));
   servingsState[id] = val;
   localStorage.setItem('servingsState', JSON.stringify(servingsState));
-  renderAll();
+  renderRecipes();
 }
 
 function methodBadge(m) {
@@ -1043,51 +1202,182 @@ function renderIngredients(recipe, scale) {
 }
 
 function getDaysForRecipe(id) {
-  return weekPlan.filter(d => d.meals.some(m => m.recipeId === id)).map(d => d.day.slice(0,3));
+  return customPlan.filter(d => d.meals.some(m => m.recipeId === id)).map(d => d.day.slice(0,3));
+}
+
+// ============ SLOT MANAGEMENT ============
+function setSlotServings(di, mi, val) {
+  val = Math.max(1, Math.min(20, val));
+  customPlan[di].meals[mi].servings = val;
+  savePlan();
+  renderWeekPlan();
+  renderGrocery();
+}
+
+function setSlotRecipe(di, mi, recipeId) {
+  customPlan[di].meals[mi].recipeId = recipeId || null;
+  if (recipeId) {
+    const r = getRecipe(recipeId);
+    if (r) customPlan[di].meals[mi].servings = r.servings;
+  }
+  savePlan();
+  renderWeekPlan();
+  renderGrocery();
+}
+
+function setSlotType(di, mi, type) {
+  customPlan[di].meals[mi].type = type;
+  savePlan();
+  renderWeekPlan();
+}
+
+function addSlot(di) {
+  if (customPlan[di].meals.length >= 4) return;
+  customPlan[di].meals.push({ recipeId: null, type: "Dinner", servings: 2 });
+  savePlan();
+  renderWeekPlan();
+}
+
+function removeSlot(di, mi) {
+  customPlan[di].meals.splice(mi, 1);
+  savePlan();
+  renderWeekPlan();
+  renderGrocery();
+}
+
+function toggleEditDay(di) {
+  if (editingDays.has(di)) {
+    editingDays.delete(di);
+  } else {
+    editingDays.add(di);
+    expandedDays.add(di);
+  }
+  renderWeekPlan();
+}
+
+function toggleDay(di) {
+  if (expandedDays.has(di)) expandedDays.delete(di);
+  else expandedDays.add(di);
+  renderWeekPlan();
+}
+
+// ============ RECIPE DROPDOWN OPTIONS ============
+function renderRecipeOptions(selectedId) {
+  const groups = {
+    Breakfast: recipes.filter(r => r.mealType === 'breakfast'),
+    Dinner: recipes.filter(r => r.mealType === 'dinner'),
+    Dessert: recipes.filter(r => r.mealType === 'dessert'),
+    Snack: recipes.filter(r => r.mealType === 'snack')
+  };
+  return Object.entries(groups).map(([type, recs]) => {
+    if (!recs.length) return '';
+    return `<optgroup label="${type}">${recs.map(r =>
+      `<option value="${r.id}" ${r.id===selectedId?'selected':''}>${r.name}</option>`
+    ).join('')}</optgroup>`;
+  }).join('');
 }
 
 // ============ RENDER WEEK PLAN ============
-function renderWeekPlan() {
-  const el = document.getElementById('plan');
-  el.innerHTML = weekPlan.map((day, di) => {
-    const mealsHtml = day.meals.map(m => {
-      const r = getRecipe(m.recipeId);
-      const scale = getScale(r.id);
-      const s = getServings(r.id);
+function renderDayViewMode(day, di) {
+  return day.meals.map((m, mi) => {
+    if (!m.recipeId) {
       return `
-        <div class="meal">
+        <div class="meal skipped">
           <div class="meal-header">
             <span class="meal-type">${m.type}</span>
-            ${r.methods.map(methodBadge).join('')}
           </div>
-          <div class="meal-name">${r.name}</div>
+          <div class="skip-label">Eating out / Skipped</div>
+        </div>`;
+    }
+    const r = getRecipe(m.recipeId);
+    if (!r) return '';
+    const scale = m.servings / r.servings;
+    return `
+      <div class="meal">
+        <div class="meal-header">
+          <span class="meal-type">${m.type}</span>
+          ${r.methods.map(methodBadge).join('')}
+        </div>
+        <div class="meal-name">${r.name}</div>
+        <div class="servings-ctrl">
+          <button onclick="event.stopPropagation();setSlotServings(${di},${mi},${m.servings-1})">-</button>
+          <span class="servings-val">${m.servings}</span>
+          <button onclick="event.stopPropagation();setSlotServings(${di},${mi},${m.servings+1})">+</button>
+          <span>servings</span>
+        </div>
+        <div class="ingredients-list">${renderIngredients(r, scale)}</div>
+        <div class="meal-steps">${r.steps.map((st,i) => `<div class="step">${i+1}. ${st}</div>`).join('')}</div>
+        <div class="meal-actions">
+          <button class="btn-heart ${isFav(r.id)?'active':''}" onclick="event.stopPropagation();toggleFavorite('${r.id}')">${isFav(r.id)?'\u2764\ufe0f':'\ud83e\ude76'} Fave</button>
+          <button class="btn-cook" onclick="event.stopPropagation();openCookMode('${r.id}',${m.servings})">&#x1F373; Cook</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderDayEditMode(day, di) {
+  let html = day.meals.map((m, mi) => {
+    return `
+      <div class="meal-edit-slot">
+        <div class="meal-edit-row">
+          <select class="meal-type-select" onchange="setSlotType(${di},${mi},this.value)">
+            ${['Breakfast','Dinner','Dessert','Snack'].map(t =>
+              `<option value="${t}" ${m.type===t?'selected':''}>${t}</option>`
+            ).join('')}
+          </select>
+          <select onchange="setSlotRecipe(${di},${mi},this.value)">
+            <option value="" ${!m.recipeId?'selected':''}>— Skip —</option>
+            ${renderRecipeOptions(m.recipeId)}
+          </select>
+          <button class="remove-meal-btn" onclick="removeSlot(${di},${mi})" title="Remove">&times;</button>
+        </div>
+        ${m.recipeId ? `
           <div class="servings-ctrl">
-            <button onclick="event.stopPropagation();setServings('${r.id}',${s-1})">-</button>
-            <span class="servings-val">${s}</span>
-            <button onclick="event.stopPropagation();setServings('${r.id}',${s+1})">+</button>
+            <button onclick="setSlotServings(${di},${mi},${m.servings-1})">-</button>
+            <span class="servings-val">${m.servings}</span>
+            <button onclick="setSlotServings(${di},${mi},${m.servings+1})">+</button>
             <span>servings</span>
           </div>
-          <div class="ingredients-list">${renderIngredients(r, scale)}</div>
-          <div class="meal-steps">${r.steps.map((st,i) => `<div class="step">${i+1}. ${st}</div>`).join('')}</div>
-          <div class="meal-actions">
-            <button class="btn-heart ${isFav(r.id)?'active':''}" onclick="event.stopPropagation();toggleFavorite('${r.id}')">${isFav(r.id)?'\u2764\ufe0f':'\ud83e\ude76'} Fave</button>
-            <button class="btn-cook" onclick="event.stopPropagation();openCookMode('${r.id}')">&#x1F373; Cook</button>
-          </div>
-        </div>`;
-    }).join('');
+        ` : '<div class="skip-label">Eating out / Skipped</div>'}
+      </div>`;
+  }).join('');
+
+  if (day.meals.length < 4) {
+    html += `<button class="add-meal-btn" onclick="addSlot(${di})">+ Add Meal</button>`;
+  }
+
+  return html;
+}
+
+function renderWeekPlan() {
+  const el = document.getElementById('plan');
+  let html = `<button class="reset-plan-btn" onclick="resetPlan()">\u21ba Reset to Default</button>`;
+
+  html += customPlan.map((day, di) => {
+    const isEditing = editingDays.has(di);
+    const isExpanded = expandedDays.has(di);
+    const mealsHtml = isEditing ? renderDayEditMode(day, di) : renderDayViewMode(day, di);
+
     return `
-      <div class="day-card ${di===0?'expanded':''}">
-        <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-card ${isExpanded ? 'expanded' : ''}">
+        <div class="day-header" onclick="toggleDay(${di})">
           <div class="day-emoji">${day.emoji}</div>
           <div class="day-info">
             <div class="day-name">${day.day}</div>
             <div class="day-theme">${day.theme}</div>
           </div>
-          <div class="day-chevron">\u25bc</div>
+          <div class="day-header-actions">
+            <button class="edit-btn ${isEditing?'active':''}" onclick="event.stopPropagation();toggleEditDay(${di})" title="${isEditing?'Done editing':'Edit day'}">
+              ${isEditing ? '\u2713' : '\u270e'}
+            </button>
+            <div class="day-chevron">\u25bc</div>
+          </div>
         </div>
         <div class="day-body"><div class="day-content">${mealsHtml}</div></div>
       </div>`;
   }).join('');
+
+  el.innerHTML = html;
 }
 
 // ============ RENDER RECIPES ============
@@ -1144,7 +1434,7 @@ function renderRecipeCard(r) {
       <div class="recipe-card-header" onclick="toggleRecipeCard('${r.id}')">
         <div class="recipe-card-info">
           <div class="recipe-card-name">${r.name}</div>
-          <div class="recipe-card-meta">${r.mealType.charAt(0).toUpperCase()+r.mealType.slice(1)} &bull; ${days.join(', ')}</div>
+          <div class="recipe-card-meta">${r.mealType.charAt(0).toUpperCase()+r.mealType.slice(1)} ${days.length ? '&bull; ' + days.join(', ') : ''}</div>
           <div class="recipe-card-badges">${r.methods.map(methodBadge).join('')}</div>
         </div>
         <span class="recipe-card-heart" onclick="event.stopPropagation();toggleFavorite('${r.id}')">${isFav(r.id)?'\u2764\ufe0f':'\ud83e\ude76'}</span>
@@ -1172,19 +1462,101 @@ function toggleRecipeCard(id) {
   document.getElementById('rc-' + id).classList.toggle('expanded');
 }
 
+// ============ GROCERY LIST COMPUTATION ============
+function normalizeItem(item) {
+  return item.toLowerCase()
+    .replace(/,\s*(diced|sliced|cored|seasoned|drained|chopped|minced)\b/gi, '')
+    .trim();
+}
+
+function computeGroceryList() {
+  const mergeMap = {};
+  let mealCount = 0;
+  let totalServings = 0;
+
+  for (const day of customPlan) {
+    for (const slot of day.meals) {
+      if (!slot.recipeId) continue;
+      const r = getRecipe(slot.recipeId);
+      if (!r) continue;
+      mealCount++;
+      totalServings += slot.servings;
+      const scale = slot.servings / r.servings;
+
+      for (const ing of r.ingredients) {
+        if (!ing.cat) continue;
+
+        const normName = normalizeItem(ing.item);
+        const key = normName + '||' + (ing.amount === 0 ? '_zero_' : ing.unit);
+
+        if (!mergeMap[key]) {
+          mergeMap[key] = {
+            item: normName,
+            displayItem: ing.item.replace(/,\s*(diced|sliced|cored|seasoned|drained|chopped|minced)\b/gi, '').trim(),
+            amount: 0,
+            unit: ing.unit,
+            cat: ing.cat,
+            isZero: ing.amount === 0
+          };
+        }
+
+        if (ing.amount > 0) {
+          mergeMap[key].amount += ing.amount * scale;
+          mergeMap[key].isZero = false;
+        }
+      }
+    }
+  }
+
+  const catOrder = ["Proteins", "Grains & Pasta", "Produce", "Canned / Jarred", "Pantry", "Frozen"];
+  const catEmojis = {
+    "Proteins": "\ud83e\udd69",
+    "Grains & Pasta": "\ud83c\udf5a",
+    "Produce": "\ud83e\udd66",
+    "Canned / Jarred": "\ud83e\udd6b",
+    "Pantry": "\ud83c\udfea",
+    "Frozen": "\u2744\ufe0f"
+  };
+
+  const categories = {};
+  for (const entry of Object.values(mergeMap)) {
+    if (!categories[entry.cat]) categories[entry.cat] = [];
+    categories[entry.cat].push(entry);
+  }
+
+  return { categories, catOrder, catEmojis, mealCount, totalServings };
+}
+
 // ============ RENDER GROCERY ============
 function renderGrocery() {
   const el = document.getElementById('grocery');
+  const { categories, catOrder, catEmojis, mealCount, totalServings } = computeGroceryList();
+
+  if (mealCount === 0) {
+    el.innerHTML = `
+      <div class="grocery-summary">No meals planned</div>
+      <div class="grocery-empty">Add meals to your week plan to generate a grocery list.</div>`;
+    return;
+  }
+
   let gIdx = 0;
-  const sections = groceryData.map(cat => {
-    const items = cat.items.map(item => {
+  const sections = catOrder.filter(cat => categories[cat] && categories[cat].length).map(cat => {
+    const items = categories[cat].map(entry => {
       gIdx++;
-      return `<div class="grocery-item"><input type="checkbox" id="g${gIdx}" onchange="updateProgress()"><label for="g${gIdx}">${item}</label></div>`;
+      let label;
+      if (entry.isZero || entry.amount === 0) {
+        label = entry.displayItem;
+      } else {
+        const amt = formatAmount(entry.amount, 1);
+        label = `${amt}${entry.unit ? ' ' + entry.unit : ''} ${entry.displayItem}`;
+      }
+      return `<div class="grocery-item"><input type="checkbox" id="g${gIdx}" onchange="updateProgress()"><label for="g${gIdx}">${label}</label></div>`;
     }).join('');
-    return `<div class="grocery-section"><h3>${cat.category}</h3>${items}</div>`;
+    return `<div class="grocery-section"><h3>${catEmojis[cat]} ${cat}</h3>${items}</div>`;
   }).join('');
 
   el.innerHTML = `
+    <div class="grocery-summary">Based on your meal plan (${mealCount} meals, ${totalServings} servings)</div>
     <div class="grocery-progress">
       <div class="progress-text"><span id="checkedCount">0</span> / <span id="totalCount">0</span> items</div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -1235,9 +1607,10 @@ function renderQuickRef() {
 }
 
 // ============ COOK MODE ============
-function openCookMode(id) {
+function openCookMode(id, slotServings) {
   cookState.recipeId = id;
   cookState.step = 0;
+  cookState.slotServings = slotServings || null;
   cookState.timerSeconds = getRecipe(id).timer.minutes * 60;
   cookState.timerRunning = false;
   if (cookState.timerInterval) clearInterval(cookState.timerInterval);
@@ -1258,7 +1631,8 @@ function closeCookMode() {
 
 function renderCookMode() {
   const r = getRecipe(cookState.recipeId);
-  const scale = getScale(r.id);
+  const cookServings = cookState.slotServings || getServings(r.id);
+  const cookScale = cookServings / r.servings;
   const s = cookState.step;
   const total = r.steps.length;
   const mm = String(Math.floor(cookState.timerSeconds / 60)).padStart(2, '0');
@@ -1271,9 +1645,9 @@ function renderCookMode() {
       <div class="cook-title">${r.name}</div>
     </div>
     <div class="cook-ingredients">
-      <h3>Ingredients (${getServings(r.id)} servings)</h3>
+      <h3>Ingredients (${cookServings} servings)</h3>
       ${r.ingredients.map(ing => {
-        const amt = formatAmount(ing.amount, scale);
+        const amt = formatAmount(ing.amount, cookScale);
         return `<div class="cook-ing-item"><span class="cook-ing-amount">${amt}${amt && ing.unit ? ' ' + ing.unit : ''}</span> ${ing.item}</div>`;
       }).join('')}
     </div>
@@ -1369,9 +1743,6 @@ document.querySelectorAll('.tab').forEach(t => {
   });
 });
 
-// ============ DAY CARDS ============
-function toggleDay(header) { header.closest('.day-card').classList.toggle('expanded'); }
-
 // ============ GROCERY ============
 function updateProgress() {
   const cbs = document.querySelectorAll('#grocery input[type="checkbox"]');
@@ -1423,7 +1794,6 @@ function initDarkMode() {
 function renderAll() {
   renderWeekPlan();
   renderRecipes();
-  // Don't re-render grocery (would lose checkbox state) unless first time
 }
 
 // ============ INIT ============
