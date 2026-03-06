@@ -971,6 +971,267 @@ const recipes = [
       "Serve warm or chilled."
     ],
     timer: { minutes: 8, label: "Pressure Cook" }
+  },
+
+  // ─────────────────────────────────────────────
+  //  POPULAR PICKS (10) — may contain dairy
+  // ─────────────────────────────────────────────
+
+  {
+    id: "pot-roast",
+    name: "Pot Roast",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 3, unit: "lb", item: "chuck roast", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "beef broth", cat: "Canned / Jarred" },
+      { amount: 1, unit: "", item: "onion, quartered", cat: "Produce" },
+      { amount: 4, unit: "", item: "carrots, chunked", cat: "Produce" },
+      { amount: 4, unit: "", item: "potatoes, quartered", cat: "Produce" },
+      { amount: 4, unit: "cloves", item: "garlic, smashed", cat: "Produce" },
+      { amount: 2, unit: "tbsp", item: "Worcestershire sauce", cat: "Pantry" },
+      { amount: 2, unit: "tbsp", item: "olive oil", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper, thyme", cat: "Pantry" }
+    ],
+    steps: [
+      "Season chuck roast generously with salt, pepper, and thyme.",
+      "Saut\u00e9 in olive oil, searing each side 3\u20134 min until browned.",
+      "Add beef broth and Worcestershire sauce. Deglaze the pot.",
+      "Add onion and garlic around the roast.",
+      "Pressure Cook 60 min, Natural Release 15 min.",
+      "Add carrots and potatoes, Pressure Cook 8 min, Quick Release.",
+      "Slice roast against the grain and serve with vegetables and pot juices."
+    ],
+    timer: { minutes: 60, label: "Pressure Cook" }
+  },
+  {
+    id: "butter-chicken",
+    name: "Butter Chicken",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken thighs, cubed", cat: "Proteins" },
+      { amount: 2, unit: "tbsp", item: "butter", cat: "Pantry" },
+      { amount: 1, unit: "cup", item: "tomato sauce", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "cup", item: "heavy cream", cat: "Produce" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "ginger, grated", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "garam masala", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "turmeric", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt", cat: "Pantry" }
+    ],
+    steps: [
+      "Saut\u00e9 diced onion in butter for 3 min. Add garlic, ginger, garam masala, cumin, and turmeric. Stir 1 min.",
+      "Add cubed chicken and tomato sauce. Stir to combine.",
+      "Pressure Cook 5 min, Natural Release 5 min.",
+      "Stir in heavy cream. Saut\u00e9 2 min to thicken.",
+      "Serve over basmati rice."
+    ],
+    timer: { minutes: 5, label: "Pressure Cook" }
+  },
+  {
+    id: "salsa-chicken",
+    name: "Salsa Chicken",
+    methods: ["pressure"],
+    mealType: "lunch",
+    servings: 4,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken breasts", cat: "Proteins" },
+      { amount: 1, unit: "jar", item: "salsa (16 oz)", cat: "Canned / Jarred" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "garlic powder", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Place chicken breasts in the pot. Pour salsa over the top.",
+      "Season with cumin, garlic powder, salt, and pepper.",
+      "Pressure Cook 8 min, Natural Release 5 min.",
+      "Shred chicken with two forks and mix with the salsa.",
+      "Serve in tacos, over rice, or in bowls."
+    ],
+    timer: { minutes: 8, label: "Pressure Cook" }
+  },
+  {
+    id: "cheesecake",
+    name: "New York Cheesecake",
+    methods: ["pressure"],
+    mealType: "dessert",
+    servings: 8,
+    ingredients: [
+      { amount: 16, unit: "oz", item: "cream cheese, softened", cat: "Produce" },
+      { amount: 0.5, unit: "cup", item: "sugar", cat: "Pantry" },
+      { amount: 2, unit: "", item: "eggs", cat: "Proteins" },
+      { amount: 0.33, unit: "cup", item: "sour cream", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "vanilla extract", cat: "Pantry" },
+      { amount: 2, unit: "tbsp", item: "flour", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "graham cracker crumbs", cat: "Grains & Pasta" },
+      { amount: 3, unit: "tbsp", item: "butter, melted", cat: "Pantry" },
+      { amount: 1.5, unit: "cups", item: "water", cat: null }
+    ],
+    steps: [
+      "Mix graham cracker crumbs with melted butter. Press into the bottom of a 7-inch springform pan.",
+      "Beat cream cheese and sugar until smooth. Add eggs one at a time. Mix in sour cream, vanilla, and flour.",
+      "Pour filling over the crust. Cover pan tightly with foil.",
+      "Add 1.5 cups water to the pot. Place pan on trivet.",
+      "Pressure Cook 25 min, Natural Release 10 min.",
+      "Remove and chill in the fridge for at least 4 hours before serving."
+    ],
+    timer: { minutes: 25, label: "Pressure Cook" }
+  },
+  {
+    id: "honey-garlic-chicken",
+    name: "Honey Garlic Chicken",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 6, unit: "", item: "chicken thighs", cat: "Proteins" },
+      { amount: 0.33, unit: "cup", item: "honey", cat: "Pantry" },
+      { amount: 3, unit: "tbsp", item: "soy sauce", cat: "Pantry" },
+      { amount: 4, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "olive oil", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "cornstarch", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Mix honey, soy sauce, and minced garlic in a bowl.",
+      "Saut\u00e9 chicken thighs in olive oil, 2 min per side.",
+      "Pour honey garlic sauce over the chicken.",
+      "Pressure Cook 8 min, Natural Release 5 min.",
+      "Remove chicken. Mix cornstarch with 1 tbsp water, stir into sauce on Saut\u00e9 to thicken.",
+      "Serve chicken with sauce over rice."
+    ],
+    timer: { minutes: 8, label: "Pressure Cook" }
+  },
+  {
+    id: "mac-and-cheese",
+    name: "Mac & Cheese",
+    methods: ["pressure"],
+    mealType: "lunch",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "elbow macaroni", cat: "Grains & Pasta" },
+      { amount: 4, unit: "cups", item: "water", cat: null },
+      { amount: 2, unit: "tbsp", item: "butter", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "salt", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "mustard powder", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "whole milk", cat: "Produce" },
+      { amount: 2, unit: "cups", item: "shredded cheddar cheese", cat: "Produce" }
+    ],
+    steps: [
+      "Add macaroni, water, butter, salt, and mustard powder to the pot.",
+      "Pressure Cook 4 min, Quick Release.",
+      "Stir in milk and shredded cheddar cheese until melted and creamy.",
+      "Season to taste and serve immediately."
+    ],
+    timer: { minutes: 4, label: "Pressure Cook" }
+  },
+  {
+    id: "carnitas",
+    name: "Carnitas",
+    methods: ["pressure", "air"],
+    mealType: "lunch",
+    servings: 6,
+    ingredients: [
+      { amount: 2, unit: "lb", item: "pork shoulder", cat: "Proteins" },
+      { amount: 0.5, unit: "cup", item: "orange juice", cat: "Pantry" },
+      { amount: 2, unit: "tbsp", item: "lime juice", cat: "Pantry" },
+      { amount: 4, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "oregano", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" },
+      { amount: 8, unit: "", item: "small tortillas", cat: "Grains & Pasta" }
+    ],
+    steps: [
+      "Cut pork shoulder into 3\u20134 chunks. Season with cumin, oregano, salt, and pepper.",
+      "Add orange juice, lime juice, and garlic to the pot. Place pork inside.",
+      "Pressure Cook 45 min, Natural Release 15 min.",
+      "Shred pork with two forks. Spread on the air fryer basket.",
+      "Air Crisp 400\u00b0F, 5 min until edges are crispy.",
+      "Serve in tortillas with your favorite toppings."
+    ],
+    timer: { minutes: 45, label: "Pressure Cook" }
+  },
+  {
+    id: "bone-broth",
+    name: "Bone Broth",
+    methods: ["pressure"],
+    mealType: "lunch",
+    servings: 8,
+    ingredients: [
+      { amount: 2, unit: "lb", item: "beef or chicken bones", cat: "Proteins" },
+      { amount: 8, unit: "cups", item: "water", cat: null },
+      { amount: 2, unit: "tbsp", item: "apple cider vinegar", cat: "Pantry" },
+      { amount: 1, unit: "", item: "onion, halved", cat: "Produce" },
+      { amount: 2, unit: "stalks", item: "celery, halved", cat: "Produce" },
+      { amount: 4, unit: "cloves", item: "garlic", cat: "Produce" },
+      { amount: 2, unit: "", item: "bay leaves", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, peppercorns", cat: "Pantry" }
+    ],
+    steps: [
+      "Add bones, water, apple cider vinegar, and all vegetables and seasonings to the pot.",
+      "Pressure Cook 120 min, Natural Release fully.",
+      "Strain broth through a fine mesh strainer. Discard solids.",
+      "Season with salt to taste. Store in fridge up to 5 days or freeze."
+    ],
+    timer: { minutes: 120, label: "Pressure Cook" }
+  },
+  {
+    id: "chow-mein",
+    name: "Chow Mein",
+    methods: ["saute"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 8, unit: "oz", item: "chow mein noodles", cat: "Grains & Pasta" },
+      { amount: 2, unit: "", item: "chicken breasts, sliced thin", cat: "Proteins" },
+      { amount: 2, unit: "cups", item: "cabbage, shredded", cat: "Produce" },
+      { amount: 2, unit: "", item: "carrots, julienned", cat: "Produce" },
+      { amount: 3, unit: "tbsp", item: "soy sauce", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "sesame oil", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "oyster sauce", cat: "Pantry" },
+      { amount: 2, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "vegetable oil", cat: "Pantry" }
+    ],
+    steps: [
+      "Cook noodles according to package directions, drain and set aside.",
+      "Saut\u00e9 sliced chicken in vegetable oil for 4 min until cooked through. Remove.",
+      "Add garlic, cabbage, and carrots. Saut\u00e9 3 min.",
+      "Return chicken, add noodles, soy sauce, oyster sauce, and sesame oil.",
+      "Toss everything together for 2 min until heated through."
+    ],
+    timer: { minutes: 10, label: "Saut\u00e9" }
+  },
+  {
+    id: "korean-beef",
+    name: "Korean Beef (Bulgogi)",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1.5, unit: "lb", item: "beef sirloin, sliced thin", cat: "Proteins" },
+      { amount: 0.33, unit: "cup", item: "soy sauce", cat: "Pantry" },
+      { amount: 2, unit: "tbsp", item: "brown sugar", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "sesame oil", cat: "Pantry" },
+      { amount: 4, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "ginger, grated", cat: "Produce" },
+      { amount: 1, unit: "", item: "pear, grated", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "cornstarch", cat: "Pantry" },
+      { amount: 0, unit: "", item: "sesame seeds, green onions for garnish", cat: "Produce" }
+    ],
+    steps: [
+      "Mix soy sauce, brown sugar, sesame oil, garlic, ginger, and grated pear for the marinade.",
+      "Saut\u00e9 sliced beef in batches for 2 min per side.",
+      "Pour marinade over the beef.",
+      "Pressure Cook 10 min, Natural Release 5 min.",
+      "Mix cornstarch with 1 tbsp water, stir into sauce on Saut\u00e9 to thicken.",
+      "Serve over rice with sesame seeds and sliced green onions."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
   }
 ];
 

@@ -7,7 +7,7 @@ const i18n = {
     ui: {
       title: 'Instant Pot Pro Crisp',
       subtitle: 'Week 1 Meal Plan',
-      badge: '\ud83c\udf31 Dairy-Free \u2022 Beginner Friendly',
+      badge: '\ud83c\udf73 Beginner Friendly',
       weekPlan: 'Week Plan',
       recipesTab: 'Recipes',
       grocery: 'Grocery List',
@@ -44,7 +44,7 @@ const i18n = {
       pause: 'Pause',
       resetTimer: 'Reset',
       footer1: 'Instant Pot Pro Crisp \u2014 Week 1 Meal Plan',
-      footer2: 'Dairy-Free \u2022 Beginner Friendly',
+      footer2: 'Beginner Friendly',
       proTips: '\ud83d\udca1 Pro Tips',
       food: 'Food',
       time: 'Time',
@@ -87,7 +87,7 @@ const i18n = {
         ['Natural Release',' = just let it sit, pressure drops on its own.'],
         ['Quick Release',' = turn the valve to vent steam immediately.'],
         [null,'Always use at least <strong>1 cup liquid</strong> for pressure cooking.'],
-        [null,'All recipes in this plan are <strong>dairy-free</strong>.']
+        [null,'Most recipes are <strong>dairy-free</strong>. Dairy items are marked in the recipe.']
       ]
     }
   },
@@ -95,7 +95,7 @@ const i18n = {
     ui: {
       title: 'Instant Pot Pro Crisp',
       subtitle: '1. heti \u00e9tkezési terv',
-      badge: '\ud83c\udf31 Tejmentes \u2022 Kezd\u0151knek',
+      badge: '\ud83c\udf73 Kezd\u0151knek',
       weekPlan: 'Heti terv',
       recipesTab: 'Receptek',
       grocery: 'Bev\u00e1s\u00e1rl\u00f3lista',
@@ -132,7 +132,7 @@ const i18n = {
       pause: 'Sz\u00fcnet',
       resetTimer: '\u00dajraind\u00edt\u00e1s',
       footer1: 'Instant Pot Pro Crisp \u2014 1. heti \u00e9tkezési terv',
-      footer2: 'Tejmentes \u2022 Kezd\u0151knek',
+      footer2: 'Kezd\u0151knek',
       proTips: '\ud83d\udca1 Tippek',
       food: '\u00c9tel',
       time: 'Id\u0151',
@@ -175,7 +175,7 @@ const i18n = {
         ['Term\u00e9szetes g\u0151zkiereszt\u00e9s',' = csak hagyd \u00e1llni, a nyom\u00e1s mag\u00e1t\u00f3l cs\u00f6kken.'],
         ['Gyors g\u0151zkiereszt\u00e9s',' = ford\u00edtsd el a szelepet a g\u0151z azonnali kiereszt\u00e9s\u00e9hez.'],
         [null,'Mindig haszn\u00e1lj legal\u00e1bb <strong>1 cs\u00e9sze folyadékot</strong> nyom\u00e1sf\u0151z\u00e9shez.'],
-        [null,'Ebben a tervben minden recept <strong>tejmentes</strong>.']
+        [null,'A legt\u00f6bb recept <strong>tejmentes</strong>. A tejtermékek jelölve vannak.']
       ]
     },
     recipes: {
@@ -475,6 +475,77 @@ const i18n = {
         items: ['\u00e9desburgonya', 'k\u00f3kusztej', 'j\u00e1harszir\u00f3p', 'fah\u00e9j', 'szerecsendi\u00f3', 'vanília kivonat', 's\u00f3'],
         units: ['', 'cs\u00e9sze', 'ek', 'tk', 'csipet', 'tk', ''],
         steps: ['H\u00e1mozd meg \u00e9s kock\u00e1zd az \u00e9desburgony\u00e1kat.', 'Adj k\u00f3kusztejet, j\u00e1harszir\u00f3pot, fah\u00e9jat, szerecsendi\u00f3t \u00e9s s\u00f3t az ed\u00e9nybe.', 'Nyom\u00e1sf\u0151z\u00e9s 8 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 10 perc.', 'Turmixold kr\u00e9mes \u00e1llag\u00fara, adj hozz\u00e1 van\u00edlia kivonatot.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      // === POPULAR PICKS (43-52) ===
+      'pot-roast': {
+        name: 'Marhaszegy',
+        items: ['marhaszegy', 'marha alapl\u00e9', 'hagyma, negyedelve', 's\u00e1rgar\u00e9pa, darabokra v\u00e1gva', 'krumpli, negyedelve', 'fokhagyma', 'Worcestershire sz\u00f3sz', 'ol\u00edvaolaj', 's\u00f3, bors, kakukkf\u0171'],
+        units: ['font', 'cs\u00e9sze', '', '', '', 'gerezd', 'ek', 'ek', ''],
+        steps: ['F\u0171szerezd a marhaszegyet s\u00f3val, borssal \u00e9s kakukkf\u0171vel.', 'P\u00edr\u00edtsd meg ol\u00edvaolajban minden oldal\u00e1t 3\u20134 percig.', 'Add hozz\u00e1 a marha alaplevet \u00e9s a Worcestershire sz\u00f3szt. \u00d6bl\u00edtsd ki az ed\u00e9ny alj\u00e1t.', 'Add hozz\u00e1 a hagym\u00e1t \u00e9s fokhagym\u00e1t.', 'Nyom\u00e1sf\u0151z\u00e9s 60 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 15 perc.', 'Add hozz\u00e1 a s\u00e1rgar\u00e9p\u00e1t \u00e9s krumplit, Nyom\u00e1sf\u0151z\u00e9s 8 perc, Gyors g\u0151zkiereszt\u00e9s.', 'Szeleteld \u00e9s t\u00e1lald a z\u00f6lds\u00e9gekkel.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'butter-chicken': {
+        name: 'Vajas csirke',
+        items: ['csirkecomb, kock\u00e1zva', 'vaj', 'paradicsomszósz', 'tejsz\u00edn', 'hagyma', 'fokhagyma', 'gy\u00f6mb\u00e9r', 'garam masala', 'k\u00f6m\u00e9ny', 'kurkuma', 's\u00f3'],
+        units: ['', 'ek', 'cs\u00e9sze', 'cs\u00e9sze', '', 'gerezd', 'ek', 'ek', 'tk', 'tk', ''],
+        steps: ['P\u00edr\u00edtsd meg a hagym\u00e1t vajban 3 percig. Add hozz\u00e1 a fokhagym\u00e1t, gy\u00f6mb\u00e9rt \u00e9s f\u0171szereket.', 'Add hozz\u00e1 a kock\u00e1zott csirk\u00e9t \u00e9s paradicsomszószt.', 'Nyom\u00e1sf\u0151z\u00e9s 5 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'Keverd hozz\u00e1 a tejsz\u00ednt, P\u00edr\u00edt\u00e1s m\u00f3dban 2 percig s\u0171r\u00edtsd.', 'T\u00e1lald basmati rizzsel.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'salsa-chicken': {
+        name: 'Sals\u00e1s csirke',
+        items: ['csirkemell', 'salsa (\u00fcveg)', 'k\u00f6m\u00e9ny', 'fokhagymapor', 's\u00f3, bors'],
+        units: ['', '\u00fcveg', 'tk', 'tk', ''],
+        steps: ['Helyezd a csirkemellet az ed\u00e9nybe, \u00f6ntsd r\u00e1 a sals\u00e1t.', 'F\u0171szerezd k\u00f6m\u00e9nnyel, fokhagymaporral, s\u00f3val \u00e9s borssal.', 'Nyom\u00e1sf\u0151z\u00e9s 8 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'T\u00e9pkedve keverd \u00f6ssze a sals\u00e1val.', 'T\u00e1lald tac\u00f3ban, rizsen vagy t\u00e1lban.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'cheesecake': {
+        name: 'New York sajttorta',
+        items: ['kr\u00e9msajt', 'cukor', 'toj\u00e1s', 'tejf\u00f6l', 'van\u00edlia kivonat', 'liszt', 'darált keksz', 'vaj, olvasztott', 'v\u00edz'],
+        units: ['g', 'cs\u00e9sze', '', 'cs\u00e9sze', 'tk', 'ek', 'cs\u00e9sze', 'ek', 'cs\u00e9sze'],
+        steps: ['Keverd \u00f6ssze a darált kekszet az olvasztott vajjal, nyomd a 18 cm-es form\u00e1ba.', 'Keverj kr\u00e9msajtot cukorral, adj hozz\u00e1 toj\u00e1sokat egyenk\u00e9nt, majd tejf\u00f6lt, van\u00edli\u00e1t \u00e9s lisztet.', '\u00d6ntsd a kéregre, takard le f\u00f3li\u00e1val.', 'Adj 1,5 cs\u00e9sze vizet, helyezd az \u00e1llv\u00e1nyra.', 'Nyom\u00e1sf\u0151z\u00e9s 25 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 10 perc.', 'H\u0171tsd legal\u00e1bb 4 \u00f3r\u00e1ig t\u00e1lal\u00e1s el\u0151tt.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'honey-garlic-chicken': {
+        name: 'M\u00e9zes-fokhagym\u00e1s csirke',
+        items: ['csirkecomb', 'm\u00e9z', 'sz\u00f3jasz\u00f3sz', 'fokhagyma', 'ol\u00edvaolaj', 'kukoricakeményítő', 's\u00f3, bors'],
+        units: ['', 'cs\u00e9sze', 'ek', 'gerezd', 'ek', 'ek', ''],
+        steps: ['Keverd \u00f6ssze a m\u00e9zet, sz\u00f3jasz\u00f3szt \u00e9s fokhagym\u00e1t.', 'P\u00edr\u00edtsd meg a csirkecombot ol\u00edvaolajban, 2 perc oldalanként.', '\u00d6ntsd r\u00e1 a m\u00e9zes-fokhagym\u00e1s sz\u00f3szt.', 'Nyom\u00e1sf\u0151z\u00e9s 8 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'S\u0171r\u00edtsd be a sz\u00f3szt kukoricakem\u00e9ny\u00edt\u0151vel P\u00edr\u00edt\u00e1s m\u00f3dban.', 'T\u00e1lald rizzsel.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'mac-and-cheese': {
+        name: 'Sajtos makar\u00f3ni',
+        items: ['k\u00f6ny\u00f6k makar\u00f3ni', 'v\u00edz', 'vaj', 's\u00f3', 'must\u00e1rpor', 'tej', 'reszelt cheddar sajt'],
+        units: ['font', 'cs\u00e9sze', 'ek', 'tk', 'tk', 'cs\u00e9sze', 'cs\u00e9sze'],
+        steps: ['Adj makar\u00f3nit, vizet, vajat, s\u00f3t \u00e9s must\u00e1rport az ed\u00e9nybe.', 'Nyom\u00e1sf\u0151z\u00e9s 4 perc, Gyors g\u0151zkiereszt\u00e9s.', 'Keverd hozz\u00e1 a tejet \u00e9s reszelt sajtot, am\u00edg kr\u00e9mes.', 'Azonnal t\u00e1lald.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'carnitas': {
+        name: 'Carnitas',
+        items: ['sert\u00e9slapocka', 'narancsl\u00e9', 'limel\u00e9', 'fokhagyma', 'k\u00f6m\u00e9ny', 'oreg\u00e1n\u00f3', 's\u00f3, bors', 'kis tortilla'],
+        units: ['font', 'cs\u00e9sze', 'ek', 'gerezd', 'ek', 'tk', '', ''],
+        steps: ['V\u00e1gd a sert\u00e9slapock\u00e1t 3\u20134 darabra. F\u0171szerezd k\u00f6m\u00e9nnyel, oreg\u00e1n\u00f3val, s\u00f3val \u00e9s borssal.', 'Adj narancsl\u00e9t, limel\u00e9t \u00e9s fokhagym\u00e1t az ed\u00e9nybe.', 'Nyom\u00e1sf\u0151z\u00e9s 45 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 15 perc.', 'T\u00e9pkedve helyezd a forr\u00f3leveg\u0151s kos\u00e1rba.', 'Forr\u00f3leveg\u0151 200\u00b0C, 5 perc, am\u00edg ropog\u00f3s.', 'T\u00e1lald tortill\u00e1ban.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'bone-broth': {
+        name: 'Csontl\u00e9',
+        items: ['marha vagy csirke csont', 'v\u00edz', 'almaecet', 'hagyma', 'zeller', 'fokhagyma', 'bab\u00e9rlev\u00e9l', 's\u00f3, borsszem'],
+        units: ['font', 'cs\u00e9sze', 'ek', '', 'sz\u00e1r', 'gerezd', '', ''],
+        steps: ['Adj csontokat, vizet, almaecetet, z\u00f6lds\u00e9geket \u00e9s f\u0171szereket az ed\u00e9nybe.', 'Nyom\u00e1sf\u0151z\u00e9s 120 perc, teljes Term\u00e9szetes g\u0151zkiereszt\u00e9s.', 'Sz\u0171rd le a levet. Dobd el a marad\u00e9kot.', 'S\u00f3zd meg \u00edz\u00e9s szerint. H\u0171t\u0151ben 5 napig \u00e1ll.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'chow-mein': {
+        name: 'Chow Mein',
+        items: ['chow mein t\u00e9szta', 'csirkemell, v\u00e9konyra szeletelve', 'k\u00e1poszta, szeletelve', 's\u00e1rgar\u00e9pa, csíkokra v\u00e1gva', 'sz\u00f3jasz\u00f3sz', 'sz\u00e9zamolaj', 'osztrigasz\u00f3sz', 'fokhagyma', 'n\u00f6v\u00e9nyi olaj'],
+        units: ['g', '', 'cs\u00e9sze', '', 'ek', 'ek', 'ek', 'gerezd', 'ek'],
+        steps: ['F\u0151zd meg a t\u00e9szt\u00e1t a csomagol\u00e1s szerint, csepegtesd le.', 'P\u00edr\u00edtsd meg a szeletelt csirk\u00e9t olajban 4 percig. Vedd ki.', 'Add hozz\u00e1 a fokhagym\u00e1t, k\u00e1poszt\u00e1t \u00e9s s\u00e1rgar\u00e9p\u00e1t, P\u00edr\u00edt\u00e1s 3 perc.', 'Tedd vissza a csirk\u00e9t, add hozz\u00e1 a t\u00e9szt\u00e1t \u00e9s sz\u00f3szokat, keverd \u00f6ssze 2 percig.'],
+        timerLabel: 'P\u00edr\u00edt\u00e1s'
+      },
+      'korean-beef': {
+        name: 'Koreai marha (Bulgogi)',
+        items: ['marha szegy, v\u00e9konyra szeletelve', 'sz\u00f3jasz\u00f3sz', 'barna cukor', 'sz\u00e9zamolaj', 'fokhagyma', 'gy\u00f6mb\u00e9r', 'k\u00f6rte, reszelve', 'kukoricakeményítő', 'szez\u00e1mmag, \u00fajhagyma d\u00edsz\u00edt\u00e9shez'],
+        units: ['font', 'cs\u00e9sze', 'ek', 'ek', 'gerezd', 'ek', '', 'ek', ''],
+        steps: ['Keverd \u00f6ssze a sz\u00f3jasz\u00f3szt, barna cukrot, sz\u00e9zamolajat, fokhagym\u00e1t, gy\u00f6mb\u00e9rt \u00e9s reszelt k\u00f6rt\u00e9t.', 'P\u00edr\u00edtsd meg a szeletelt marh\u00e1t adagonk\u00e9nt 2 perc oldalanként.', '\u00d6ntsd r\u00e1 a p\u00e1cot.', 'Nyom\u00e1sf\u0151z\u00e9s 10 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'S\u0171r\u00edtsd be a sz\u00f3szt kukoricakem\u00e9ny\u00edt\u0151vel P\u00edr\u00edt\u00e1s m\u00f3dban.', 'T\u00e1lald rizzsel, szez\u00e1mmaggal \u00e9s \u00fajhagym\u00e1val.'],
         timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
       }
     }
