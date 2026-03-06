@@ -19,7 +19,7 @@ const recipes = [
     ],
     steps: [
       "Add 1 cup water to the pot and place eggs on the trivet.",
-      "Pressure Cook 5 min, Quick Release.",
+      "Pressure Cook 5 min, Natural Release 5 min.",
       "Transfer eggs to an ice bath for 5 min. Peel and serve with toast."
     ],
     timer: { minutes: 5, label: "Pressure Cook" }
@@ -56,10 +56,10 @@ const recipes = [
     ],
     steps: [
       "Place hash browns in the air fryer basket, spray with oil, and season with salt.",
-      "Air Crisp 400\u00b0F, 12 min, flip halfway through.",
+      "Air Crisp 400\u00b0F, 15 min, shake basket every 5 min.",
       "Cook eggs separately on the stove."
     ],
-    timer: { minutes: 12, label: "Air Crisp" }
+    timer: { minutes: 15, label: "Air Crisp" }
   },
   {
     id: "sausage-hash-browns",
@@ -141,9 +141,10 @@ const recipes = [
       "Scramble eggs on the stove with salt and pepper.",
       "Fill each tortilla with scrambled eggs, black beans, and salsa.",
       "Roll up tight and spray the outside with oil.",
-      "Air Crisp 400\u00b0F, 5 min until golden and crispy."
+      "Place seam-side down in the air fryer basket.",
+      "Air Crisp 400\u00b0F, 8 min total \u2014 flip halfway through."
     ],
-    timer: { minutes: 5, label: "Air Crisp" }
+    timer: { minutes: 8, label: "Air Crisp" }
   },
   {
     id: "french-toast-sticks",
@@ -186,13 +187,13 @@ const recipes = [
       { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
     ],
     steps: [
-      "Saut\u00e9 diced onion in olive oil for 3 min.",
-      "Add garlic, cumin, and paprika. Stir for 1 min.",
+      "Saut\u00e9 diced onion in olive oil for 3 min. Add garlic, cumin, and paprika, stir 1 min.",
       "Add diced tomatoes, salt, and pepper. Stir to combine.",
+      "Pressure Cook 5 min, Quick Release.",
       "Make 4 wells in the sauce and crack an egg into each.",
-      "Pressure Cook 1 min, Quick Release. Eggs should be just set."
+      "Pressure Cook 0 min (eggs cook as pot comes to pressure), Quick Release. Eggs should be just set."
     ],
-    timer: { minutes: 1, label: "Pressure Cook" }
+    timer: { minutes: 5, label: "Pressure Cook" }
   },
   {
     id: "rice-porridge",
@@ -202,7 +203,7 @@ const recipes = [
     servings: 2,
     ingredients: [
       { amount: 0.5, unit: "cup", item: "white rice", cat: "Grains & Pasta" },
-      { amount: 4, unit: "cups", item: "water", cat: null },
+      { amount: 5, unit: "cups", item: "water", cat: null },
       { amount: 1, unit: "tsp", item: "fresh ginger, grated", cat: "Produce" },
       { amount: 2, unit: "", item: "green onions, sliced", cat: "Produce" },
       { amount: 1, unit: "tbsp", item: "soy sauce", cat: "Pantry" },
@@ -210,10 +211,10 @@ const recipes = [
     ],
     steps: [
       "Add rice, water, grated ginger, and salt to the pot.",
-      "Pressure Cook 20 min, Natural Release 10 min.",
+      "Pressure Cook 30 min, Natural Release 15 min.",
       "Stir until creamy. Top with sliced green onions and a drizzle of soy sauce."
     ],
-    timer: { minutes: 20, label: "Pressure Cook" }
+    timer: { minutes: 30, label: "Pressure Cook" }
   },
 
   // ─────────────────────────────────────────────
@@ -290,7 +291,7 @@ const recipes = [
     servings: 4,
     ingredients: [
       { amount: 1, unit: "cup", item: "dried black beans", cat: "Grains & Pasta" },
-      { amount: 2, unit: "cups", item: "water", cat: null },
+      { amount: 3, unit: "cups", item: "water", cat: null },
       { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
       { amount: 1, unit: "tsp", item: "chili powder", cat: "Pantry" },
       { amount: 8, unit: "", item: "corn tortillas", cat: "Grains & Pasta" },
@@ -299,12 +300,12 @@ const recipes = [
       { amount: 0, unit: "", item: "salt", cat: "Pantry" }
     ],
     steps: [
-      "Add black beans, water, cumin, chili powder, and salt to the pot.",
-      "Pressure Cook 25 min, Natural Release 15 min.",
+      "Add black beans, water, cumin, and chili powder to the pot. Do NOT add salt yet.",
+      "Pressure Cook 30 min, Natural Release 20 min. Add salt after cooking.",
       "Mash beans slightly with a fork.",
       "Serve in corn tortillas topped with avocado slices and salsa."
     ],
-    timer: { minutes: 25, label: "Pressure Cook" }
+    timer: { minutes: 30, label: "Pressure Cook" }
   },
   {
     id: "egg-fried-rice",
@@ -418,8 +419,8 @@ const recipes = [
       { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
     ],
     steps: [
-      "Add water to the pot and place sweet potatoes on the trivet.",
-      "Pressure Cook 15 min, Quick Release.",
+      "Pierce sweet potatoes with a fork. Add water to the pot and place them on the trivet.",
+      "Pressure Cook 15 min, Natural Release 10 min.",
       "Cut sweet potatoes open and transfer to the air fryer basket.",
       "Air Crisp 400\u00b0F, 5 min for crispy skin.",
       "Fill with black beans, salsa, and sliced avocado."
@@ -470,12 +471,12 @@ const recipes = [
       { amount: 0, unit: "", item: "salt, pepper, paprika, garlic powder", cat: "Pantry" }
     ],
     steps: [
-      "Rice: Add 1 cup rice + 1 cup water. Pressure Cook 4 min, Natural Release 10 min.",
-      "Chicken: Season thighs with salt, pepper, paprika, and garlic powder.",
-      "Pressure Cook chicken 10 min, Natural Release 5 min.",
-      "Serve chicken over fluffy rice."
+      "Add 1 cup rice + 1 cup water to the pot.",
+      "Season chicken thighs with salt, pepper, paprika, and garlic powder. Place on top of rice.",
+      "Pressure Cook 8 min, Natural Release 10 min.",
+      "Remove chicken, fluff rice with a fork, and serve together."
     ],
-    timer: { minutes: 10, label: "Pressure Cook" }
+    timer: { minutes: 8, label: "Pressure Cook" }
   },
   {
     id: "one-pot-pasta",
@@ -490,11 +491,11 @@ const recipes = [
       { amount: 0, unit: "", item: "salt", cat: "Pantry" }
     ],
     steps: [
-      "Add penne, marinara sauce, water, and salt to the pot.",
-      "Stir so pasta is fully submerged.",
-      "Pressure Cook 5 min, Quick Release. Stir well before serving."
+      "Add water and salt to the pot first. Add penne. Pour marinara sauce on TOP \u2014 do NOT stir.",
+      "Pressure Cook 4 min, Natural Release 5 min.",
+      "Stir well to combine. If sauce is thin, Saut\u00e9 2 min to reduce."
     ],
-    timer: { minutes: 5, label: "Pressure Cook" }
+    timer: { minutes: 4, label: "Pressure Cook" }
   },
   {
     id: "crispy-chicken",
@@ -511,7 +512,7 @@ const recipes = [
       "Add 1 cup water to the pot and place chicken on the trivet.",
       "Pressure Cook 10 min, Quick Release.",
       "Transfer chicken to the air fryer basket.",
-      "Air Crisp 400\u00b0F, 8 min until skin is golden and crispy.",
+      "Air Crisp 400\u00b0F, 6 min until skin is golden and crispy.",
       "Serve with leftover rice or a side salad."
     ],
     timer: { minutes: 10, label: "Pressure Cook" }
@@ -599,13 +600,13 @@ const recipes = [
       { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
     ],
     steps: [
-      "Mix brown sugar, paprika, garlic powder, onion powder, salt, and pepper in a bowl.",
-      "Rub the spice mixture all over the pork shoulder.",
+      "Cut pork shoulder into 3\u20134 even chunks for faster, even cooking.",
+      "Mix brown sugar, paprika, garlic powder, onion powder, salt, and pepper. Rub all over the pork.",
       "Add chicken broth to the pot and place the pork inside.",
-      "Pressure Cook 60 min, Natural Release 15 min.",
+      "Pressure Cook 45 min, Natural Release 15 min.",
       "Shred pork with two forks and mix with the pot juices."
     ],
-    timer: { minutes: 60, label: "Pressure Cook" }
+    timer: { minutes: 45, label: "Pressure Cook" }
   },
   {
     id: "air-fryer-salmon",
@@ -626,10 +627,10 @@ const recipes = [
       "Toss broccoli florets with olive oil and salt.",
       "Place salmon fillets in the air fryer basket and brush with soy sauce and garlic powder.",
       "Arrange broccoli around the salmon.",
-      "Air Crisp 400\u00b0F, 10 min.",
+      "Air Crisp 400\u00b0F, 8 min. Check at 7 min \u2014 salmon is done at 145\u00b0F.",
       "Serve with fresh lemon wedges."
     ],
-    timer: { minutes: 10, label: "Air Crisp" }
+    timer: { minutes: 8, label: "Air Crisp" }
   },
   {
     id: "beef-stew",
@@ -652,9 +653,9 @@ const recipes = [
       "Add diced onion and cook 2 min.",
       "Add beef broth, tomato paste, thyme, salt, and pepper. Stir.",
       "Add potatoes and carrots.",
-      "Pressure Cook 20 min, Natural Release 10 min."
+      "Pressure Cook 35 min, Natural Release 10 min."
     ],
-    timer: { minutes: 20, label: "Pressure Cook" }
+    timer: { minutes: 35, label: "Pressure Cook" }
   },
   {
     id: "teriyaki-chicken-rice",
@@ -677,11 +678,11 @@ const recipes = [
       "Mix soy sauce, maple syrup, garlic powder, and ginger powder for the teriyaki sauce.",
       "Add rice and water to the pot. Lay chicken thighs on top.",
       "Pour the sauce over the chicken.",
-      "Pressure Cook 10 min, Natural Release 5 min.",
+      "Pressure Cook 8 min, Natural Release 10 min.",
       "Remove chicken. Mix cornstarch with 1 tbsp water, stir into sauce on Saut\u00e9 mode to thicken.",
       "Serve chicken over rice and top with sliced green onions."
     ],
-    timer: { minutes: 10, label: "Pressure Cook" }
+    timer: { minutes: 8, label: "Pressure Cook" }
   },
   {
     id: "chicken-curry",
@@ -703,11 +704,11 @@ const recipes = [
     steps: [
       "Saut\u00e9 diced onion in olive oil for 3 min.",
       "Add garlic, curry powder, and turmeric. Stir for 1 min.",
-      "Add cubed chicken, diced tomatoes, coconut milk, and salt.",
-      "Pressure Cook 10 min, Natural Release 5 min.",
+      "Add cubed chicken, diced tomatoes, and salt. Add coconut milk on top \u2014 do not stir.",
+      "Pressure Cook 5 min, Natural Release 10 min.",
       "Serve over steamed rice."
     ],
-    timer: { minutes: 10, label: "Pressure Cook" }
+    timer: { minutes: 5, label: "Pressure Cook" }
   },
   {
     id: "pork-chops-potatoes",
@@ -778,9 +779,10 @@ const recipes = [
       "Mix mashed bananas, melted coconut oil, maple syrup, and vanilla in a bowl.",
       "Add flour, baking soda, and salt. Stir until just combined.",
       "Pour batter into a greased loaf pan that fits the air fryer.",
-      "Air Crisp 310\u00b0F, 30 min. Test with a toothpick\u2014it should come out clean."
+      "Air Crisp 310\u00b0F, 45 min. Cover with foil at 20 min to prevent over-browning.",
+      "Test with a toothpick \u2014 it should come out clean."
     ],
-    timer: { minutes: 30, label: "Air Crisp" }
+    timer: { minutes: 45, label: "Air Crisp" }
   },
   {
     id: "brownies",
@@ -853,10 +855,10 @@ const recipes = [
       "Mix flour, sugar, and baking powder in a bowl.",
       "Add oat milk, melted coconut oil, egg, and vanilla. Stir until smooth.",
       "Pipe batter into a greased donut mold or shape by hand.",
-      "Air Crisp 350\u00b0F, 8 min.",
+      "Air Crisp 350\u00b0F, 5 min.",
       "Toss warm donuts in cinnamon sugar to coat."
     ],
-    timer: { minutes: 8, label: "Air Crisp" }
+    timer: { minutes: 5, label: "Air Crisp" }
   },
   {
     id: "baked-pears",
@@ -894,14 +896,13 @@ const recipes = [
       { amount: 1, unit: "", item: "mango, sliced", cat: "Produce" }
     ],
     steps: [
-      "Soak sticky rice in water for 30 min, then drain.",
-      "Add soaked rice and 1 cup water to the pot.",
-      "Pressure Cook 3 min, Natural Release 10 min.",
+      "Add sticky rice and 1 cup water to a stainless steel bowl. Place on trivet with 1 cup water in the pot.",
+      "Pressure Cook 12 min, Natural Release 10 min.",
       "Warm coconut milk with sugar and a pinch of salt, then stir into the cooked rice.",
       "Let the rice sit for 10 min to absorb the coconut mixture.",
       "Serve topped with sliced mango."
     ],
-    timer: { minutes: 3, label: "Pressure Cook" }
+    timer: { minutes: 12, label: "Pressure Cook" }
   },
   {
     id: "energy-oat-bites",
@@ -965,7 +966,7 @@ const recipes = [
     ],
     steps: [
       "Add cubed sweet potatoes, coconut milk, maple syrup, cinnamon, nutmeg, vanilla, and a pinch of salt to the pot.",
-      "Pressure Cook 8 min, Quick Release.",
+      "Pressure Cook 8 min, Natural Release 10 min.",
       "Mash or blend the mixture until smooth and creamy.",
       "Serve warm or chilled."
     ],
