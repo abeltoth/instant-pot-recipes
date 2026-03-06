@@ -23,6 +23,35 @@
   --shadow: 0 2px 8px rgba(58,46,38,0.08);
   --shadow-lg: 0 4px 16px rgba(58,46,38,0.12);
   --radius: 12px;
+  --header-bg: linear-gradient(135deg, var(--orange), var(--orange-light));
+  --header-shadow: 0 2px 12px rgba(232,119,46,0.3);
+  --badge-pressure-bg: #e8f4f8;
+  --badge-air-bg: #fdf0e6;
+  --badge-combo-bg: #f3edf8;
+  --badge-saute-bg: #e8f5e8;
+  --tip-bg: linear-gradient(135deg, #fff8f0, #fff3e6);
+  --tip-border: #f5dcc0;
+  --overlay-bg: rgba(0,0,0,0.6);
+  --cook-bg: #fffaf5;
+}
+
+body.dark {
+  --warm-bg: #1a1612;
+  --warm-white: #22201c;
+  --card-bg: #2a2420;
+  --text: #e8ddd0;
+  --text-light: #a89880;
+  --border: #3d3530;
+  --shadow: 0 2px 8px rgba(0,0,0,0.2);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.3);
+  --badge-pressure-bg: #1a2c33;
+  --badge-air-bg: #2e2218;
+  --badge-combo-bg: #26203a;
+  --badge-saute-bg: #1a2e1a;
+  --tip-bg: linear-gradient(135deg, #2a2218, #261f15);
+  --tip-border: #4a3828;
+  --overlay-bg: rgba(0,0,0,0.8);
+  --cook-bg: #1a1612;
 }
 
 body {
@@ -35,40 +64,48 @@ body {
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  background: var(--header-bg);
   color: white;
-  padding: 1.5rem 1rem 1rem;
+  padding: 1.25rem 1rem 0.85rem;
   text-align: center;
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(232,119,46,0.3);
+  box-shadow: var(--header-shadow);
 }
 
-.header h1 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.header-sub {
-  font-size: 0.85rem;
-  opacity: 0.9;
-  margin-top: 0.25rem;
-}
+.header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+.header-sub { font-size: 0.85rem; opacity: 0.9; margin-top: 0.2rem; }
 
 .dairy-free-badge {
   display: inline-block;
   background: rgba(255,255,255,0.25);
-  padding: 0.2rem 0.7rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   backdrop-filter: blur(4px);
 }
 
-/* Tab Navigation */
+.dark-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,0.35); }
+
+/* Tabs */
 .tabs {
   display: flex;
   background: var(--card-bg);
@@ -81,9 +118,9 @@ body {
 
 .tab {
   flex: 1;
-  padding: 0.85rem 0.5rem;
+  padding: 0.75rem 0.25rem;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-light);
   cursor: pointer;
@@ -92,14 +129,10 @@ body {
   transition: all 0.2s;
   border-bottom: 3px solid transparent;
   user-select: none;
+  white-space: nowrap;
 }
 
-.tab.active {
-  color: var(--orange);
-  border-bottom-color: var(--orange);
-  background: var(--warm-white);
-}
-
+.tab.active { color: var(--orange); border-bottom-color: var(--orange); background: var(--warm-white); }
 .tab:hover { color: var(--orange); }
 
 /* Content */
@@ -116,11 +149,10 @@ body {
   overflow: hidden;
   transition: box-shadow 0.2s;
 }
-
 .day-card.expanded { box-shadow: var(--shadow-lg); }
 
 .day-header {
-  padding: 1rem 1.15rem;
+  padding: 1rem 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -128,108 +160,219 @@ body {
   user-select: none;
   transition: background 0.15s;
 }
-
 .day-header:hover { background: var(--warm-white); }
-
 .day-emoji { font-size: 1.5rem; }
-
 .day-info { flex: 1; }
 .day-name { font-weight: 700; font-size: 1.05rem; }
 .day-theme { font-size: 0.8rem; color: var(--text-light); margin-top: 0.1rem; }
-
-.day-chevron {
-  font-size: 1.2rem;
-  color: var(--text-light);
-  transition: transform 0.3s;
-  width: 24px;
-  text-align: center;
-}
-
+.day-chevron { font-size: 1.1rem; color: var(--text-light); transition: transform 0.3s; }
 .day-card.expanded .day-chevron { transform: rotate(180deg); }
+.day-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.day-card.expanded .day-body { max-height: 3000px; }
+.day-content { padding: 0 1.1rem 1.1rem; }
 
-.day-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.day-card.expanded .day-body { max-height: 2000px; }
-
-.day-content { padding: 0 1.15rem 1.15rem; }
-
-/* Meal Blocks */
+/* Meal blocks */
 .meal {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   padding: 0.85rem;
   background: var(--warm-white);
   border-radius: 8px;
   border-left: 4px solid var(--orange);
+  position: relative;
 }
-
 .meal:last-child { margin-bottom: 0; }
 
-.meal-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.4rem;
-  flex-wrap: wrap;
-}
+.meal-header { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
+.meal-type { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); }
+.meal-name { font-weight: 600; font-size: 0.95rem; flex: 1; }
 
-.meal-type {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-light);
-}
-
-.meal-name { font-weight: 600; font-size: 0.95rem; }
-
-/* Method Badges */
+/* Badges */
 .badge {
   display: inline-block;
-  padding: 0.15rem 0.5rem;
+  padding: 0.12rem 0.45rem;
   border-radius: 20px;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
+.badge-pressure { background: var(--badge-pressure-bg); color: var(--blue); }
+.badge-air { background: var(--badge-air-bg); color: var(--orange); }
+.badge-combo { background: var(--badge-combo-bg); color: var(--purple); }
+.badge-saute { background: var(--badge-saute-bg); color: var(--green); }
 
-.badge-pressure { background: #e8f4f8; color: var(--blue); }
-.badge-air { background: #fdf0e6; color: var(--orange); }
-.badge-combo { background: #f3edf8; color: var(--purple); }
-.badge-saute { background: #e8f5e8; color: var(--green); }
+.meal-steps { font-size: 0.85rem; color: var(--text); line-height: 1.7; }
+.meal-steps .step { padding-left: 0.2rem; margin-bottom: 0.25rem; }
 
-.meal-steps {
-  font-size: 0.85rem;
+/* Action buttons (heart + cook) */
+.meal-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.btn-heart, .btn-cook {
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.15s;
+}
+
+.btn-heart {
+  background: var(--card-bg);
+  color: var(--text-light);
+  border: 1.5px solid var(--border);
+}
+.btn-heart:hover, .btn-heart.active { color: var(--red); border-color: var(--red); }
+.btn-heart.active { background: #fdf0ef; }
+body.dark .btn-heart.active { background: #3a2020; }
+
+.btn-cook {
+  background: var(--orange);
+  color: white;
+  border: 1.5px solid transparent;
+}
+.btn-cook:hover { background: var(--orange-light); }
+
+/* Servings stepper */
+.servings-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+.servings-ctrl button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
   color: var(--text);
-  line-height: 1.7;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.servings-ctrl button:hover { border-color: var(--orange); color: var(--orange); }
+.servings-val { font-weight: 700; min-width: 20px; text-align: center; color: var(--text); }
+
+/* Ingredients list */
+.ingredients-list {
+  margin-top: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background: var(--card-bg);
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+.ingredients-list .ing-item {
+  padding: 0.15rem 0;
+  display: flex;
+  gap: 0.3rem;
+}
+.ing-amount { font-weight: 600; color: var(--orange); min-width: 50px; }
+
+/* Filter pills */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.filter-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-light);
+  width: 100%;
+  margin-bottom: 0.1rem;
+  letter-spacing: 0.04em;
+}
+.filter-pill {
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-pill:hover { border-color: var(--orange); color: var(--orange); }
+.filter-pill.active { background: var(--orange); color: white; border-color: var(--orange); }
+
+/* Recipe cards (Recipes tab) */
+.recipe-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  margin-bottom: 0.65rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.recipe-card.expanded { box-shadow: var(--shadow-lg); }
+
+.recipe-card-header {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  user-select: none;
+}
+.recipe-card-header:hover { background: var(--warm-white); }
+
+.recipe-card-info { flex: 1; }
+.recipe-card-name { font-weight: 700; font-size: 0.95rem; }
+.recipe-card-meta { font-size: 0.75rem; color: var(--text-light); margin-top: 0.15rem; }
+.recipe-card-badges { display: flex; gap: 0.3rem; margin-top: 0.3rem; flex-wrap: wrap; }
+.recipe-card-heart {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: transform 0.15s;
+}
+.recipe-card-heart:hover { transform: scale(1.2); }
+.recipe-card-chevron { font-size: 1rem; color: var(--text-light); transition: transform 0.3s; }
+.recipe-card.expanded .recipe-card-chevron { transform: rotate(180deg); }
+
+.recipe-card-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.recipe-card.expanded .recipe-card-body { max-height: 2000px; }
+.recipe-card-content { padding: 0 1rem 1rem; }
+
+.fav-divider {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.meal-steps .step {
-  padding-left: 0.25rem;
-  margin-bottom: 0.3rem;
-}
-
-/* Grocery List */
+/* Grocery */
 .grocery-section {
   background: var(--card-bg);
   border-radius: var(--radius);
-  padding: 1rem 1.15rem;
+  padding: 1rem 1.1rem;
   margin-bottom: 0.75rem;
   box-shadow: var(--shadow);
 }
-
-.grocery-section h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+.grocery-section h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
 
 .grocery-item {
   display: flex;
@@ -239,53 +382,25 @@ body {
   border-bottom: 1px solid var(--border);
   font-size: 0.88rem;
 }
-
 .grocery-item:last-child { border-bottom: none; }
-
-.grocery-item input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--orange);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.grocery-item.checked label {
-  text-decoration: line-through;
-  color: var(--text-light);
-}
-
+.grocery-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--orange); cursor: pointer; flex-shrink: 0; }
+.grocery-item.checked label { text-decoration: line-through; color: var(--text-light); }
 .grocery-item label { cursor: pointer; flex: 1; }
 
 .grocery-progress {
   background: var(--card-bg);
   border-radius: var(--radius);
-  padding: 1rem 1.15rem;
+  padding: 1rem 1.1rem;
   margin-bottom: 1rem;
   box-shadow: var(--shadow);
   text-align: center;
 }
-
-.progress-bar {
-  height: 8px;
-  background: var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-top: 0.5rem;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--orange), var(--orange-light));
-  border-radius: 4px;
-  transition: width 0.3s;
-  width: 0%;
-}
-
+.progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 0.5rem; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--orange-light)); border-radius: 4px; transition: width 0.3s; width: 0%; }
 .progress-text { font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
 
 .clear-btn {
-  margin-top: 0.75rem;
+  margin-top: 0.7rem;
   padding: 0.4rem 1rem;
   background: none;
   border: 1.5px solid var(--border);
@@ -295,10 +410,9 @@ body {
   cursor: pointer;
   font-weight: 600;
 }
-
 .clear-btn:hover { border-color: var(--orange); color: var(--orange); }
 
-/* Quick Reference Tables */
+/* Quick Ref */
 .ref-card {
   background: var(--card-bg);
   border-radius: var(--radius);
@@ -307,565 +421,970 @@ body {
   box-shadow: var(--shadow);
   overflow-x: auto;
 }
-
-.ref-card h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.ref-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.83rem;
-}
-
-.ref-table th {
-  background: var(--warm-white);
-  padding: 0.6rem 0.5rem;
-  text-align: left;
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-light);
-  border-bottom: 2px solid var(--border);
-}
-
-.ref-table td {
-  padding: 0.6rem 0.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
+.ref-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.ref-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+.ref-table th { background: var(--warm-white); padding: 0.6rem 0.5rem; text-align: left; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); border-bottom: 2px solid var(--border); }
+.ref-table td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
 .ref-table tr:last-child td { border-bottom: none; }
 
-/* Pro Tips */
 .tips-card {
-  background: linear-gradient(135deg, #fff8f0, #fff3e6);
+  background: var(--tip-bg);
   border-radius: var(--radius);
-  padding: 1rem 1.15rem;
+  padding: 1rem 1.1rem;
   margin-bottom: 0.75rem;
-  border: 1.5px solid #f5dcc0;
+  border: 1.5px solid var(--tip-border);
+}
+.tips-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+.tip { font-size: 0.85rem; color: var(--text); padding: 0.3rem 0; line-height: 1.6; }
+
+/* Cook Mode Overlay */
+.cook-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.cook-overlay.active { display: flex; }
+
+.cook-modal {
+  background: var(--cook-bg);
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.tips-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+.cook-header {
+  background: var(--header-bg);
+  color: white;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.cook-close {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cook-close:hover { background: rgba(255,255,255,0.35); }
+.cook-title { font-size: 1.15rem; font-weight: 700; flex: 1; }
 
-.tip {
-  font-size: 0.85rem;
+.cook-ingredients {
+  padding: 1rem 1.5rem;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.cook-ingredients h3 { font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.cook-ing-item { padding: 0.2rem 0; font-size: 0.95rem; }
+.cook-ing-amount { font-weight: 700; color: var(--orange); }
+
+.cook-step-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  min-height: 200px;
+}
+.cook-step-progress { font-size: 0.8rem; color: var(--text-light); font-weight: 600; margin-bottom: 0.75rem; }
+.cook-step-text { font-size: 1.25rem; line-height: 1.7; text-align: center; max-width: 450px; font-weight: 500; }
+
+.cook-nav {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--card-bg);
+}
+.cook-nav button {
+  flex: 1;
+  padding: 0.85rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cook-prev { background: var(--warm-white); color: var(--text); border: 1.5px solid var(--border) !important; }
+.cook-prev:hover { border-color: var(--orange) !important; color: var(--orange); }
+.cook-prev:disabled { opacity: 0.4; cursor: default; }
+.cook-next { background: var(--orange); color: white; }
+.cook-next:hover { background: var(--orange-light); }
+
+/* Timer */
+.cook-timer {
+  padding: 0.75rem 1.5rem;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.timer-display {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--text);
-  padding: 0.3rem 0;
-  line-height: 1.6;
+  min-width: 100px;
+  text-align: center;
+}
+.timer-display.running { color: var(--orange); }
+.timer-display.done { color: var(--green); }
+.timer-label { font-size: 0.78rem; color: var(--text-light); font-weight: 600; }
+.timer-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--orange);
+  color: white;
+}
+.timer-btn:hover { background: var(--orange-light); }
+.timer-btn.stop { background: var(--red); }
+.timer-btn.stop:hover { background: #d06060; }
+.timer-reset {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-light);
 }
 
 /* Footer */
-.footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.78rem;
-  color: var(--text-light);
-}
+.footer { text-align: center; padding: 2rem 1rem; font-size: 0.78rem; color: var(--text-light); }
 
 /* Desktop */
 @media (min-width: 768px) {
   .header h1 { font-size: 1.7rem; }
   .content { padding: 1.5rem; }
-  .tab { font-size: 0.95rem; padding: 1rem; }
+  .tab { font-size: 0.88rem; padding: 0.85rem; }
+  .cook-modal { max-height: 90vh; border-radius: 16px; }
+}
+
+@media (max-width: 380px) {
+  .tab { font-size: 0.7rem; padding: 0.7rem 0.15rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <div class="header">
   <h1>Instant Pot Pro Crisp</h1>
   <div class="header-sub">Week 1 Meal Plan</div>
   <div class="dairy-free-badge">&#x1F331; Dairy-Free &bull; Beginner Friendly</div>
+  <button class="dark-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">&#x2600;&#xFE0F;</button>
 </div>
 
-<!-- Tabs -->
 <div class="tabs">
-  <button class="tab active" onclick="switchTab('plan')">Week Plan</button>
-  <button class="tab" onclick="switchTab('grocery')">Grocery List</button>
-  <button class="tab" onclick="switchTab('ref')">Quick Ref</button>
+  <button class="tab active" data-tab="plan">Week Plan</button>
+  <button class="tab" data-tab="recipes">Recipes</button>
+  <button class="tab" data-tab="grocery">Grocery List</button>
+  <button class="tab" data-tab="ref">Quick Ref</button>
 </div>
 
-<!-- WEEK PLAN VIEW -->
 <div class="content">
-<div id="plan" class="view active">
-
-  <!-- Monday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x1F4D6;</div>
-      <div class="day-info">
-        <div class="day-name">Monday</div>
-        <div class="day-theme">Learn the Basics</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Hard Boiled Eggs + Toast</div>
-          <div class="meal-steps">
-            <div class="step">1. Add 1 cup water and place eggs on trivet.</div>
-            <div class="step">2. Pressure Cook 5 min, Quick Release.</div>
-            <div class="step">3. Ice bath 5 min. Serve with toast.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">White Rice + Seasoned Chicken Thighs</div>
-          <div class="meal-steps">
-            <div class="step"><strong>Rice:</strong> 1 cup rice + 1 cup water. Pressure Cook 4 min, Natural Release 10 min.</div>
-            <div class="step"><strong>Chicken:</strong> Season with salt, pepper, paprika, garlic powder.</div>
-            <div class="step">Pressure Cook 10 min, Natural Release 5 min.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Snack</span>
-            <span class="badge badge-air">Air Crisp</span>
-          </div>
-          <div class="meal-name">Air Fryer Fries</div>
-          <div class="meal-steps">
-            <div class="step">1. Place frozen fries in air fryer basket.</div>
-            <div class="step">2. Air Crisp 400&deg;F, 15 min. Shake halfway.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tuesday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x1F372;</div>
-      <div class="day-info">
-        <div class="day-name">Tuesday</div>
-        <div class="day-theme">One Pot Comfort</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Steel Cut Oatmeal with Banana</div>
-          <div class="meal-steps">
-            <div class="step">1. Add 1 cup oats + 3 cups water + pinch salt.</div>
-            <div class="step">2. Pressure Cook 10 min, Natural Release 10 min.</div>
-            <div class="step">3. Top with sliced banana + cinnamon.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">One-Pot Pasta</div>
-          <div class="meal-steps">
-            <div class="step">1. Add 1 lb penne + 1 jar marinara + 3 cups water + salt.</div>
-            <div class="step">2. Stir so pasta is submerged.</div>
-            <div class="step">3. Pressure Cook 5 min, Quick Release. Stir well.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wednesday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x1F35F;</div>
-      <div class="day-info">
-        <div class="day-name">Wednesday</div>
-        <div class="day-theme">Air Fryer Day</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-air">Air Crisp</span>
-          </div>
-          <div class="meal-name">Air Fryer Hash Browns + Eggs</div>
-          <div class="meal-steps">
-            <div class="step">1. Place hash browns in basket with oil spray + salt.</div>
-            <div class="step">2. Air Crisp 400&deg;F, 12 min, flip halfway.</div>
-            <div class="step">3. Cook eggs on stove separately.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-combo">Combo</span>
-          </div>
-          <div class="meal-name">Crispy Chicken Thighs (Combo Move!)</div>
-          <div class="meal-steps">
-            <div class="step">1. Season chicken thighs.</div>
-            <div class="step">2. Pressure Cook 10 min, Quick Release.</div>
-            <div class="step">3. Transfer to air fryer basket.</div>
-            <div class="step">4. Air Crisp 400&deg;F, 8 min until skin is golden.</div>
-            <div class="step">5. Serve with leftover rice.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Thursday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x1F35C;</div>
-      <div class="day-info">
-        <div class="day-name">Thursday</div>
-        <div class="day-theme">Soup Day</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Hard Boiled Eggs + Oatmeal</div>
-          <div class="meal-steps">
-            <div class="step">Use same method as Monday (eggs) and/or Tuesday (oatmeal). Use leftovers or make fresh.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-saute">Saut&eacute;</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Veggie Potato Soup</div>
-          <div class="meal-steps">
-            <div class="step">1. Saut&eacute; diced onion, carrots, celery in olive oil (Saut&eacute; mode, 4 min).</div>
-            <div class="step">2. Add diced potatoes + 4 cups broth + salt + pepper.</div>
-            <div class="step">3. Pressure Cook 8 min, Quick Release.</div>
-            <div class="step">4. Mash some potatoes in pot for thickness.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Friday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x1F336;&#xFE0F;</div>
-      <div class="day-info">
-        <div class="day-name">Friday</div>
-        <div class="day-theme">Chili Night</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Steel Cut Oatmeal with Blueberries</div>
-          <div class="meal-steps">
-            <div class="step">1. Same as Tuesday: 1 cup oats + 3 cups water + pinch salt.</div>
-            <div class="step">2. Pressure Cook 10 min, Natural Release 10 min.</div>
-            <div class="step">3. Top with blueberries + brown sugar.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-saute">Saut&eacute;</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Beef Chili</div>
-          <div class="meal-steps">
-            <div class="step">1. Saut&eacute; 1 lb ground beef + diced onion (Saut&eacute; mode, 5 min, break up meat).</div>
-            <div class="step">2. Add 2 cans diced tomatoes + 1 can beans (drained) + tomato paste.</div>
-            <div class="step">3. Season with chili powder, cumin, garlic powder, salt.</div>
-            <div class="step">4. Pressure Cook 20 min, Natural Release 10 min.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Saturday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x1F389;</div>
-      <div class="day-info">
-        <div class="day-name">Saturday</div>
-        <div class="day-theme">Try Something New</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-air">Air Crisp</span>
-          </div>
-          <div class="meal-name">Air Fryer Sausage Links + Hash Browns</div>
-          <div class="meal-steps">
-            <div class="step">1. Place sausage in basket. Air Crisp 400&deg;F, 10 min, turn halfway.</div>
-            <div class="step">2. Hash browns same as Wednesday.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Leftover Chili over Rice</div>
-          <div class="meal-steps">
-            <div class="step">1. Make rice (same as Monday: 1 cup rice + 1 cup water, Pressure Cook 4 min, NR 10 min).</div>
-            <div class="step">2. Reheat chili on Saut&eacute; mode or use Keep Warm.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dessert</span>
-            <span class="badge badge-air">Air Crisp</span>
-          </div>
-          <div class="meal-name">Air Fryer Baked Apples</div>
-          <div class="meal-steps">
-            <div class="step">1. Core 3 apples.</div>
-            <div class="step">2. Stuff with mix of oats + brown sugar + cinnamon + coconut oil.</div>
-            <div class="step">3. Air Crisp 350&deg;F, 15 min.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sunday -->
-  <div class="day-card">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div class="day-emoji">&#x2615;</div>
-      <div class="day-info">
-        <div class="day-name">Sunday</div>
-        <div class="day-theme">Rest &amp; Reward</div>
-      </div>
-      <div class="day-chevron">&#x25BC;</div>
-    </div>
-    <div class="day-body">
-      <div class="day-content">
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Breakfast</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Big Oatmeal Bowl</div>
-          <div class="meal-steps">
-            <div class="step">1. Steel cut oats (same method).</div>
-            <div class="step">2. Top with sliced banana + blueberries + cinnamon + drizzle of oat milk.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dinner</span>
-            <span class="badge badge-pressure">Pressure Cook</span>
-          </div>
-          <div class="meal-name">Coconut Rice</div>
-          <div class="meal-steps">
-            <div class="step">1. Add 1 cup rice + 1 can coconut milk (top off with water to 1.5 cups liquid total).</div>
-            <div class="step">2. Pressure Cook 4 min, Natural Release 10 min.</div>
-            <div class="step">3. Serve with any leftover chicken or protein.</div>
-          </div>
-        </div>
-        <div class="meal">
-          <div class="meal-header">
-            <span class="meal-type">Dessert</span>
-            <span class="badge badge-air">Air Crisp</span>
-          </div>
-          <div class="meal-name">Air Fryer Cinnamon Apples</div>
-          <div class="meal-steps">
-            <div class="step">1. Slice remaining apples, toss with cinnamon + brown sugar + squeeze of lemon.</div>
-            <div class="step">2. Air Crisp 350&deg;F, 10 min.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <div id="plan" class="view active"></div>
+  <div id="recipes" class="view"></div>
+  <div id="grocery" class="view"></div>
+  <div id="ref" class="view"></div>
 </div>
-
-<!-- GROCERY LIST VIEW -->
-<div id="grocery" class="view">
-
-  <div class="grocery-progress">
-    <div class="progress-text"><span id="checkedCount">0</span> / <span id="totalCount">0</span> items</div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <button class="clear-btn" onclick="clearChecks()">Clear All Checks</button>
-  </div>
-
-  <div class="grocery-section">
-    <h3>&#x1F969; Proteins</h3>
-    <div class="grocery-item"><input type="checkbox" id="g1" onchange="updateProgress()"><label for="g1">Eggs (1 dozen)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g2" onchange="updateProgress()"><label for="g2">Chicken thighs, bone-in skin-on (8 pcs)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g3" onchange="updateProgress()"><label for="g3">Ground beef (1 lb)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g4" onchange="updateProgress()"><label for="g4">Pork sausage links (6)</label></div>
-  </div>
-
-  <div class="grocery-section">
-    <h3>&#x1F35A; Grains &amp; Pasta</h3>
-    <div class="grocery-item"><input type="checkbox" id="g5" onchange="updateProgress()"><label for="g5">White rice (2 cups)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g6" onchange="updateProgress()"><label for="g6">Steel cut oats (1 cup)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g7" onchange="updateProgress()"><label for="g7">Penne pasta (1 lb)</label></div>
-  </div>
-
-  <div class="grocery-section">
-    <h3>&#x1F966; Produce</h3>
-    <div class="grocery-item"><input type="checkbox" id="g8" onchange="updateProgress()"><label for="g8">Bananas (4)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g9" onchange="updateProgress()"><label for="g9">Blueberries (1 cup)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g10" onchange="updateProgress()"><label for="g10">Frozen hash browns (1 bag)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g11" onchange="updateProgress()"><label for="g11">Onion (2)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g12" onchange="updateProgress()"><label for="g12">Garlic (1 head)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g13" onchange="updateProgress()"><label for="g13">Bell pepper (2)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g14" onchange="updateProgress()"><label for="g14">Potatoes (4 medium)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g15" onchange="updateProgress()"><label for="g15">Carrots (3)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g16" onchange="updateProgress()"><label for="g16">Celery (3 stalks)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g17" onchange="updateProgress()"><label for="g17">Apples (3)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g18" onchange="updateProgress()"><label for="g18">Lemon (1)</label></div>
-  </div>
-
-  <div class="grocery-section">
-    <h3>&#x1F96B; Canned / Jarred</h3>
-    <div class="grocery-item"><input type="checkbox" id="g19" onchange="updateProgress()"><label for="g19">Canned diced tomatoes (2 cans)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g20" onchange="updateProgress()"><label for="g20">Tomato paste (1 small can)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g21" onchange="updateProgress()"><label for="g21">Marinara sauce (1 jar, dairy-free)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g22" onchange="updateProgress()"><label for="g22">Chicken broth (4 cups)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g23" onchange="updateProgress()"><label for="g23">Canned kidney beans (1 can)</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g24" onchange="updateProgress()"><label for="g24">Coconut milk, full fat (1 can)</label></div>
-  </div>
-
-  <div class="grocery-section">
-    <h3>&#x1F3EA; Pantry</h3>
-    <div class="grocery-item"><input type="checkbox" id="g25" onchange="updateProgress()"><label for="g25">Olive oil</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g26" onchange="updateProgress()"><label for="g26">Salt &amp; pepper</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g27" onchange="updateProgress()"><label for="g27">Paprika</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g28" onchange="updateProgress()"><label for="g28">Garlic powder</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g29" onchange="updateProgress()"><label for="g29">Onion powder</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g30" onchange="updateProgress()"><label for="g30">Chili powder</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g31" onchange="updateProgress()"><label for="g31">Cumin</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g32" onchange="updateProgress()"><label for="g32">Cinnamon</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g33" onchange="updateProgress()"><label for="g33">Brown sugar</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g34" onchange="updateProgress()"><label for="g34">Vanilla extract</label></div>
-    <div class="grocery-item"><input type="checkbox" id="g35" onchange="updateProgress()"><label for="g35">Oat milk (1 carton)</label></div>
-  </div>
-
-  <div class="grocery-section">
-    <h3>&#x2744;&#xFE0F; Frozen</h3>
-    <div class="grocery-item"><input type="checkbox" id="g36" onchange="updateProgress()"><label for="g36">Frozen french fries (1 bag)</label></div>
-  </div>
-
-</div>
-
-<!-- QUICK REFERENCE VIEW -->
-<div id="ref" class="view">
-
-  <div class="ref-card">
-    <h3><span class="badge badge-pressure">Pressure Cook</span> Times</h3>
-    <table class="ref-table">
-      <thead><tr><th>Food</th><th>Time</th><th>Release</th></tr></thead>
-      <tbody>
-        <tr><td>White rice</td><td>4 min</td><td>Natural 10 min</td></tr>
-        <tr><td>Steel cut oats</td><td>10 min</td><td>Natural 10 min</td></tr>
-        <tr><td>Hard boiled eggs</td><td>5 min</td><td>Quick</td></tr>
-        <tr><td>Chicken thighs</td><td>10 min</td><td>Natural 5 min</td></tr>
-        <tr><td>Ground beef chili</td><td>20 min</td><td>Natural 10 min</td></tr>
-        <tr><td>Diced potatoes</td><td>8 min</td><td>Quick</td></tr>
-        <tr><td>Pasta</td><td>4-6 min</td><td>Quick</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="ref-card">
-    <h3><span class="badge badge-air">Air Crisp</span> Times</h3>
-    <table class="ref-table">
-      <thead><tr><th>Food</th><th>Temp</th><th>Time</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>Frozen fries</td><td>400&deg;F</td><td>15 min</td><td>Shake halfway</td></tr>
-        <tr><td>Hash browns</td><td>400&deg;F</td><td>12 min</td><td>Flip halfway</td></tr>
-        <tr><td>Chicken skin</td><td>400&deg;F</td><td>8 min</td><td>After pressure cook</td></tr>
-        <tr><td>Sausage links</td><td>400&deg;F</td><td>10 min</td><td>Turn halfway</td></tr>
-        <tr><td>Baked apples</td><td>350&deg;F</td><td>15 min</td><td>&mdash;</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="tips-card">
-    <h3>&#x1F4A1; Pro Tips</h3>
-    <div class="tip"><strong>Natural Release</strong> = just let it sit, pressure drops on its own.</div>
-    <div class="tip"><strong>Quick Release</strong> = turn the valve to vent steam immediately.</div>
-    <div class="tip">Always use at least <strong>1 cup liquid</strong> for pressure cooking.</div>
-    <div class="tip">All recipes in this plan are <strong>dairy-free</strong>.</div>
-  </div>
-
-</div>
-
-</div><!-- /content -->
 
 <div class="footer">
   Instant Pot Pro Crisp &mdash; Week 1 Meal Plan<br>
   Dairy-Free &bull; Beginner Friendly
 </div>
 
+<!-- Cook Mode Overlay -->
+<div class="cook-overlay" id="cookOverlay">
+  <div class="cook-modal" id="cookModal"></div>
+</div>
+
 <script>
-// Tab switching
-function switchTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById(tab).classList.add('active');
-  document.querySelector('[onclick="switchTab(\'' + tab + '\')"]').classList.add('active');
-  if (tab === 'grocery') updateProgress();
+// ============ DATA ============
+const recipes = [
+  {
+    id: "hard-boiled-eggs",
+    name: "Hard Boiled Eggs + Toast",
+    methods: ["pressure"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "water" },
+      { amount: 6, unit: "", item: "eggs" }
+    ],
+    steps: [
+      "Add 1 cup water and place eggs on trivet.",
+      "Pressure Cook 5 min, Quick Release.",
+      "Ice bath 5 min. Serve with toast."
+    ],
+    timer: { minutes: 5, label: "Pressure Cook" }
+  },
+  {
+    id: "rice-chicken",
+    name: "White Rice + Seasoned Chicken Thighs",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "white rice" },
+      { amount: 1, unit: "cup", item: "water (for rice)" },
+      { amount: 4, unit: "", item: "chicken thighs" },
+      { amount: 0, unit: "", item: "salt, pepper, paprika, garlic powder" }
+    ],
+    steps: [
+      "Rice: 1 cup rice + 1 cup water. Pressure Cook 4 min, Natural Release 10 min.",
+      "Chicken: Season with salt, pepper, paprika, garlic powder.",
+      "Pressure Cook 10 min, Natural Release 5 min."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook (Chicken)" }
+  },
+  {
+    id: "air-fryer-fries",
+    name: "Air Fryer Fries",
+    methods: ["air"],
+    mealType: "snack",
+    servings: 2,
+    ingredients: [
+      { amount: 0, unit: "", item: "frozen french fries (half bag)" }
+    ],
+    steps: [
+      "Place frozen fries in air fryer basket.",
+      "Air Crisp 400\u00b0F, 15 min. Shake halfway."
+    ],
+    timer: { minutes: 15, label: "Air Crisp" }
+  },
+  {
+    id: "oatmeal-banana",
+    name: "Steel Cut Oatmeal with Banana",
+    methods: ["pressure"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "steel cut oats" },
+      { amount: 3, unit: "cups", item: "water" },
+      { amount: 1, unit: "", item: "banana, sliced" },
+      { amount: 0, unit: "", item: "pinch salt, cinnamon" }
+    ],
+    steps: [
+      "Add 1 cup oats + 3 cups water + pinch salt.",
+      "Pressure Cook 10 min, Natural Release 10 min.",
+      "Top with sliced banana + cinnamon."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "one-pot-pasta",
+    name: "One-Pot Pasta",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "penne pasta" },
+      { amount: 1, unit: "jar", item: "marinara sauce (dairy-free)" },
+      { amount: 3, unit: "cups", item: "water" },
+      { amount: 0, unit: "", item: "salt" }
+    ],
+    steps: [
+      "Add 1 lb penne + 1 jar marinara + 3 cups water + salt.",
+      "Stir so pasta is submerged.",
+      "Pressure Cook 5 min, Quick Release. Stir well."
+    ],
+    timer: { minutes: 5, label: "Pressure Cook" }
+  },
+  {
+    id: "hash-browns-eggs",
+    name: "Air Fryer Hash Browns + Eggs",
+    methods: ["air"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 0, unit: "", item: "frozen hash browns" },
+      { amount: 2, unit: "", item: "eggs" },
+      { amount: 0, unit: "", item: "oil spray, salt" }
+    ],
+    steps: [
+      "Place hash browns in basket with oil spray + salt.",
+      "Air Crisp 400\u00b0F, 12 min, flip halfway.",
+      "Cook eggs on stove separately."
+    ],
+    timer: { minutes: 12, label: "Air Crisp" }
+  },
+  {
+    id: "crispy-chicken",
+    name: "Crispy Chicken Thighs (Combo Move!)",
+    methods: ["combo"],
+    mealType: "dinner",
+    servings: 2,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken thighs, seasoned" },
+      { amount: 1, unit: "cup", item: "water" }
+    ],
+    steps: [
+      "Season chicken thighs.",
+      "Pressure Cook 10 min, Quick Release.",
+      "Transfer to air fryer basket.",
+      "Air Crisp 400\u00b0F, 8 min until skin is golden.",
+      "Serve with leftover rice."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "eggs-oatmeal-leftover",
+    name: "Hard Boiled Eggs + Oatmeal",
+    methods: ["pressure"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 6, unit: "", item: "eggs" },
+      { amount: 1, unit: "cup", item: "steel cut oats" },
+      { amount: 3, unit: "cups", item: "water" }
+    ],
+    steps: [
+      "Use same method as Monday (eggs) and/or Tuesday (oatmeal).",
+      "Use leftovers or make fresh."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "veggie-potato-soup",
+    name: "Veggie Potato Soup",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "", item: "onion, diced" },
+      { amount: 3, unit: "", item: "carrots, diced" },
+      { amount: 3, unit: "stalks", item: "celery, diced" },
+      { amount: 2, unit: "tbsp", item: "olive oil" },
+      { amount: 4, unit: "", item: "potatoes, diced" },
+      { amount: 4, unit: "cups", item: "chicken broth" },
+      { amount: 0, unit: "", item: "salt, pepper" }
+    ],
+    steps: [
+      "Saut\u00e9 diced onion, carrots, celery in olive oil (Saut\u00e9 mode, 4 min).",
+      "Add diced potatoes + 4 cups broth + salt + pepper.",
+      "Pressure Cook 8 min, Quick Release.",
+      "Mash some potatoes in pot for thickness."
+    ],
+    timer: { minutes: 8, label: "Pressure Cook" }
+  },
+  {
+    id: "oatmeal-blueberries",
+    name: "Steel Cut Oatmeal with Blueberries",
+    methods: ["pressure"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "steel cut oats" },
+      { amount: 3, unit: "cups", item: "water" },
+      { amount: 0.5, unit: "cup", item: "blueberries" },
+      { amount: 0, unit: "", item: "pinch salt, brown sugar" }
+    ],
+    steps: [
+      "Same as Tuesday: 1 cup oats + 3 cups water + pinch salt.",
+      "Pressure Cook 10 min, Natural Release 10 min.",
+      "Top with blueberries + brown sugar."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "beef-chili",
+    name: "Beef Chili",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "ground beef" },
+      { amount: 1, unit: "", item: "onion, diced" },
+      { amount: 2, unit: "cans", item: "diced tomatoes" },
+      { amount: 1, unit: "can", item: "kidney beans, drained" },
+      { amount: 1, unit: "small can", item: "tomato paste" },
+      { amount: 0, unit: "", item: "chili powder, cumin, garlic powder, salt" }
+    ],
+    steps: [
+      "Saut\u00e9 1 lb ground beef + diced onion (Saut\u00e9 mode, 5 min, break up meat).",
+      "Add 2 cans diced tomatoes + 1 can beans (drained) + tomato paste.",
+      "Season with chili powder, cumin, garlic powder, salt.",
+      "Pressure Cook 20 min, Natural Release 10 min."
+    ],
+    timer: { minutes: 20, label: "Pressure Cook" }
+  },
+  {
+    id: "sausage-hash-browns",
+    name: "Air Fryer Sausage Links + Hash Browns",
+    methods: ["air"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 6, unit: "", item: "pork sausage links" },
+      { amount: 0, unit: "", item: "frozen hash browns" },
+      { amount: 0, unit: "", item: "oil spray, salt" }
+    ],
+    steps: [
+      "Place sausage in basket. Air Crisp 400\u00b0F, 10 min, turn halfway.",
+      "Hash browns same as Wednesday."
+    ],
+    timer: { minutes: 10, label: "Air Crisp" }
+  },
+  {
+    id: "chili-over-rice",
+    name: "Leftover Chili over Rice",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "white rice" },
+      { amount: 1, unit: "cup", item: "water" },
+      { amount: 0, unit: "", item: "leftover beef chili" }
+    ],
+    steps: [
+      "Make rice (same as Monday: 1 cup rice + 1 cup water, Pressure Cook 4 min, NR 10 min).",
+      "Reheat chili on Saut\u00e9 mode or use Keep Warm."
+    ],
+    timer: { minutes: 4, label: "Pressure Cook (Rice)" }
+  },
+  {
+    id: "baked-apples",
+    name: "Air Fryer Baked Apples",
+    methods: ["air"],
+    mealType: "dessert",
+    servings: 3,
+    ingredients: [
+      { amount: 3, unit: "", item: "apples, cored" },
+      { amount: 0.25, unit: "cup", item: "oats" },
+      { amount: 2, unit: "tbsp", item: "brown sugar" },
+      { amount: 0, unit: "", item: "cinnamon, coconut oil" }
+    ],
+    steps: [
+      "Core 3 apples.",
+      "Stuff with mix of oats + brown sugar + cinnamon + coconut oil.",
+      "Air Crisp 350\u00b0F, 15 min."
+    ],
+    timer: { minutes: 15, label: "Air Crisp" }
+  },
+  {
+    id: "big-oatmeal-bowl",
+    name: "Big Oatmeal Bowl",
+    methods: ["pressure"],
+    mealType: "breakfast",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "steel cut oats" },
+      { amount: 3, unit: "cups", item: "water" },
+      { amount: 1, unit: "", item: "banana, sliced" },
+      { amount: 0.5, unit: "cup", item: "blueberries" },
+      { amount: 0, unit: "", item: "cinnamon, oat milk" }
+    ],
+    steps: [
+      "Steel cut oats (same method: 1 cup oats + 3 cups water, Pressure Cook 10 min, NR 10 min).",
+      "Top with sliced banana + blueberries + cinnamon + drizzle of oat milk."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "coconut-rice",
+    name: "Coconut Rice",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 2,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "white rice" },
+      { amount: 1, unit: "can", item: "coconut milk (full fat)" },
+      { amount: 0, unit: "", item: "water (to top off to 1.5 cups liquid)" }
+    ],
+    steps: [
+      "Add 1 cup rice + 1 can coconut milk (top off with water to 1.5 cups liquid total).",
+      "Pressure Cook 4 min, Natural Release 10 min.",
+      "Serve with any leftover chicken or protein."
+    ],
+    timer: { minutes: 4, label: "Pressure Cook" }
+  },
+  {
+    id: "cinnamon-apples",
+    name: "Air Fryer Cinnamon Apples",
+    methods: ["air"],
+    mealType: "dessert",
+    servings: 2,
+    ingredients: [
+      { amount: 2, unit: "", item: "apples, sliced" },
+      { amount: 1, unit: "tbsp", item: "brown sugar" },
+      { amount: 0, unit: "", item: "cinnamon, squeeze of lemon" }
+    ],
+    steps: [
+      "Slice apples, toss with cinnamon + brown sugar + squeeze of lemon.",
+      "Air Crisp 350\u00b0F, 10 min."
+    ],
+    timer: { minutes: 10, label: "Air Crisp" }
+  }
+];
+
+const weekPlan = [
+  { day: "Monday", theme: "Learn the Basics", emoji: "\ud83d\udcd6", meals: [
+    { recipeId: "hard-boiled-eggs", type: "Breakfast" },
+    { recipeId: "rice-chicken", type: "Dinner" },
+    { recipeId: "air-fryer-fries", type: "Snack" }
+  ]},
+  { day: "Tuesday", theme: "One Pot Comfort", emoji: "\ud83c\udf72", meals: [
+    { recipeId: "oatmeal-banana", type: "Breakfast" },
+    { recipeId: "one-pot-pasta", type: "Dinner" }
+  ]},
+  { day: "Wednesday", theme: "Air Fryer Day", emoji: "\ud83c\udf5f", meals: [
+    { recipeId: "hash-browns-eggs", type: "Breakfast" },
+    { recipeId: "crispy-chicken", type: "Dinner" }
+  ]},
+  { day: "Thursday", theme: "Soup Day", emoji: "\ud83c\udf5c", meals: [
+    { recipeId: "eggs-oatmeal-leftover", type: "Breakfast" },
+    { recipeId: "veggie-potato-soup", type: "Dinner" }
+  ]},
+  { day: "Friday", theme: "Chili Night", emoji: "\ud83c\udf36\ufe0f", meals: [
+    { recipeId: "oatmeal-blueberries", type: "Breakfast" },
+    { recipeId: "beef-chili", type: "Dinner" }
+  ]},
+  { day: "Saturday", theme: "Try Something New", emoji: "\ud83c\udf89", meals: [
+    { recipeId: "sausage-hash-browns", type: "Breakfast" },
+    { recipeId: "chili-over-rice", type: "Dinner" },
+    { recipeId: "baked-apples", type: "Dessert" }
+  ]},
+  { day: "Sunday", theme: "Rest & Reward", emoji: "\u2615", meals: [
+    { recipeId: "big-oatmeal-bowl", type: "Breakfast" },
+    { recipeId: "coconut-rice", type: "Dinner" },
+    { recipeId: "cinnamon-apples", type: "Dessert" }
+  ]}
+];
+
+const groceryData = [
+  { category: "\ud83e\udd69 Proteins", items: ["Eggs (1 dozen)","Chicken thighs, bone-in skin-on (8 pcs)","Ground beef (1 lb)","Pork sausage links (6)"] },
+  { category: "\ud83c\udf5a Grains & Pasta", items: ["White rice (2 cups)","Steel cut oats (1 cup)","Penne pasta (1 lb)"] },
+  { category: "\ud83e\udd66 Produce", items: ["Bananas (4)","Blueberries (1 cup)","Frozen hash browns (1 bag)","Onion (2)","Garlic (1 head)","Bell pepper (2)","Potatoes (4 medium)","Carrots (3)","Celery (3 stalks)","Apples (3)","Lemon (1)"] },
+  { category: "\ud83e\udd6b Canned / Jarred", items: ["Canned diced tomatoes (2 cans)","Tomato paste (1 small can)","Marinara sauce (1 jar, dairy-free)","Chicken broth (4 cups)","Canned kidney beans (1 can)","Coconut milk, full fat (1 can)"] },
+  { category: "\ud83c\udfea Pantry", items: ["Olive oil","Salt & pepper","Paprika","Garlic powder","Onion powder","Chili powder","Cumin","Cinnamon","Brown sugar","Vanilla extract","Oat milk (1 carton)"] },
+  { category: "\u2744\ufe0f Frozen", items: ["Frozen french fries (1 bag)"] }
+];
+
+// ============ STATE ============
+let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+let servingsState = JSON.parse(localStorage.getItem('servingsState') || '{}');
+let activeMethodFilter = 'all';
+let activeMealFilter = 'all';
+let cookState = { recipeId: null, step: 0, timerInterval: null, timerSeconds: 0, timerRunning: false };
+let wakeLock = null;
+
+// ============ HELPERS ============
+function getRecipe(id) { return recipes.find(r => r.id === id); }
+function isFav(id) { return favorites.includes(id); }
+function getServings(id) { const r = getRecipe(id); return servingsState[id] || r.servings; }
+function getScale(id) { const r = getRecipe(id); return getServings(id) / r.servings; }
+
+function toggleFavorite(id) {
+  if (isFav(id)) { favorites = favorites.filter(f => f !== id); }
+  else { favorites.push(id); }
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  renderAll();
 }
 
-// Day card expand/collapse
-function toggleDay(header) {
-  const card = header.closest('.day-card');
-  card.classList.toggle('expanded');
+function setServings(id, val) {
+  val = Math.max(1, Math.min(20, val));
+  servingsState[id] = val;
+  localStorage.setItem('servingsState', JSON.stringify(servingsState));
+  renderAll();
 }
 
-// Grocery list progress
-function updateProgress() {
-  const checkboxes = document.querySelectorAll('#grocery input[type="checkbox"]');
-  const checked = document.querySelectorAll('#grocery input[type="checkbox"]:checked');
-  document.getElementById('checkedCount').textContent = checked.length;
-  document.getElementById('totalCount').textContent = checkboxes.length;
-  document.getElementById('progressFill').style.width = (checked.length / checkboxes.length * 100) + '%';
+function methodBadge(m) {
+  const map = { pressure: ['Pressure Cook','badge-pressure'], air: ['Air Crisp','badge-air'], combo: ['Combo','badge-combo'], saute: ['Saut\u00e9','badge-saute'] };
+  const [label, cls] = map[m] || ['',''];
+  return `<span class="badge ${cls}">${label}</span>`;
+}
 
-  // Toggle checked class for strikethrough
-  checkboxes.forEach(cb => {
-    cb.closest('.grocery-item').classList.toggle('checked', cb.checked);
+function formatAmount(amount, scale) {
+  if (amount === 0) return '';
+  const v = amount * scale;
+  if (v === Math.floor(v)) return String(v);
+  const fracs = [[0.25,'\u00bc'],[0.333,'\u2153'],[0.5,'\u00bd'],[0.666,'\u2154'],[0.75,'\u00be']];
+  const whole = Math.floor(v);
+  const frac = v - whole;
+  for (const [val, sym] of fracs) {
+    if (Math.abs(frac - val) < 0.05) return whole ? `${whole}${sym}` : sym;
+  }
+  return v.toFixed(1).replace(/\.0$/, '');
+}
+
+function renderIngredients(recipe, scale) {
+  return recipe.ingredients.map(ing => {
+    const amt = formatAmount(ing.amount, scale);
+    return `<div class="ing-item"><span class="ing-amount">${amt}${amt && ing.unit ? ' ' + ing.unit : ''}</span> ${ing.item}</div>`;
+  }).join('');
+}
+
+function getDaysForRecipe(id) {
+  return weekPlan.filter(d => d.meals.some(m => m.recipeId === id)).map(d => d.day.slice(0,3));
+}
+
+// ============ RENDER WEEK PLAN ============
+function renderWeekPlan() {
+  const el = document.getElementById('plan');
+  el.innerHTML = weekPlan.map((day, di) => {
+    const mealsHtml = day.meals.map(m => {
+      const r = getRecipe(m.recipeId);
+      const scale = getScale(r.id);
+      const s = getServings(r.id);
+      return `
+        <div class="meal">
+          <div class="meal-header">
+            <span class="meal-type">${m.type}</span>
+            ${r.methods.map(methodBadge).join('')}
+          </div>
+          <div class="meal-name">${r.name}</div>
+          <div class="servings-ctrl">
+            <button onclick="event.stopPropagation();setServings('${r.id}',${s-1})">-</button>
+            <span class="servings-val">${s}</span>
+            <button onclick="event.stopPropagation();setServings('${r.id}',${s+1})">+</button>
+            <span>servings</span>
+          </div>
+          <div class="ingredients-list">${renderIngredients(r, scale)}</div>
+          <div class="meal-steps">${r.steps.map((st,i) => `<div class="step">${i+1}. ${st}</div>`).join('')}</div>
+          <div class="meal-actions">
+            <button class="btn-heart ${isFav(r.id)?'active':''}" onclick="event.stopPropagation();toggleFavorite('${r.id}')">${isFav(r.id)?'\u2764\ufe0f':'\ud83e\ude76'} Fave</button>
+            <button class="btn-cook" onclick="event.stopPropagation();openCookMode('${r.id}')">&#x1F373; Cook</button>
+          </div>
+        </div>`;
+    }).join('');
+    return `
+      <div class="day-card ${di===0?'expanded':''}">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-emoji">${day.emoji}</div>
+          <div class="day-info">
+            <div class="day-name">${day.day}</div>
+            <div class="day-theme">${day.theme}</div>
+          </div>
+          <div class="day-chevron">\u25bc</div>
+        </div>
+        <div class="day-body"><div class="day-content">${mealsHtml}</div></div>
+      </div>`;
+  }).join('');
+}
+
+// ============ RENDER RECIPES ============
+function renderRecipes() {
+  const el = document.getElementById('recipes');
+  let filtered = recipes.filter(r => {
+    if (activeMethodFilter !== 'all' && !r.methods.includes(activeMethodFilter)) return false;
+    if (activeMealFilter !== 'all' && r.mealType !== activeMealFilter) return false;
+    return true;
   });
 
-  // Save state
+  const favRecipes = filtered.filter(r => isFav(r.id));
+  const otherRecipes = filtered.filter(r => !isFav(r.id));
+
+  const methodFilters = [
+    ['all','All'],['pressure','Pressure Cook'],['air','Air Crisp'],['combo','Combo'],['saute','Saut\u00e9']
+  ];
+  const mealFilters = [
+    ['all','All'],['breakfast','Breakfast'],['dinner','Dinner'],['dessert','Dessert'],['snack','Snack']
+  ];
+
+  let html = `
+    <div class="filter-bar">
+      <div class="filter-label">Method</div>
+      ${methodFilters.map(([v,l]) => `<button class="filter-pill ${activeMethodFilter===v?'active':''}" onclick="activeMethodFilter='${v}';renderRecipes()">${l}</button>`).join('')}
+    </div>
+    <div class="filter-bar">
+      <div class="filter-label">Meal</div>
+      ${mealFilters.map(([v,l]) => `<button class="filter-pill ${activeMealFilter===v?'active':''}" onclick="activeMealFilter='${v}';renderRecipes()">${l}</button>`).join('')}
+    </div>`;
+
+  if (favRecipes.length) {
+    html += `<div class="fav-divider">\u2764\ufe0f Favorites (${favRecipes.length})</div>`;
+    html += favRecipes.map(r => renderRecipeCard(r)).join('');
+    if (otherRecipes.length) {
+      html += `<div class="fav-divider">All Recipes</div>`;
+    }
+  }
+  html += otherRecipes.map(r => renderRecipeCard(r)).join('');
+
+  if (!filtered.length) {
+    html += `<div style="text-align:center;padding:2rem;color:var(--text-light);">No recipes match these filters.</div>`;
+  }
+
+  el.innerHTML = html;
+}
+
+function renderRecipeCard(r) {
+  const scale = getScale(r.id);
+  const s = getServings(r.id);
+  const days = getDaysForRecipe(r.id);
+  return `
+    <div class="recipe-card" id="rc-${r.id}">
+      <div class="recipe-card-header" onclick="toggleRecipeCard('${r.id}')">
+        <div class="recipe-card-info">
+          <div class="recipe-card-name">${r.name}</div>
+          <div class="recipe-card-meta">${r.mealType.charAt(0).toUpperCase()+r.mealType.slice(1)} &bull; ${days.join(', ')}</div>
+          <div class="recipe-card-badges">${r.methods.map(methodBadge).join('')}</div>
+        </div>
+        <span class="recipe-card-heart" onclick="event.stopPropagation();toggleFavorite('${r.id}')">${isFav(r.id)?'\u2764\ufe0f':'\ud83e\ude76'}</span>
+        <span class="recipe-card-chevron">\u25bc</span>
+      </div>
+      <div class="recipe-card-body">
+        <div class="recipe-card-content">
+          <div class="servings-ctrl">
+            <button onclick="event.stopPropagation();setServings('${r.id}',${s-1})">-</button>
+            <span class="servings-val">${s}</span>
+            <button onclick="event.stopPropagation();setServings('${r.id}',${s+1})">+</button>
+            <span>servings</span>
+          </div>
+          <div class="ingredients-list">${renderIngredients(r, scale)}</div>
+          <div class="meal-steps">${r.steps.map((st,i) => `<div class="step">${i+1}. ${st}</div>`).join('')}</div>
+          <div class="meal-actions" style="margin-top:0.75rem;">
+            <button class="btn-cook" onclick="event.stopPropagation();openCookMode('${r.id}')">&#x1F373; Start Cooking</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleRecipeCard(id) {
+  document.getElementById('rc-' + id).classList.toggle('expanded');
+}
+
+// ============ RENDER GROCERY ============
+function renderGrocery() {
+  const el = document.getElementById('grocery');
+  let gIdx = 0;
+  const sections = groceryData.map(cat => {
+    const items = cat.items.map(item => {
+      gIdx++;
+      return `<div class="grocery-item"><input type="checkbox" id="g${gIdx}" onchange="updateProgress()"><label for="g${gIdx}">${item}</label></div>`;
+    }).join('');
+    return `<div class="grocery-section"><h3>${cat.category}</h3>${items}</div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="grocery-progress">
+      <div class="progress-text"><span id="checkedCount">0</span> / <span id="totalCount">0</span> items</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <button class="clear-btn" onclick="clearChecks()">Clear All Checks</button>
+    </div>
+    ${sections}`;
+  restoreGrocery();
+}
+
+// ============ RENDER QUICK REF ============
+function renderQuickRef() {
+  document.getElementById('ref').innerHTML = `
+    <div class="ref-card">
+      <h3><span class="badge badge-pressure">Pressure Cook</span> Times</h3>
+      <table class="ref-table">
+        <thead><tr><th>Food</th><th>Time</th><th>Release</th></tr></thead>
+        <tbody>
+          <tr><td>White rice</td><td>4 min</td><td>Natural 10 min</td></tr>
+          <tr><td>Steel cut oats</td><td>10 min</td><td>Natural 10 min</td></tr>
+          <tr><td>Hard boiled eggs</td><td>5 min</td><td>Quick</td></tr>
+          <tr><td>Chicken thighs</td><td>10 min</td><td>Natural 5 min</td></tr>
+          <tr><td>Ground beef chili</td><td>20 min</td><td>Natural 10 min</td></tr>
+          <tr><td>Diced potatoes</td><td>8 min</td><td>Quick</td></tr>
+          <tr><td>Pasta</td><td>4-6 min</td><td>Quick</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ref-card">
+      <h3><span class="badge badge-air">Air Crisp</span> Times</h3>
+      <table class="ref-table">
+        <thead><tr><th>Food</th><th>Temp</th><th>Time</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Frozen fries</td><td>400\u00b0F</td><td>15 min</td><td>Shake halfway</td></tr>
+          <tr><td>Hash browns</td><td>400\u00b0F</td><td>12 min</td><td>Flip halfway</td></tr>
+          <tr><td>Chicken skin</td><td>400\u00b0F</td><td>8 min</td><td>After pressure cook</td></tr>
+          <tr><td>Sausage links</td><td>400\u00b0F</td><td>10 min</td><td>Turn halfway</td></tr>
+          <tr><td>Baked apples</td><td>350\u00b0F</td><td>15 min</td><td>&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tips-card">
+      <h3>\ud83d\udca1 Pro Tips</h3>
+      <div class="tip"><strong>Natural Release</strong> = just let it sit, pressure drops on its own.</div>
+      <div class="tip"><strong>Quick Release</strong> = turn the valve to vent steam immediately.</div>
+      <div class="tip">Always use at least <strong>1 cup liquid</strong> for pressure cooking.</div>
+      <div class="tip">All recipes in this plan are <strong>dairy-free</strong>.</div>
+    </div>`;
+}
+
+// ============ COOK MODE ============
+function openCookMode(id) {
+  cookState.recipeId = id;
+  cookState.step = 0;
+  cookState.timerSeconds = getRecipe(id).timer.minutes * 60;
+  cookState.timerRunning = false;
+  if (cookState.timerInterval) clearInterval(cookState.timerInterval);
+  cookState.timerInterval = null;
+  renderCookMode();
+  document.getElementById('cookOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  requestWakeLock();
+}
+
+function closeCookMode() {
+  document.getElementById('cookOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  if (cookState.timerInterval) clearInterval(cookState.timerInterval);
+  cookState.timerRunning = false;
+  releaseWakeLock();
+}
+
+function renderCookMode() {
+  const r = getRecipe(cookState.recipeId);
+  const scale = getScale(r.id);
+  const s = cookState.step;
+  const total = r.steps.length;
+  const mm = String(Math.floor(cookState.timerSeconds / 60)).padStart(2, '0');
+  const ss = String(cookState.timerSeconds % 60).padStart(2, '0');
+  const timerClass = cookState.timerRunning ? 'running' : (cookState.timerSeconds === 0 ? 'done' : '');
+
+  document.getElementById('cookModal').innerHTML = `
+    <div class="cook-header">
+      <button class="cook-close" onclick="closeCookMode()">&times;</button>
+      <div class="cook-title">${r.name}</div>
+    </div>
+    <div class="cook-ingredients">
+      <h3>Ingredients (${getServings(r.id)} servings)</h3>
+      ${r.ingredients.map(ing => {
+        const amt = formatAmount(ing.amount, scale);
+        return `<div class="cook-ing-item"><span class="cook-ing-amount">${amt}${amt && ing.unit ? ' ' + ing.unit : ''}</span> ${ing.item}</div>`;
+      }).join('')}
+    </div>
+    <div class="cook-step-area">
+      <div class="cook-step-progress">Step ${s+1} of ${total}</div>
+      <div class="cook-step-text">${r.steps[s]}</div>
+    </div>
+    <div class="cook-timer">
+      <div>
+        <div class="timer-label">${r.timer.label}</div>
+        <div class="timer-display ${timerClass}">${mm}:${ss}</div>
+      </div>
+      ${cookState.timerRunning
+        ? `<button class="timer-btn stop" onclick="pauseTimer()">Pause</button>`
+        : `<button class="timer-btn" onclick="startTimer()">Start</button>`
+      }
+      <button class="timer-reset" onclick="resetTimer()">Reset</button>
+    </div>
+    <div class="cook-nav">
+      <button class="cook-prev" onclick="cookStep(-1)" ${s===0?'disabled':''}>&#x2190; Prev</button>
+      <button class="cook-next" onclick="cookStep(1)">${s===total-1?'Done \u2714':'Next \u2192'}</button>
+    </div>`;
+}
+
+function cookStep(dir) {
+  const r = getRecipe(cookState.recipeId);
+  if (dir === 1 && cookState.step === r.steps.length - 1) { closeCookMode(); return; }
+  cookState.step = Math.max(0, Math.min(r.steps.length - 1, cookState.step + dir));
+  renderCookMode();
+}
+
+function startTimer() {
+  if (cookState.timerSeconds <= 0) return;
+  cookState.timerRunning = true;
+  cookState.timerInterval = setInterval(() => {
+    cookState.timerSeconds--;
+    if (cookState.timerSeconds <= 0) {
+      cookState.timerSeconds = 0;
+      clearInterval(cookState.timerInterval);
+      cookState.timerRunning = false;
+      playBeep();
+    }
+    renderCookMode();
+  }, 1000);
+  renderCookMode();
+}
+
+function pauseTimer() {
+  clearInterval(cookState.timerInterval);
+  cookState.timerRunning = false;
+  renderCookMode();
+}
+
+function resetTimer() {
+  clearInterval(cookState.timerInterval);
+  cookState.timerRunning = false;
+  const r = getRecipe(cookState.recipeId);
+  cookState.timerSeconds = r.timer.minutes * 60;
+  renderCookMode();
+}
+
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.3, 0.6].forEach(delay => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      osc.type = 'sine';
+      gain.gain.value = 0.3;
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + 0.15);
+    });
+  } catch(e) {}
+}
+
+async function requestWakeLock() {
+  try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
+}
+function releaseWakeLock() {
+  if (wakeLock) { wakeLock.release(); wakeLock = null; }
+}
+
+// ============ TABS ============
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tab).classList.add('active');
+  });
+});
+
+// ============ DAY CARDS ============
+function toggleDay(header) { header.closest('.day-card').classList.toggle('expanded'); }
+
+// ============ GROCERY ============
+function updateProgress() {
+  const cbs = document.querySelectorAll('#grocery input[type="checkbox"]');
+  const checked = document.querySelectorAll('#grocery input[type="checkbox"]:checked');
+  const cnt = document.getElementById('checkedCount');
+  const tot = document.getElementById('totalCount');
+  const fill = document.getElementById('progressFill');
+  if (cnt) cnt.textContent = checked.length;
+  if (tot) tot.textContent = cbs.length;
+  if (fill) fill.style.width = (cbs.length ? checked.length / cbs.length * 100 : 0) + '%';
+  cbs.forEach(cb => cb.closest('.grocery-item').classList.toggle('checked', cb.checked));
   const state = {};
-  checkboxes.forEach(cb => { state[cb.id] = cb.checked; });
+  cbs.forEach(cb => { state[cb.id] = cb.checked; });
   localStorage.setItem('groceryChecks', JSON.stringify(state));
 }
 
@@ -875,27 +1394,43 @@ function clearChecks() {
   updateProgress();
 }
 
-// Restore grocery state from localStorage
 function restoreGrocery() {
   try {
     const state = JSON.parse(localStorage.getItem('groceryChecks'));
-    if (state) {
-      Object.keys(state).forEach(id => {
-        const cb = document.getElementById(id);
-        if (cb) cb.checked = state[id];
-      });
-    }
+    if (state) Object.keys(state).forEach(id => { const cb = document.getElementById(id); if (cb) cb.checked = state[id]; });
   } catch(e) {}
-  // Set total count
-  const checkboxes = document.querySelectorAll('#grocery input[type="checkbox"]');
-  document.getElementById('totalCount').textContent = checkboxes.length;
   updateProgress();
 }
 
-// Auto-expand first day on load
-document.querySelector('.day-card').classList.add('expanded');
-restoreGrocery();
-</script>
+// ============ DARK MODE ============
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  localStorage.setItem('darkMode', isDark ? '1' : '0');
+  document.querySelector('.dark-toggle').textContent = isDark ? '\ud83c\udf19' : '\u2600\ufe0f';
+}
 
+function initDarkMode() {
+  const stored = localStorage.getItem('darkMode');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === '1' || (stored === null && prefersDark)) {
+    document.body.classList.add('dark');
+    document.querySelector('.dark-toggle').textContent = '\ud83c\udf19';
+  }
+}
+
+// ============ RENDER ALL ============
+function renderAll() {
+  renderWeekPlan();
+  renderRecipes();
+  // Don't re-render grocery (would lose checkbox state) unless first time
+}
+
+// ============ INIT ============
+initDarkMode();
+renderAll();
+renderGrocery();
+renderQuickRef();
+</script>
 </body>
 </html>
