@@ -159,9 +159,9 @@ function renderRecipeOptions(selectedId) {
   const typeMap = td('mealTypeMap');
   const groups = {
     breakfast: recipes.filter(r => r.mealType === 'breakfast'),
+    lunch: recipes.filter(r => r.mealType === 'lunch'),
     dinner: recipes.filter(r => r.mealType === 'dinner'),
-    dessert: recipes.filter(r => r.mealType === 'dessert'),
-    snack: recipes.filter(r => r.mealType === 'snack')
+    dessert: recipes.filter(r => r.mealType === 'dessert')
   };
   return Object.entries(groups).map(([type, recs]) => {
     if (!recs.length) return '';
