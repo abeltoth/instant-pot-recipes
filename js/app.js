@@ -86,7 +86,8 @@ function formatAmount(amount, scale) {
 
 function renderIngredients(recipe, scale, recipeText) {
   return recipe.ingredients.map((ing, idx) => {
-    const amt = formatAmount(ing.amount, scale);
+    const baseAmt = recipeText && recipeText.amounts ? recipeText.amounts[idx] : ing.amount;
+    const amt = formatAmount(baseAmt, scale);
     const itemText = recipeText ? recipeText.items[idx] : ing.item;
     const unitText = recipeText ? recipeText.units[idx] : ing.unit;
     return `<div class="ing-item"><span class="ing-amount">${amt}${amt && unitText ? ' ' + unitText : ''}</span> ${itemText}</div>`;
@@ -392,25 +393,26 @@ function computeGroceryList() {
       r.ingredients.forEach((ing, idx) => {
         if (!ing.cat) return;
 
+        const baseAmt = rt && rt.amounts ? rt.amounts[idx] : ing.amount;
         const normName = normalizeItem(ing.item);
-        const key = normName + '||' + (ing.amount === 0 ? '_zero_' : ing.unit);
+        const displayUnit = rt ? rt.units[idx] : ing.unit;
+        const key = normName + '||' + (baseAmt === 0 ? '_zero_' : displayUnit);
 
         if (!mergeMap[key]) {
           const displayName = rt ? rt.items[idx] : ing.item;
-          const displayUnit = rt ? rt.units[idx] : ing.unit;
           mergeMap[key] = {
             item: normName,
             displayItem: normalizeItem(displayName),
             displayUnit: displayUnit,
             amount: 0,
-            unit: ing.unit,
+            unit: displayUnit,
             cat: ing.cat,
-            isZero: ing.amount === 0
+            isZero: baseAmt === 0
           };
         }
 
-        if (ing.amount > 0) {
-          mergeMap[key].amount += ing.amount * scale;
+        if (baseAmt > 0) {
+          mergeMap[key].amount += baseAmt * scale;
           mergeMap[key].isZero = false;
         }
       });
@@ -540,7 +542,8 @@ function renderCookMode() {
     <div class="cook-ingredients">
       <h3>${t('ingredients')} (${cookServings} ${t('servings')})</h3>
       ${r.ingredients.map((ing, idx) => {
-        const amt = formatAmount(ing.amount, cookScale);
+        const baseAmt = rt.amounts ? rt.amounts[idx] : ing.amount;
+        const amt = formatAmount(baseAmt, cookScale);
         const itemText = rt.items[idx];
         const unitText = rt.units[idx];
         return `<div class="cook-ing-item"><span class="cook-ing-amount">${amt}${amt && unitText ? ' ' + unitText : ''}</span> ${itemText}</div>`;
