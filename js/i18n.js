@@ -582,7 +582,135 @@ const i18n = {
         items: ['marhah\u00fas, kock\u00e1zva', 'krumpli, kock\u00e1zva', 's\u00e1rgar\u00e9pa, szeletelve', 'hagyma', 'marha alapl\u00e9', 'kock\u00e1zott paradicsom', 'Tajin f\u0171szer', 'k\u00f6m\u00e9ny', 'ol\u00edvaolaj', 's\u00f3, bors, lime cikk'],
         units: ['font', '', '', '', 'cs\u00e9sze', 'doboz', 'ek', 'tk', 'ek', ''],
         steps: ['F\u0171szerezd a marh\u00e1t Tajin f\u0171szerrel, k\u00f6m\u00e9nnyel, s\u00f3val \u00e9s borssal.', 'P\u00edr\u00edtsd meg adagonk\u00e9nt ol\u00edvaolajban, 5 perc adagonk\u00e9nt.', 'Add hozz\u00e1 a hagym\u00e1t 2 percre, majd az alaplevet. Kaparj\u00e1l le minden odaragadt darabot.', 'Add hozz\u00e1 a paradicsomot, krumplit \u00e9s s\u00e1rgar\u00e9p\u00e1t.', 'Nyom\u00e1sf\u0151z\u00e9s 35 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 10 perc.', 'T\u00e1lald lime cikkel.'],
-        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+        timerLabel: 'Nyomásfőzés'
+      },
+      // === DAMN DELICIOUS (58-65) ===
+      'chicken-burrito-bowls': {
+        name: 'Csirkés burrito tálak',
+        items: ['csirkemell', 'fehér rizs', 'csirke alaplé', 'salsa', 'fekete bab, lecsepegtetett', 'fagyasztott kukorica', 'zöld chili', 'taco fűszerkeverék', 'reszelt mexikói sajt', 'koriander, tejföl díszítéshez'],
+        units: ['', 'csésze', 'csésze', 'csésze', 'doboz', 'csésze', 'doboz', 'ek', 'csésze', ''],
+        steps: ['Add a rizst, alaplevet, salsát, zöld chilit és taco fűszert az edénybe.', 'Helyezd a csirkemellet a tetejére. NE keverd meg.', 'Nyomásfőzés 10 perc, Természetes gőzkieresztés 10 perc.', 'Vedd ki a csirkét és tépd szét két villával. Lazítsd fel a rizst.', 'Keverd hozzá a fekete babot, kukoricát és a tépett csirkét.', 'Tálald sajttal, korianderrel és tejföllel.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'mushroom-risotto': {
+        name: 'Gombás risottó',
+        items: ['arborio rizs', 'gomba, szeletelve', 'csirke alaplé', 'parmezán sajt, reszelve', 'fokhagyma', 'spenót', 'fagyasztott borsó', 'vaj', 'kakukkfű', 'só, bors'],
+        units: ['csésze', 'g', 'csésze', 'csésze', 'gerezd', 'csésze', 'csésze', 'ek', 'tk', ''],
+        steps: ['Pírítsd meg a gombát vajban 4 percig. Add hozzá a fokhagymát és kakukkfüvet, 1 perc.', 'Add hozzá a rizst és keverd be, 1 perc.', 'Öntsd hozzá a csirke alaplevet, sózd és borsozd.', 'Nyomásfőzés 6 perc, Gyors gőzkieresztés.', 'Keverd bele a parmezánt, spenótot és borsót. Várd meg 2 percig, amíg a spenót összeesik.', 'Azonnal tálald.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'red-beans-rice': {
+        name: 'Vörösbab és rizs',
+        items: ['szárított vörösbab (nem kell áztatni)', 'andouille kolbász, szeletelve', 'hagyma', 'paprika', 'zeller', 'fokhagyma', 'zöldség alaplé', 'Cajun fűszerkeverék', 'babérlevél', 'só, bors, csípős szósz'],
+        units: ['font', 'g', '', '', 'szár', 'gerezd', 'csésze', 'tk', '', ''],
+        steps: ['Pírítsd meg a kolbászt 3 percig. Add hozzá a zöldségeket és fokhagymát, 3 perc.', 'Add hozzá a babot, alaplevet, Cajun fűszert és babérlevelet.', 'Nyomásfőzés 35 perc, Természetes gőzkieresztés 25 perc.', 'Vedd ki a babérleveleket. Nyomd szét néhány babot a sűrítéshez.', 'Tálald főtt rizs fölé csípős szósszal.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'potato-corn-chowder': {
+        name: 'Krumplis-kukoricás krémleves',
+        items: ['szalonna, felkockázva', 'piros krumpli, kockázva', 'fagyasztott kukorica', 'hagyma', 'fokhagyma', 'zöldség alaplé', 'tejszín', 'liszt', 'kakukkfű', 'só, bors, snidling díszítéshez'],
+        units: ['szelet', '', 'csésze', '', 'gerezd', 'csésze', 'csésze', 'ek', 'tk', ''],
+        steps: ['Pírítsd meg a szalonnát ropogósra, kb. 4 perc. Vedd ki.', 'Pírítsd meg a hagymát és fokhagymát a szalonnazsiradékban, 2 perc.', 'Add hozzá a krumplit, kukoricát, alaplevet, kakukkfüvet, sót és borsot.', 'Nyomásfőzés 10 perc, Gyors gőzkieresztés.', 'Keverd össze a lisztet a tejszínnel, add a leveshez. Pírítás 3 perc a sűrítéshez.', 'Szórd meg ropogós szalonnával és snidlinggel.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'white-chicken-chili': {
+        name: 'Fehér csirke chili',
+        items: ['csirkecomb', 'fehér bab, lecsepegtetett', 'enyhe zöld chili', 'hagyma', 'fokhagyma', 'csirke alaplé', 'tejföl', 'kömény', 'só, bors, koriander'],
+        units: ['', 'doboz', 'doboz', '', 'gerezd', 'csésze', 'csésze', 'tk', ''],
+        steps: ['Pírítsd meg a hagymát és fokhagymát 3 percig.', 'Add hozzá a csirkecombot, babot, chilit, alaplevet és köményt.', 'Nyomásfőzés 12 perc, Természetes gőzkieresztés 10 perc.', 'Vedd ki a csirkét és tépd szét. Tedd vissza az edénybe.', 'Keverd bele a tejfölt. Ízesítsd.', 'Tálald korianderrel.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'chicken-tacos': {
+        name: 'Csirkés tacos',
+        items: ['csirkecomb', 'salsa', 'mexikói sör (vagy csirke alaplé)', 'chipotle chilipor', 'kömény', 'oregánó', 'kis tortilla', 'avokádó, lime, jalapeño díszítéshez'],
+        units: ['', 'csésze', 'csésze', 'ek', 'tk', 'tk', '', ''],
+        steps: ['Fűszerezd a csirkét chipotle chiliporral, köménnyel és oregánóval.', 'Pírítsd meg a csirkét 2 perc oldalanként.', 'Add hozzá a salsát és sört (vagy alaplevet).', 'Nyomásfőzés 8 perc, Természetes gőzkieresztés 5 perc.', 'Tépd szét a csirkét két villával és keverd össze a szósszal.', 'Tálald tortillában avokádóval, lime-mal és jalapeñóval.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'ground-beef-pasta': {
+        name: 'Darált marhás tészta',
+        items: ['darált marha', 'campanelle vagy fusilli tészta', 'marinara szósz (700 ml)', 'víz', 'olasz fűszerkeverék', 'só, bors', 'parmezán díszítéshez'],
+        units: ['font', 'g', 'üveg', 'csésze', 'tk', '', ''],
+        steps: ['Pírítsd meg a darált marhát 5 percig. Csepegtesd le a felesleges zsírt.', 'Add hozzá a vizet, tésztát és olasz fűszert. Öntsd a szószt a TETEJÉRE — NE keverd meg.', 'Nyomásfőzés 4 perc, Természetes gőzkieresztés 5 perc.', 'Keverd jól össze. Sózd-borsozd.', 'Szórd meg parmezánnal.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'sweet-potato-casserole': {
+        name: 'Édesburgonya rakottas',
+        items: ['édesburgonya, meghámozva és felkockázva', 'víz', 'vaj', 'barna cukor', 'fahéj', 'szerecsendió', 'vanília kivonat', 'mini pillecukor', 'pekándió, aprítva'],
+        units: ['font', 'csésze', 'ek', 'csésze', 'tk', 'tk', 'tk', 'csésze', 'csésze'],
+        steps: ['Add az édesburgonyát és vizet az edénybe.', 'Nyomásfőzés 8 perc, Gyors gőzkieresztés.', 'Csepegtesd le és törd össze vajjal, barna cukorral, fahéjjal, szerecsendióval és vaníliával.', 'Tedd tűzálló tálba. Szórd meg pillecukorral és pekándióval.', 'Forrólevegő 200°C, 3 perc amíg a pillecukor aranybarnára sül.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      // === PINCH OF YUM (66-75) ===
+      'wild-rice-soup': {
+        name: 'Vadrizs leves',
+        items: ['vadrizs', 'gomba, szeletelve', 'vaj', 'sárgarépa', 'zeller', 'hagyma', 'csirke alaplé', 'tejszín', 'liszt', 'só, bors, kakukkfű'],
+        units: ['csésze', 'g', 'ek', '', 'szár', '', 'csésze', 'csésze', 'ek', ''],
+        steps: ['Pírítsd meg a gombát vajban 4 percig. Add hozzá a hagymát, sárgarépát, zellert és kakukkfüvet, 3 perc.', 'Add hozzá a vadrizst és csirke alaplevet.', 'Nyomásfőzés 35 perc, Természetes gőzkieresztés 10 perc.', 'Keverd össze a lisztet a tejszínnel, add a leveshez. Pírítás 3 perc a sűrítéshez.', 'Ízesítsd és tálald.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'short-rib-ragu': {
+        name: 'Bordaszelet ragú',
+        items: ['csonttal bordaszelet', 'hagyma', 'fokhagyma', 'száraz vörösbor', 'marinara szósz', 'szárított chili pehely', 'gnocchi vagy tészta', 'só, bors', 'parmezán díszítéshez'],
+        units: ['font', '', 'gerezd', 'csésze', 'üveg', 'tk', 'font', '', ''],
+        steps: ['Sózd-borsozd a bordaszeleteket. Pírítsd meg adagonként, 3 perc oldalanként.', 'Pírítsd a hagymát és fokhagymát 2 percig. Öblítsd le vörösborral.', 'Add hozzá a marinara szószt és chilit. Tedd vissza a bordákat.', 'Nyomásfőzés 45 perc, Természetes gőzkieresztés 10 perc.', 'Vedd ki a bordákat, tépd szét, dobd el a csontokat. Pírítsd a szószt 5 percig.', 'Tálald gnocchi vagy tészta fölé parmezánnal.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'cauliflower-curry': {
+        name: 'Karfiol curry',
+        items: ['karfiol, rózsáira szedve', 'vajsütőtök, kockázva', 'vörös lencse', 'kókusztej', 'kockázott paradicsom', 'vörös curry paszta', 'hagyma', 'fokhagyma', 'kurkuma', 'só, bors'],
+        units: ['fej', 'csésze', 'csésze', 'doboz', 'doboz', 'ek', '', 'gerezd', 'tk', ''],
+        steps: ['Add az összes hozzávalót az edénybe és keverd össze.', 'Nyomásfőzés 5 perc, Természetes gőzkieresztés 10 perc.', 'Keverd jól össze — a lencse krémes állagot ad.', 'Tálald rizs fölé.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'coconut-tandoori-chicken': {
+        name: 'Kókuszos tandoori csirke',
+        items: ['csirkecomb', 'kókusztej', 'fehér rizs', 'víz', 'garam masala', 'chilipor', 'kömény', 'kurkuma', 'gyömbér por', 'méz', 'só, bors'],
+        units: ['', 'doboz', 'csésze', 'csésze', 'ek', 'tk', 'tk', 'tk', 'tk', 'ek', ''],
+        steps: ['Keverd össze a fűszereket és dörzsöld be a csirkébe.', 'Add a rizst és vizet az edénybe. Helyezd a csirkét a tetejére.', 'Keverd össze a kókusztejet a mézzel, öntsd a csirkére.', 'Nyomásfőzés 12 perc, Természetes gőzkieresztés 10 perc.', 'Lazítsd fel a rizst és tálald a csirkét a tetejére.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'spicy-short-rib-soup': {
+        name: 'Csípős bordaszelet leves',
+        items: ['csont nélküli bordaszelet', 'gochujang szósz', 'paradicsompüré', 'gyömbér, reszelve', 'fokhagyma', 'mogyoróhagyma, szeletelve', 'marha alaplé', 'ramen vagy stir-fry tészta', 'spenót', 'újhagyma, szezámmag díszítéshez'],
+        units: ['font', 'ek', 'ek', 'ek', 'gerezd', '', 'csésze', 'g', 'csésze', ''],
+        steps: ['Sózd meg a bordaszeleteket. Pírítsd meg 3 perc oldalanként.', 'Add hozzá a mogyoróhagymát, fokhagymát, gyömbért, gochujangot és paradicsompürét, 1 perc.', 'Öntsd hozzá a marha alaplevet.', 'Nyomásfőzés 30 perc, Természetes gőzkieresztés 10 perc.', 'Vedd ki a húst, tépd szét. Válts Pírítás módra. Add hozzá a tésztát, 3 perc.', 'Tedd vissza a húst, add hozzá a spenótot. Tálald újhagymával és szezámmaggal.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'hawaiian-chicken-tacos': {
+        name: 'Hawaii csirkés tacos',
+        items: ['csirkecomb', 'friss ananász, kockázva', 'jalapeño', 'lilahagyma, szeletelve', 'fokhagyma', 'chilipor', 'kömény', 'csirke alaplé', 'kis tortilla', 'coleslaw, Sriracha díszítéshez'],
+        units: ['', 'csésze', '', '', 'gerezd', 'ek', 'tk', 'csésze', '', ''],
+        steps: ['Fűszerezd a csirkét chiliporral, köménnyel és sóval.', 'Add a csirkét, ananászt, jalapeñót, lilahagymát, fokhagymát és alaplevet az edénybe.', 'Nyomásfőzés 10 perc, Természetes gőzkieresztés 5 perc.', 'Tépd szét a csirkét és keverd össze az ananászos keverékkel.', 'Tedd a forrólevegős kosárba. Forrólevegő 200°C, 5 perc a ropogós szélekért.', 'Tálald tortillában coleslaw-val és Srirachával.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'italian-beef-sandwiches': {
+        name: 'Olasz marhás szendvics',
+        items: ['marhaszegy', 'marha alaplé', 'fokhagyma', 'hagyma, szeletelve', 'oregánó', 'bazsalikom', 'pirospaprika', 'chili pehely', 'ropogós zsemle', 'giardiniera', 'provolone sajt'],
+        units: ['font', 'csésze', 'gerezd', '', 'tk', 'tk', 'tk', 'tk', '', 'csésze', 'szelet'],
+        steps: ['Fűszerezd a marhát oregánóval, bazsalikommal, pirospaprikával, chili pehellyel, sóval és borssal.', 'Tedd az edénybe az alapléval, fokhagymával és hagymával.', 'Nyomásfőzés 60 perc, Természetes gőzkieresztés 15 perc.', 'Tépd szét két villával. Áztasd a szaftban 5 percig.', 'Halmozd a húst zsemlébe, tedd rá a giardinierát és provolonét.', 'Tálald szafttal mártogatáshoz.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'chicken-tinga-tacos': {
+        name: 'Chicken tinga tacos',
+        items: ['csirkemell', 'chipotle paprika adobo szószban', 'tűzön pirított paradicsom', 'hagyma', 'fokhagyma', 'oregánó', 'kömény', 'csirke alaplé', 'kukorica tortilla', 'avokádó, cotija sajt, koriander, lime'],
+        units: ['', '', 'doboz', '', 'gerezd', 'tk', 'tk', 'csésze', '', ''],
+        steps: ['Turmixold össze a paradicsomot, chipotlét, hagymát, fokhagymát, oregánót és köményt szósszá.', 'Öntsd a szószt és alaplevet az edénybe. Add hozzá a csirkemellet.', 'Nyomásfőzés 10 perc, Természetes gőzkieresztés 5 perc.', 'Tépd szét a csirkét és keverd össze a füstös szósszal.', 'Tálald tortillában avokádóval, cotija sajttal, korianderrel és lime-mal.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'mashed-potatoes': {
+        name: 'Krumplipüré',
+        items: ['krumpli, meghámozva és negyedelve', 'víz', 'vaj (1 tábla)', 'fokhagyma', 'friss zsálya, aprítva', 'friss kakukkfű', 'krémsajt vagy tejföl', 'parmezán, reszelve', 'só, bors'],
+        units: ['font', 'csésze', 'csésze', 'gerezd', 'ek', 'ek', 'csésze', 'csésze', ''],
+        steps: ['Add a krumplit és vizet az edénybe.', 'Nyomásfőzés 12 perc, Gyors gőzkieresztés. Öntsd le a vizet.', 'Míg a krumpli fő, olvaszd fel a vajat egy serpenyőben fokhagymával, zsályával és kakukkfűvel, 3 perc.', 'Törd össze a krumplit azonnal. Keverd bele a fűszervajas keveréket, krémsajtot és parmezánt.', 'Sózd-borsozd. Tálald melegen.'],
+        timerLabel: 'Nyomásfőzés'
+      },
+      'sausage-kale-soup': {
+        name: 'Kolbászos kelkáposztás fehérbab leves',
+        items: ['olasz kolbász', 'cannellini bab, lecsepegtetett', 'kelkáposzta, aprítva', 'krumpli, kockázva', 'csirke alaplé', 'hagyma', 'fokhagyma', 'füstölt pirospaprika', 'tejszín', 'só, bors'],
+        units: ['font', 'doboz', 'csésze', '', 'csésze', '', 'gerezd', 'tk', 'csésze', ''],
+        steps: ['Pírítsd meg az olasz kolbászt morzsolva 5 percig. Add hozzá a hagymát és fokhagymát, 2 perc.', 'Add hozzá a krumplit, babot, alaplevet és füstölt pirospaprikát.', 'Nyomásfőzés 3 perc, Természetes gőzkieresztés 10 perc.', 'Keverd bele az aprított kelkáposztát és tejszínt. Pírítás 3 perc, amíg a káposzta összeesik.', 'Ízesítsd és tálald.'],
+        timerLabel: 'Nyomásfőzés'
       }
     }
   }

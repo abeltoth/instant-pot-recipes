@@ -1372,6 +1372,503 @@ const recipes = [
       "Serve with lime wedges."
     ],
     timer: { minutes: 35, label: "Pressure Cook" }
+  },
+
+  // ─────────────────────────────────────────────
+  //  DAMN DELICIOUS PICKS (8)
+  // ─────────────────────────────────────────────
+
+  {
+    id: "chicken-burrito-bowls",
+    name: "Chicken Burrito Bowls",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken breasts", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "white rice", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 1, unit: "cup", item: "salsa", cat: "Canned / Jarred" },
+      { amount: 1, unit: "can", item: "black beans, drained", cat: "Canned / Jarred" },
+      { amount: 1, unit: "cup", item: "frozen corn", cat: "Frozen" },
+      { amount: 1, unit: "can", item: "green chiles", cat: "Canned / Jarred" },
+      { amount: 1, unit: "tbsp", item: "taco seasoning", cat: "Pantry" },
+      { amount: 1, unit: "cup", item: "shredded Mexican cheese", cat: "Produce" },
+      { amount: 0, unit: "", item: "cilantro, sour cream for topping", cat: "Produce" }
+    ],
+    steps: [
+      "Add rice, chicken broth, salsa, green chiles, and taco seasoning to the pot.",
+      "Place chicken breasts on top. Do NOT stir.",
+      "Pressure Cook 10 min, Natural Release 10 min.",
+      "Remove chicken and shred with two forks. Fluff rice.",
+      "Stir in black beans, corn, and shredded chicken.",
+      "Top with cheese, cilantro, and sour cream."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "mushroom-risotto",
+    name: "Mushroom Risotto",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1.5, unit: "cups", item: "arborio rice", cat: "Grains & Pasta" },
+      { amount: 8, unit: "oz", item: "mushrooms, sliced", cat: "Produce" },
+      { amount: 4, unit: "cups", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "cup", item: "Parmesan cheese, grated", cat: "Produce" },
+      { amount: 2, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "cup", item: "spinach", cat: "Produce" },
+      { amount: 0.5, unit: "cup", item: "frozen peas", cat: "Frozen" },
+      { amount: 2, unit: "tbsp", item: "butter", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "thyme", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Sauté mushrooms in butter for 4 min until golden. Add garlic and thyme, stir 1 min.",
+      "Add arborio rice and stir to coat, 1 min.",
+      "Pour in chicken broth and season with salt and pepper.",
+      "Pressure Cook 6 min, Quick Release.",
+      "Stir in Parmesan, spinach, and peas. Let sit 2 min until spinach wilts.",
+      "Serve immediately."
+    ],
+    timer: { minutes: 6, label: "Pressure Cook" }
+  },
+  {
+    id: "red-beans-rice",
+    name: "Red Beans and Rice",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "dried red beans (no soak needed)", cat: "Grains & Pasta" },
+      { amount: 12, unit: "oz", item: "andouille sausage, sliced", cat: "Proteins" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 1, unit: "", item: "bell pepper, diced", cat: "Produce" },
+      { amount: 2, unit: "stalks", item: "celery, diced", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 4, unit: "cups", item: "vegetable broth", cat: "Canned / Jarred" },
+      { amount: 2, unit: "tsp", item: "Cajun seasoning", cat: "Pantry" },
+      { amount: 2, unit: "", item: "bay leaves", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper, hot sauce", cat: "Pantry" }
+    ],
+    steps: [
+      "Sauté andouille sausage for 3 min. Add onion, bell pepper, celery, and garlic, cook 3 min.",
+      "Add red beans, broth, Cajun seasoning, and bay leaves.",
+      "Pressure Cook 35 min, Natural Release 25 min.",
+      "Remove bay leaves. Mash some beans against the side to thicken.",
+      "Serve over cooked rice with hot sauce."
+    ],
+    timer: { minutes: 35, label: "Pressure Cook" }
+  },
+  {
+    id: "potato-corn-chowder",
+    name: "Potato Corn Chowder",
+    methods: ["saute", "pressure"],
+    mealType: "lunch",
+    servings: 6,
+    ingredients: [
+      { amount: 4, unit: "slices", item: "bacon, chopped", cat: "Proteins" },
+      { amount: 4, unit: "", item: "red potatoes, diced", cat: "Produce" },
+      { amount: 2, unit: "cups", item: "frozen corn", cat: "Frozen" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 2, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 3, unit: "cups", item: "vegetable stock", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "cup", item: "heavy cream", cat: "Produce" },
+      { amount: 2, unit: "tbsp", item: "flour", cat: "Grains & Pasta" },
+      { amount: 1, unit: "tsp", item: "thyme", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper, chives for garnish", cat: "Pantry" }
+    ],
+    steps: [
+      "Sauté chopped bacon until crispy, about 4 min. Remove and set aside.",
+      "Sauté onion and garlic in the bacon fat for 2 min.",
+      "Add potatoes, corn, stock, thyme, salt, and pepper.",
+      "Pressure Cook 10 min, Quick Release.",
+      "Mix flour with heavy cream, stir into the chowder. Sauté 3 min to thicken.",
+      "Top with crispy bacon and chives."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "white-chicken-chili",
+    name: "White Chicken Chili",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken thighs", cat: "Proteins" },
+      { amount: 2, unit: "cans", item: "Great Northern beans, drained", cat: "Canned / Jarred" },
+      { amount: 2, unit: "cans", item: "mild green chiles", cat: "Canned / Jarred" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 3, unit: "cups", item: "chicken stock", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "cup", item: "sour cream", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper, cilantro", cat: "Pantry" }
+    ],
+    steps: [
+      "Sauté diced onion and garlic for 3 min.",
+      "Add chicken thighs, beans, green chiles, stock, and cumin.",
+      "Pressure Cook 12 min, Natural Release 10 min.",
+      "Remove chicken and shred. Return to pot.",
+      "Stir in sour cream until creamy. Season to taste.",
+      "Serve topped with cilantro."
+    ],
+    timer: { minutes: 12, label: "Pressure Cook" }
+  },
+  {
+    id: "chicken-tacos",
+    name: "Chicken Tacos",
+    methods: ["saute", "pressure"],
+    mealType: "lunch",
+    servings: 4,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken thighs", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "salsa", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "cup", item: "Mexican beer (or chicken broth)", cat: "Canned / Jarred" },
+      { amount: 1, unit: "tbsp", item: "chipotle chili powder", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "oregano", cat: "Pantry" },
+      { amount: 8, unit: "", item: "small tortillas", cat: "Grains & Pasta" },
+      { amount: 0, unit: "", item: "avocado, lime, jalapeños for topping", cat: "Produce" }
+    ],
+    steps: [
+      "Season chicken with chipotle chili powder, cumin, and oregano.",
+      "Sauté chicken 2 min per side to brown.",
+      "Add salsa and beer (or broth).",
+      "Pressure Cook 8 min, Natural Release 5 min.",
+      "Shred chicken with two forks and mix with sauce.",
+      "Serve in tortillas with avocado, lime, and jalapeños."
+    ],
+    timer: { minutes: 8, label: "Pressure Cook" }
+  },
+  {
+    id: "ground-beef-pasta",
+    name: "Ground Beef & Pasta",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "ground beef", cat: "Proteins" },
+      { amount: 8, unit: "oz", item: "campanelle or fusilli pasta", cat: "Grains & Pasta" },
+      { amount: 1, unit: "jar", item: "marinara sauce (24 oz)", cat: "Canned / Jarred" },
+      { amount: 2, unit: "cups", item: "water", cat: null },
+      { amount: 1, unit: "tsp", item: "Italian seasoning", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" },
+      { amount: 0, unit: "", item: "Parmesan for topping", cat: "Produce" }
+    ],
+    steps: [
+      "Sauté ground beef for 5 min, breaking up the meat. Drain excess fat.",
+      "Add water, pasta, and Italian seasoning. Pour marinara on top — do NOT stir.",
+      "Pressure Cook 4 min, Natural Release 5 min.",
+      "Stir well to combine. Season with salt and pepper.",
+      "Top with Parmesan cheese."
+    ],
+    timer: { minutes: 4, label: "Pressure Cook" }
+  },
+  {
+    id: "sweet-potato-casserole",
+    name: "Sweet Potato Casserole",
+    methods: ["pressure", "air"],
+    mealType: "dessert",
+    servings: 6,
+    ingredients: [
+      { amount: 3, unit: "lb", item: "sweet potatoes, peeled and cubed", cat: "Produce" },
+      { amount: 1, unit: "cup", item: "water", cat: null },
+      { amount: 3, unit: "tbsp", item: "butter", cat: "Pantry" },
+      { amount: 0.25, unit: "cup", item: "brown sugar", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cinnamon", cat: "Pantry" },
+      { amount: 0.5, unit: "tsp", item: "nutmeg", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "vanilla extract", cat: "Pantry" },
+      { amount: 1, unit: "cup", item: "mini marshmallows", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "pecans, chopped", cat: "Pantry" }
+    ],
+    steps: [
+      "Add sweet potatoes and water to the pot.",
+      "Pressure Cook 8 min, Quick Release.",
+      "Drain and mash with butter, brown sugar, cinnamon, nutmeg, and vanilla.",
+      "Transfer to an oven-safe dish. Top with marshmallows and pecans.",
+      "Air Crisp 400°F, 3 min until marshmallows are golden."
+    ],
+    timer: { minutes: 8, label: "Pressure Cook" }
+  },
+
+  // ─────────────────────────────────────────────
+  //  PINCH OF YUM PICKS (10)
+  // ─────────────────────────────────────────────
+
+  {
+    id: "wild-rice-soup",
+    name: "Wild Rice Soup",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 1, unit: "cup", item: "wild rice", cat: "Grains & Pasta" },
+      { amount: 8, unit: "oz", item: "mushrooms, sliced", cat: "Produce" },
+      { amount: 2, unit: "tbsp", item: "butter", cat: "Pantry" },
+      { amount: 2, unit: "", item: "carrots, diced", cat: "Produce" },
+      { amount: 2, unit: "stalks", item: "celery, diced", cat: "Produce" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 6, unit: "cups", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "cup", item: "heavy cream", cat: "Produce" },
+      { amount: 2, unit: "tbsp", item: "flour", cat: "Grains & Pasta" },
+      { amount: 0, unit: "", item: "salt, pepper, thyme", cat: "Pantry" }
+    ],
+    steps: [
+      "Sauté mushrooms in butter for 4 min. Add onion, carrots, celery, and thyme, cook 3 min.",
+      "Add wild rice and chicken broth.",
+      "Pressure Cook 35 min, Natural Release 10 min.",
+      "Mix flour with heavy cream, stir into soup. Sauté 3 min to thicken.",
+      "Season to taste and serve."
+    ],
+    timer: { minutes: 35, label: "Pressure Cook" }
+  },
+  {
+    id: "short-rib-ragu",
+    name: "Short Rib Ragu",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 2, unit: "lb", item: "bone-in short ribs", cat: "Proteins" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 4, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 0.5, unit: "cup", item: "dry red wine", cat: "Pantry" },
+      { amount: 1, unit: "jar", item: "marinara sauce", cat: "Canned / Jarred" },
+      { amount: 0.5, unit: "tsp", item: "crushed red pepper", cat: "Pantry" },
+      { amount: 1, unit: "lb", item: "gnocchi or pasta", cat: "Grains & Pasta" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" },
+      { amount: 0, unit: "", item: "Parmesan for topping", cat: "Produce" }
+    ],
+    steps: [
+      "Season short ribs with salt and pepper. Sauté in batches until browned, 3 min per side.",
+      "Sauté onion and garlic for 2 min. Deglaze with red wine.",
+      "Add marinara sauce and crushed red pepper. Return ribs to pot.",
+      "Pressure Cook 45 min, Natural Release 10 min.",
+      "Remove ribs, shred meat, discard bones. Sauté sauce 5 min to reduce.",
+      "Serve over gnocchi or pasta with Parmesan."
+    ],
+    timer: { minutes: 45, label: "Pressure Cook" }
+  },
+  {
+    id: "cauliflower-curry",
+    name: "Cauliflower Curry",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "head", item: "cauliflower, cut into florets", cat: "Produce" },
+      { amount: 2, unit: "cups", item: "butternut squash, cubed", cat: "Produce" },
+      { amount: 1, unit: "cup", item: "red lentils", cat: "Grains & Pasta" },
+      { amount: 1, unit: "can", item: "coconut milk", cat: "Canned / Jarred" },
+      { amount: 1, unit: "can", item: "diced tomatoes", cat: "Canned / Jarred" },
+      { amount: 2, unit: "tbsp", item: "red curry paste", cat: "Pantry" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 2, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "turmeric", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Add all ingredients to the pot and stir to combine.",
+      "Pressure Cook 5 min, Natural Release 10 min.",
+      "Stir well — lentils will create a creamy texture.",
+      "Serve over rice."
+    ],
+    timer: { minutes: 5, label: "Pressure Cook" }
+  },
+  {
+    id: "coconut-tandoori-chicken",
+    name: "Coconut Tandoori Chicken",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 6, unit: "", item: "chicken thighs", cat: "Proteins" },
+      { amount: 1, unit: "can", item: "coconut milk", cat: "Canned / Jarred" },
+      { amount: 1, unit: "cup", item: "white rice", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "water", cat: null },
+      { amount: 1, unit: "tbsp", item: "garam masala", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "chili powder", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "turmeric", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "ginger powder", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "honey", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Mix garam masala, chili powder, cumin, turmeric, ginger, salt, and pepper. Rub onto chicken.",
+      "Add rice and water to the pot. Place chicken on top.",
+      "Mix coconut milk with honey, pour over chicken.",
+      "Pressure Cook 12 min, Natural Release 10 min.",
+      "Fluff rice and serve chicken on top."
+    ],
+    timer: { minutes: 12, label: "Pressure Cook" }
+  },
+  {
+    id: "spicy-short-rib-soup",
+    name: "Spicy Short Rib Noodle Soup",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1.5, unit: "lb", item: "boneless short ribs", cat: "Proteins" },
+      { amount: 2, unit: "tbsp", item: "gochujang sauce", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "tomato paste", cat: "Canned / Jarred" },
+      { amount: 1, unit: "tbsp", item: "ginger, grated", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 2, unit: "", item: "shallots, sliced", cat: "Produce" },
+      { amount: 6, unit: "cups", item: "beef broth", cat: "Canned / Jarred" },
+      { amount: 8, unit: "oz", item: "ramen or stir-fry noodles", cat: "Grains & Pasta" },
+      { amount: 2, unit: "cups", item: "spinach", cat: "Produce" },
+      { amount: 0, unit: "", item: "scallions, sesame seeds for topping", cat: "Produce" }
+    ],
+    steps: [
+      "Season short ribs with salt. Sauté until browned, 3 min per side.",
+      "Add shallots, garlic, ginger, gochujang, and tomato paste. Stir 1 min.",
+      "Add beef broth.",
+      "Pressure Cook 30 min, Natural Release 10 min.",
+      "Remove ribs and shred. Switch to Sauté. Add noodles, cook 3 min.",
+      "Return meat, add spinach. Serve with scallions and sesame seeds."
+    ],
+    timer: { minutes: 30, label: "Pressure Cook" }
+  },
+  {
+    id: "hawaiian-chicken-tacos",
+    name: "Hawaiian Chicken Tacos",
+    methods: ["pressure", "air"],
+    mealType: "lunch",
+    servings: 4,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken thighs", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "fresh pineapple, diced", cat: "Produce" },
+      { amount: 1, unit: "", item: "jalapeño, diced", cat: "Produce" },
+      { amount: 0.5, unit: "", item: "red onion, sliced", cat: "Produce" },
+      { amount: 2, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "chili powder", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 8, unit: "", item: "small tortillas", cat: "Grains & Pasta" },
+      { amount: 0, unit: "", item: "coleslaw, Sriracha for topping", cat: "Produce" }
+    ],
+    steps: [
+      "Season chicken with chili powder, cumin, and salt.",
+      "Add chicken, pineapple, jalapeño, red onion, garlic, and broth to the pot.",
+      "Pressure Cook 10 min, Natural Release 5 min.",
+      "Shred chicken and toss with pineapple-jalapeño mixture.",
+      "Spread on air fryer basket. Air Crisp 400°F, 5 min for crispy edges.",
+      "Serve in tortillas with coleslaw and Sriracha."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "italian-beef-sandwiches",
+    name: "Italian Beef Sandwiches",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 3, unit: "lb", item: "beef chuck roast", cat: "Proteins" },
+      { amount: 1, unit: "cup", item: "beef broth", cat: "Canned / Jarred" },
+      { amount: 4, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "", item: "onion, sliced", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "oregano", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "basil", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "paprika", cat: "Pantry" },
+      { amount: 0.5, unit: "tsp", item: "red pepper flakes", cat: "Pantry" },
+      { amount: 6, unit: "", item: "crusty rolls", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "giardiniera", cat: "Canned / Jarred" },
+      { amount: 6, unit: "slices", item: "provolone cheese", cat: "Produce" }
+    ],
+    steps: [
+      "Season chuck roast with oregano, basil, paprika, red pepper flakes, salt, and pepper.",
+      "Place in pot with beef broth, garlic, and onion.",
+      "Pressure Cook 60 min, Natural Release 15 min.",
+      "Shred beef with two forks. Let soak in juices 5 min.",
+      "Pile beef on crusty rolls, top with giardiniera and provolone.",
+      "Serve with a side of au jus for dipping."
+    ],
+    timer: { minutes: 60, label: "Pressure Cook" }
+  },
+  {
+    id: "chicken-tinga-tacos",
+    name: "Chicken Tinga Tacos",
+    methods: ["pressure"],
+    mealType: "lunch",
+    servings: 4,
+    ingredients: [
+      { amount: 4, unit: "", item: "chicken breasts", cat: "Proteins" },
+      { amount: 2, unit: "", item: "chipotle peppers in adobo, chopped", cat: "Canned / Jarred" },
+      { amount: 1, unit: "can", item: "fire-roasted tomatoes", cat: "Canned / Jarred" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "oregano", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "chicken stock", cat: "Canned / Jarred" },
+      { amount: 8, unit: "", item: "corn tortillas", cat: "Grains & Pasta" },
+      { amount: 0, unit: "", item: "avocado, cotija cheese, cilantro, lime", cat: "Produce" }
+    ],
+    steps: [
+      "Blend tomatoes, chipotle peppers, onion, garlic, oregano, and cumin into a sauce.",
+      "Pour sauce and stock into the pot. Add chicken breasts.",
+      "Pressure Cook 10 min, Natural Release 5 min.",
+      "Shred chicken and mix with the smoky sauce.",
+      "Serve in tortillas with avocado, cotija, cilantro, and lime."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "mashed-potatoes",
+    name: "Mashed Potatoes",
+    methods: ["pressure"],
+    mealType: "lunch",
+    servings: 6,
+    ingredients: [
+      { amount: 5, unit: "lb", item: "potatoes, peeled and quartered", cat: "Produce" },
+      { amount: 1, unit: "cup", item: "water", cat: null },
+      { amount: 0.5, unit: "cup", item: "butter (1 stick)", cat: "Pantry" },
+      { amount: 4, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 2, unit: "tbsp", item: "fresh sage, chopped", cat: "Produce" },
+      { amount: 1, unit: "tbsp", item: "fresh thyme", cat: "Produce" },
+      { amount: 0.5, unit: "cup", item: "cream cheese or sour cream", cat: "Produce" },
+      { amount: 0.5, unit: "cup", item: "Parmesan, grated", cat: "Produce" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Add potatoes and water to the pot.",
+      "Pressure Cook 12 min, Quick Release. Drain water.",
+      "While potatoes cook, melt butter in a skillet with garlic, sage, and thyme for 3 min.",
+      "Mash potatoes immediately. Stir in herb butter, cream cheese, and Parmesan.",
+      "Season with salt and pepper. Serve warm."
+    ],
+    timer: { minutes: 12, label: "Pressure Cook" }
+  },
+  {
+    id: "sausage-kale-soup",
+    name: "Sausage, Kale & White Bean Soup",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "Italian sausage", cat: "Proteins" },
+      { amount: 2, unit: "cans", item: "cannellini beans, drained", cat: "Canned / Jarred" },
+      { amount: 4, unit: "cups", item: "kale, chopped", cat: "Produce" },
+      { amount: 3, unit: "", item: "potatoes, diced", cat: "Produce" },
+      { amount: 6, unit: "cups", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "smoked paprika", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "heavy cream", cat: "Produce" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Sauté Italian sausage, breaking it up, for 5 min. Add onion and garlic, cook 2 min.",
+      "Add potatoes, beans, broth, and smoked paprika.",
+      "Pressure Cook 3 min, Natural Release 10 min.",
+      "Stir in chopped kale and heavy cream. Sauté 3 min until kale wilts.",
+      "Season to taste and serve."
+    ],
+    timer: { minutes: 3, label: "Pressure Cook" }
   }
 ];
 
