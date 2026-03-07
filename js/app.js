@@ -86,7 +86,7 @@ function formatAmount(amount, scale) {
 
 function renderIngredients(recipe, scale, recipeText) {
   return recipe.ingredients.map((ing, idx) => {
-    const baseAmt = recipeText && recipeText.amounts ? recipeText.amounts[idx] : ing.amount;
+    const baseAmt = recipeText && recipeText.amounts && recipeText.amounts[idx] != null ? recipeText.amounts[idx] : ing.amount;
     const amt = formatAmount(baseAmt, scale);
     const itemText = recipeText ? recipeText.items[idx] : ing.item;
     const unitText = recipeText ? recipeText.units[idx] : ing.unit;
@@ -393,7 +393,7 @@ function computeGroceryList() {
       r.ingredients.forEach((ing, idx) => {
         if (!ing.cat) return;
 
-        const baseAmt = rt && rt.amounts ? rt.amounts[idx] : ing.amount;
+        const baseAmt = rt && rt.amounts && rt.amounts[idx] != null ? rt.amounts[idx] : ing.amount;
         const normName = normalizeItem(ing.item);
         const displayUnit = rt ? rt.units[idx] : ing.unit;
         const key = normName + '||' + (baseAmt === 0 ? '_zero_' : displayUnit);
@@ -542,7 +542,7 @@ function renderCookMode() {
     <div class="cook-ingredients">
       <h3>${t('ingredients')} (${cookServings} ${t('servings')})</h3>
       ${r.ingredients.map((ing, idx) => {
-        const baseAmt = rt.amounts ? rt.amounts[idx] : ing.amount;
+        const baseAmt = rt.amounts && rt.amounts[idx] != null ? rt.amounts[idx] : ing.amount;
         const amt = formatAmount(baseAmt, cookScale);
         const itemText = rt.items[idx];
         const unitText = rt.units[idx];
