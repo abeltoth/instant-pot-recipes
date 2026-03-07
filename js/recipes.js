@@ -1232,6 +1232,146 @@ const recipes = [
       "Serve over rice with sesame seeds and sliced green onions."
     ],
     timer: { minutes: 10, label: "Pressure Cook" }
+  },
+
+  // ─────────────────────────────────────────────
+  //  INSTANT POT OFFICIAL PICKS (5)
+  // ─────────────────────────────────────────────
+
+  {
+    id: "italian-pot-roast",
+    name: "Italian Pot Roast",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 6,
+    ingredients: [
+      { amount: 3, unit: "lb", item: "chuck roast", cat: "Proteins" },
+      { amount: 2, unit: "tbsp", item: "butter", cat: "Pantry" },
+      { amount: 1, unit: "cup", item: "beef broth", cat: "Canned / Jarred" },
+      { amount: 2, unit: "tbsp", item: "tomato paste", cat: "Canned / Jarred" },
+      { amount: 1, unit: "tbsp", item: "coconut aminos or soy sauce", cat: "Pantry" },
+      { amount: 4, unit: "cloves", item: "garlic, sliced", cat: "Produce" },
+      { amount: 2, unit: "", item: "carrots, chunked", cat: "Produce" },
+      { amount: 2, unit: "", item: "parsnips, chunked", cat: "Produce" },
+      { amount: 1, unit: "", item: "onion, quartered", cat: "Produce" },
+      { amount: 2, unit: "stalks", item: "celery, chopped", cat: "Produce" },
+      { amount: 0, unit: "", item: "bay leaf, thyme, oregano, basil, salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Make small slits in the roast and insert garlic slices.",
+      "Saut\u00e9 roast in butter, searing each side 3\u20134 min.",
+      "Add broth, coconut aminos, tomato paste, celery, bay leaf, thyme, oregano, and basil.",
+      "Pressure Cook 45 min, Quick Release.",
+      "Add onion, carrots, and parsnips.",
+      "Pressure Cook 10 min, Quick Release. Serve with vegetables and pan juices."
+    ],
+    timer: { minutes: 45, label: "Pressure Cook" }
+  },
+  {
+    id: "hot-pot",
+    name: "Hot Pot",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 2, unit: "cups", item: "beef broth", cat: "Canned / Jarred" },
+      { amount: 2, unit: "cups", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 2, unit: "cups", item: "vegetable broth", cat: "Canned / Jarred" },
+      { amount: 1, unit: "", item: "onion, chopped", cat: "Produce" },
+      { amount: 4, unit: "", item: "scallions, sliced", cat: "Produce" },
+      { amount: 0.5, unit: "lb", item: "thinly sliced beef or pork", cat: "Proteins" },
+      { amount: 8, unit: "oz", item: "udon or ramen noodles", cat: "Grains & Pasta" },
+      { amount: 1, unit: "cup", item: "mushrooms, sliced", cat: "Produce" },
+      { amount: 2, unit: "cups", item: "bok choy, chopped", cat: "Produce" },
+      { amount: 0, unit: "", item: "salt, pepper, Old Bay seasoning", cat: "Pantry" }
+    ],
+    steps: [
+      "Saut\u00e9 onion and scallions for 3 min. Add all three broths, salt, pepper, and Old Bay.",
+      "Simmer on Saut\u00e9 for 10 min to build flavor.",
+      "Add mushrooms. Pressure Cook 5 min, Natural Release 5 min.",
+      "Switch to Saut\u00e9 mode. Add noodles, sliced meat, and bok choy.",
+      "Cook 3\u20135 min until meat is cooked through and noodles are tender.",
+      "Serve in bowls with broth and toppings."
+    ],
+    timer: { minutes: 5, label: "Pressure Cook" }
+  },
+  {
+    id: "harissa-chicken",
+    name: "Harissa Chicken with Feta",
+    methods: ["pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 2, unit: "lb", item: "chicken thighs, bone-in", cat: "Proteins" },
+      { amount: 3, unit: "tbsp", item: "harissa paste", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "chicken broth", cat: "Canned / Jarred" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "smoked paprika", cat: "Pantry" },
+      { amount: 0.5, unit: "cup", item: "crumbled feta cheese", cat: "Produce" },
+      { amount: 0, unit: "", item: "fresh herbs (cilantro or parsley)", cat: "Produce" },
+      { amount: 0, unit: "", item: "salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Season chicken with cumin, smoked paprika, salt, and pepper.",
+      "Place chicken in the pot. Mix harissa paste with chicken broth and pour over.",
+      "Pressure Cook 10 min, Natural Release 5 min.",
+      "Serve topped with crumbled feta and fresh herbs."
+    ],
+    timer: { minutes: 10, label: "Pressure Cook" }
+  },
+  {
+    id: "beef-arayes",
+    name: "Beef Arayes (Stuffed Pita)",
+    methods: ["air"],
+    mealType: "lunch",
+    servings: 4,
+    ingredients: [
+      { amount: 1, unit: "lb", item: "extra lean ground beef", cat: "Proteins" },
+      { amount: 1, unit: "", item: "onion, finely diced", cat: "Produce" },
+      { amount: 3, unit: "cloves", item: "garlic, minced", cat: "Produce" },
+      { amount: 0.25, unit: "cup", item: "fresh parsley, chopped", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "paprika", cat: "Pantry" },
+      { amount: 0.5, unit: "tsp", item: "cinnamon", cat: "Pantry" },
+      { amount: 4, unit: "", item: "pita breads, halved", cat: "Grains & Pasta" },
+      { amount: 0, unit: "", item: "olive oil, salt, pepper", cat: "Pantry" }
+    ],
+    steps: [
+      "Mix ground beef with onion, garlic, parsley, cumin, paprika, cinnamon, salt, and pepper.",
+      "Stuff each pita half with the meat mixture, spreading evenly.",
+      "Brush both sides with olive oil.",
+      "Air Crisp 400\u00b0F, 14 min, flip halfway through.",
+      "Serve with yogurt sauce or tahini."
+    ],
+    timer: { minutes: 14, label: "Air Crisp" }
+  },
+  {
+    id: "tajin-beef-stew",
+    name: "Tajin Beef Stew",
+    methods: ["saute", "pressure"],
+    mealType: "dinner",
+    servings: 4,
+    ingredients: [
+      { amount: 1.5, unit: "lb", item: "beef chuck, cubed", cat: "Proteins" },
+      { amount: 3, unit: "", item: "potatoes, cubed", cat: "Produce" },
+      { amount: 2, unit: "", item: "carrots, sliced", cat: "Produce" },
+      { amount: 1, unit: "", item: "onion, diced", cat: "Produce" },
+      { amount: 2, unit: "cups", item: "beef broth", cat: "Canned / Jarred" },
+      { amount: 1, unit: "can", item: "diced tomatoes", cat: "Canned / Jarred" },
+      { amount: 2, unit: "tbsp", item: "Tajin seasoning", cat: "Pantry" },
+      { amount: 1, unit: "tsp", item: "cumin", cat: "Pantry" },
+      { amount: 2, unit: "tbsp", item: "olive oil", cat: "Pantry" },
+      { amount: 0, unit: "", item: "salt, pepper, lime wedges", cat: "Pantry" }
+    ],
+    steps: [
+      "Toss beef cubes with Tajin seasoning, cumin, salt, and pepper.",
+      "Saut\u00e9 beef in olive oil in batches, 5 min per batch.",
+      "Add onion, cook 2 min. Add broth and deglaze the pot.",
+      "Add diced tomatoes, potatoes, and carrots.",
+      "Pressure Cook 35 min, Natural Release 10 min.",
+      "Serve with lime wedges."
+    ],
+    timer: { minutes: 35, label: "Pressure Cook" }
   }
 ];
 

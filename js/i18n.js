@@ -547,6 +547,42 @@ const i18n = {
         units: ['font', 'cs\u00e9sze', 'ek', 'ek', 'gerezd', 'ek', '', 'ek', ''],
         steps: ['Keverd \u00f6ssze a sz\u00f3jasz\u00f3szt, barna cukrot, sz\u00e9zamolajat, fokhagym\u00e1t, gy\u00f6mb\u00e9rt \u00e9s reszelt k\u00f6rt\u00e9t.', 'P\u00edr\u00edtsd meg a szeletelt marh\u00e1t adagonk\u00e9nt 2 perc oldalanként.', '\u00d6ntsd r\u00e1 a p\u00e1cot.', 'Nyom\u00e1sf\u0151z\u00e9s 10 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'S\u0171r\u00edtsd be a sz\u00f3szt kukoricakem\u00e9ny\u00edt\u0151vel P\u00edr\u00edt\u00e1s m\u00f3dban.', 'T\u00e1lald rizzsel, szez\u00e1mmaggal \u00e9s \u00fajhagym\u00e1val.'],
         timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      // === INSTANT POT OFFICIAL (53-57) ===
+      'italian-pot-roast': {
+        name: 'Olasz marhaszegy',
+        items: ['marhaszegy', 'vaj', 'marha alapl\u00e9', 'paradicsompüré', 'k\u00f3kusz amin\u00f3 vagy sz\u00f3jasz\u00f3sz', 'fokhagyma, szeletelve', 's\u00e1rgar\u00e9pa', 'pasztern\u00e1k', 'hagyma, negyedelve', 'zeller', 'bab\u00e9rlev\u00e9l, kakukkf\u0171, oreg\u00e1n\u00f3, bazsalikom, s\u00f3, bors'],
+        units: ['font', 'ek', 'cs\u00e9sze', 'ek', 'ek', 'gerezd', '', '', '', 'sz\u00e1r', ''],
+        steps: ['V\u00e1gj kis r\u00e9seket a h\u00fasba \u00e9s t\u00f6md meg fokhagymaszeletekkel.', 'P\u00edr\u00edtsd meg vajban minden oldal\u00e1t 3\u20134 percig.', 'Add hozz\u00e1 az alaplevet, paradicsompürét, zellert \u00e9s olasz f\u0171szereket.', 'Nyom\u00e1sf\u0151z\u00e9s 45 perc, Gyors g\u0151zkiereszt\u00e9s.', 'Add hozz\u00e1 a hagym\u00e1t, s\u00e1rgar\u00e9p\u00e1t \u00e9s pasztern\u00e1kot.', 'Nyom\u00e1sf\u0151z\u00e9s 10 perc, Gyors g\u0151zkiereszt\u00e9s. T\u00e1lald a z\u00f6lds\u00e9gekkel.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'hot-pot': {
+        name: 'Hot Pot',
+        items: ['marha alapl\u00e9', 'csirke alapl\u00e9', 'z\u00f6lds\u00e9g alapl\u00e9', 'hagyma', '\u00fajhagyma', 'v\u00e9konyra szeletelt marha vagy sert\u00e9s', 'udon vagy r\u00e1men t\u00e9szta', 'gomba, szeletelve', 'bok choy', 's\u00f3, bors, Old Bay f\u0171szer'],
+        units: ['cs\u00e9sze', 'cs\u00e9sze', 'cs\u00e9sze', '', '', 'font', 'g', 'cs\u00e9sze', 'cs\u00e9sze', ''],
+        steps: ['P\u00edr\u00edtsd meg a hagym\u00e1t \u00e9s \u00fajhagym\u00e1t 3 percig. Add hozz\u00e1 az alapleveket \u00e9s f\u0171szereket.', 'F\u0151zd P\u00edr\u00edt\u00e1s m\u00f3dban 10 percig.', 'Add hozz\u00e1 a gomb\u00e1t. Nyom\u00e1sf\u0151z\u00e9s 5 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'V\u00e1lts P\u00edr\u00edt\u00e1s m\u00f3dra. Add hozz\u00e1 a t\u00e9szt\u00e1t, h\u00fast \u00e9s bok choyt.', 'F\u0151zd 3\u20135 percig, am\u00edg k\u00e9sz. T\u00e1lald t\u00e1lakban.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'harissa-chicken': {
+        name: 'Harissa csirke fet\u00e1val',
+        items: ['csirkecomb, csonttal', 'harissa paszta', 'csirke alapl\u00e9', 'k\u00f6m\u00e9ny', 'f\u00fcst\u00f6lt pirospaprika', 'morzsolt feta sajt', 'friss f\u0171szern\u00f6v\u00e9nyek', 's\u00f3, bors'],
+        units: ['font', 'ek', 'cs\u00e9sze', 'tk', 'tk', 'cs\u00e9sze', '', ''],
+        steps: ['F\u0171szerezd a csirk\u00e9t k\u00f6m\u00e9nnyel, f\u00fcst\u00f6lt pirospaprik\u00e1val, s\u00f3val \u00e9s borssal.', 'Helyezd az ed\u00e9nybe. Keverd \u00f6ssze a hariss\u00e1t az alapl\u00e9vel \u00e9s \u00f6ntsd r\u00e1.', 'Nyom\u00e1sf\u0151z\u00e9s 10 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 5 perc.', 'T\u00e1lald morzsolt fet\u00e1val \u00e9s friss f\u0171szern\u00f6v\u00e9nyekkel.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
+      },
+      'beef-arayes': {
+        name: 'Marhah\u00fas arayes (t\u00f6lt\u00f6tt pita)',
+        items: ['sov\u00e1ny dar\u00e1lt marha', 'hagyma, apr\u00f3ra v\u00e1gva', 'fokhagyma', 'friss petrezselyem', 'k\u00f6m\u00e9ny', 'pirospaprika', 'fah\u00e9j', 'pita keny\u00e9r', 'ol\u00edvaolaj, s\u00f3, bors'],
+        units: ['font', '', 'gerezd', 'cs\u00e9sze', 'tk', 'tk', 'tk', '', ''],
+        steps: ['Keverd \u00f6ssze a dar\u00e1lt marh\u00e1t a hagym\u00e1val, fokhagym\u00e1val, petrezselyemmel \u00e9s f\u0171szerekkel.', 'T\u00f6ltsd meg a f\u00e9lbev\u00e1gott pit\u00e1kat a h\u00faskever\u00e9kkel.', 'Kend meg mindk\u00e9t oldalukat ol\u00edvaolajjal.', 'Forr\u00f3leveg\u0151 200\u00b0C, 14 perc, fel\u00e9n\u00e9l ford\u00edtsd meg.', 'T\u00e1lald joghurtsz\u00f3sszal vagy tahini sz\u00f3sszal.'],
+        timerLabel: 'Forr\u00f3leveg\u0151'
+      },
+      'tajin-beef-stew': {
+        name: 'Tajin marhap\u00f6rk\u00f6lt',
+        items: ['marhah\u00fas, kock\u00e1zva', 'krumpli, kock\u00e1zva', 's\u00e1rgar\u00e9pa, szeletelve', 'hagyma', 'marha alapl\u00e9', 'kock\u00e1zott paradicsom', 'Tajin f\u0171szer', 'k\u00f6m\u00e9ny', 'ol\u00edvaolaj', 's\u00f3, bors, lime cikk'],
+        units: ['font', '', '', '', 'cs\u00e9sze', 'doboz', 'ek', 'tk', 'ek', ''],
+        steps: ['F\u0171szerezd a marh\u00e1t Tajin f\u0171szerrel, k\u00f6m\u00e9nnyel, s\u00f3val \u00e9s borssal.', 'P\u00edr\u00edtsd meg adagonk\u00e9nt ol\u00edvaolajban, 5 perc adagonk\u00e9nt.', 'Add hozz\u00e1 a hagym\u00e1t 2 percre, majd az alaplevet. Kaparj\u00e1l le minden odaragadt darabot.', 'Add hozz\u00e1 a paradicsomot, krumplit \u00e9s s\u00e1rgar\u00e9p\u00e1t.', 'Nyom\u00e1sf\u0151z\u00e9s 35 perc, Term\u00e9szetes g\u0151zkiereszt\u00e9s 10 perc.', 'T\u00e1lald lime cikkel.'],
+        timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
       }
     }
   }
