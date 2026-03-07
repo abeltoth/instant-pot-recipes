@@ -215,12 +215,12 @@ const i18n = {
         steps: ['Keverd \u00f6ssze a 6 toj\u00e1st \u00e9s 0,25 cs\u00e9sze zabitalt.', 'Add hozz\u00e1 a kock\u00e1zott paprik\u00e1t, szeletelt \u00fajhagym\u00e1t, s\u00f3t \u00e9s borsot.', 'Adj 1 cs\u00e9sze vizet az ed\u00e9nybe, helyezd az \u00e1llv\u00e1nyra a form\u00e1kat.', 'Nyom\u00e1sf\u0151z\u00e9s 8 perc, Gyors g\u0151zkiereszt\u00e9s.'],
         timerLabel: 'Nyom\u00e1sf\u0151z\u00e9s'
       },
-      'banana-oat-pancakes': {
-        name: 'Ban\u00e1nos zabpalacsinta',
-        items: ['zabliszt', 'ban\u00e1n', 'toj\u00e1s', 's\u00fct\u0151por', 'fah\u00e9j'],
-        units: ['cs\u00e9sze', '', '', 'tk', ''],
-        steps: ['Turmixold \u00f6ssze az 1 cs\u00e9sze zabot, 2 ban\u00e1nt, 2 toj\u00e1st, 1 tk s\u00fct\u0151port \u00e9s fah\u00e9jat.', '\u00d6ntsd a t\u00e9szt\u00e1t a forr\u00f3leveg\u0151s kos\u00e1rba (b\u00e9lelve).', 'Forr\u00f3leveg\u0151 175\u00b0C, 10 perc, fel\u00e9n\u00e9l ford\u00edtsd meg.'],
-        timerLabel: 'Forr\u00f3leveg\u0151'
+      'cinnamon-apple-chips': {
+        name: 'Fahéjas almachips',
+        items: ['alma, vékonyra szeletelve (1-2mm)', 'fahéj', 'cukor (opcionális)', 'olajspray'],
+        units: ['', 'tk', 'ek', ''],
+        steps: ['Szeleteld vékonyra az almákat mandolinnal vagy éles késsel. Távolítsd el a magokat.', 'Forgasd meg a szeleteket fahéjjal és cukorral.', 'Permetezd meg a kosarat olajspray-vel. Rendezd a szeleteket egy rétegben.', 'Forrólevegő 150°C, 15 perc. Ellenőrizd 12 percnél — a chipeknek száraznak és feltekeredettnek kell lenniük.', 'Hagyd teljesen kihűlni a ropogósságért. Tálald joghurttal vagy zabkásával.'],
+        timerLabel: 'Forrólevegő'
       },
       'breakfast-burritos': {
         name: 'Reggeli burrit\u00f3',

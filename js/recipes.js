@@ -103,25 +103,25 @@ const recipes = [
     timer: { minutes: 8, label: "Pressure Cook" }
   },
   {
-    id: "banana-oat-pancakes",
-    name: "Banana Oat Pancakes",
+    id: "cinnamon-apple-chips",
+    name: "Cinnamon Apple Chips",
     methods: ["air"],
     mealType: "breakfast",
     servings: 2,
     ingredients: [
-      { amount: 1, unit: "cup", item: "rolled oats", cat: "Grains & Pasta" },
-      { amount: 2, unit: "", item: "bananas, mashed", cat: "Produce" },
-      { amount: 2, unit: "", item: "eggs", cat: "Proteins" },
-      { amount: 1, unit: "tsp", item: "baking powder", cat: "Pantry" },
-      { amount: 0, unit: "", item: "cinnamon", cat: "Pantry" }
+      { amount: 2, unit: "", item: "apples, thinly sliced (1-2mm)", cat: "Produce" },
+      { amount: 1, unit: "tsp", item: "cinnamon", cat: "Pantry" },
+      { amount: 1, unit: "tbsp", item: "sugar (optional)", cat: "Pantry" },
+      { amount: 0, unit: "", item: "oil spray", cat: "Pantry" }
     ],
     steps: [
-      "Blend rolled oats into a fine flour.",
-      "Mix oat flour with mashed bananas, eggs, baking powder, and a pinch of cinnamon.",
-      "Spoon batter into small rounds on parchment paper in the air fryer basket.",
-      "Air Crisp 350\u00b0F, 8 min, flip halfway through."
+      "Slice apples thinly using a mandoline or sharp knife. Remove seeds.",
+      "Toss slices with cinnamon and sugar.",
+      "Lightly spray the air fryer basket with oil. Arrange slices in a single layer.",
+      "Air Crisp 300°F, 15 min. Check at 12 min — chips should be dry and curled.",
+      "Let cool completely to crisp up. Serve with yogurt or oatmeal."
     ],
-    timer: { minutes: 8, label: "Air Crisp" }
+    timer: { minutes: 15, label: "Air Crisp" }
   },
   {
     id: "breakfast-burritos",
